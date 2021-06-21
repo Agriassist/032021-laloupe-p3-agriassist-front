@@ -4,7 +4,7 @@ import PageConnection from './components/PageConnection';
 
 function App() {
   return (
-    <main>
+    <main className="container__site">
       <PageConnection />
     </main>
   );
