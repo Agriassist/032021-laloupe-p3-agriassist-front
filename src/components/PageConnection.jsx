@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import '../Styles/PageConnection.css';
-import logoAgri from '../logoAgri.png'
+import logoAgri from '../logoAgri.png';
 
 export default function PageConnection() {
   const refImg = useRef(null);
