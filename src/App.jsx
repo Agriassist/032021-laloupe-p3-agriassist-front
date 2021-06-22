@@ -1,13 +1,16 @@
 import React from 'react';
-import './styles/intro.css';
 import './App.css';
+import PageConnection from './components/PageConnection';
+import MenuPricipal from './components/MenuPricipal';
 
-import Intro from './components/Intro'
+import Intro from './components/Intro';
 
 function App() {
-  return <main>
-   <Intro /> 
-  </main>;
+  return (
+    <main className="container__site">
+      <PageConnection />
+    </main>
+  );
 }
 
 export default App;
