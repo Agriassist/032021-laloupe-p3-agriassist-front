@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import PageConnection from './components/PageConnection';
 import MenuPricipal from './components/MenuPricipal';
-
 import Intro from './components/Intro';
 
 function App() {
