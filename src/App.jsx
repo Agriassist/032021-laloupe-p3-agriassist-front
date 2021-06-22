@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import PageConnection from './components/PageConnection';
+import MenuPricipal from './components/MenuPricipal';
 
 function App() {
   return (
     <main className="container__site">
-      <PageConnection />
+     <PageConnection />
     </main>
   );
 }

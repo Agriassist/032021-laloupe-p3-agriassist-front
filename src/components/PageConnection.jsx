@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import '../Styles/PageConnection.css';
+import logoAgri from '../logoAgri.png'
 
 export default function PageConnection() {
+  const refImg = useRef(null);
+  const refInputOne = useRef(null);
+  const refInputTwo = useRef(null);
+  const refAuthen = useRef(null);
+
+  useEffect(() => {
+    console.log(refImg);
+
+    const TimelineLogin = gsap.timeline();
+
+    TimelineLogin.from(refImg.current, { y: -50, duration: 0.7, delay: 0.4, opacity: 0, ease: 'power2.out' })
+      .from(refInputOne.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' })
+      .from(refInputTwo.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' })
+      .from(refAuthen.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' });
+  }, []);
   return (
     <div className="container__pageconnection">
-      <img id="img__logo" src="../logoAgri.png" alt="logo" />
-      <input id="input__one" type="text" placeholder="Identifiant" />
-      <input id="input__two" type="password" placeholder="Mot de Passe" />
-      <div className="container__authentification">
-        <i class="fas fa-fingerprint"></i>
+      <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
+      <input id="input__one" type="text" placeholder="Identifiant" ref={refInputOne} />
+      <input id="input__two" type="password" placeholder="Mot de Passe" ref={refInputTwo} />
+      <div className="container__authentification " ref={refAuthen}>
+        <i className="fas fa-fingerprint"></i>
 
         <a rel="nofollow" href="https://www.qr-code-generator.com">
           <img
