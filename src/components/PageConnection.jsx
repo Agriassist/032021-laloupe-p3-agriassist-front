@@ -14,7 +14,7 @@ export default function PageConnection() {
 
     const TimelineLogin = gsap.timeline();
 
-    TimelineLogin.from(refImg.current, { y: -50, duration: 0.7, delay: 0.4, opacity: 0, ease: 'power2.out' })
+    TimelineLogin.from(refImg.current, { y: -50, duration: 0.7, delay: 3.025, opacity: 0, ease: 'power2.out' })
       .from(refInputOne.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' })
       .from(refInputTwo.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' })
       .from(refAuthen.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' });
