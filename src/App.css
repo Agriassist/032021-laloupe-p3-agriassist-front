@@ -1,3 +1,7 @@
+:root{
+    --blueColor: rgb(0, 183, 255);
+  }
+  
 *{
     margin: 0;
     padding: 0;
