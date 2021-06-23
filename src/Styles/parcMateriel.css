@@ -1,0 +1,26 @@
+.parc-image {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.parc-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  font-size: 20px;
+  background-color: #3d85c6;
+}
+
+.image-trackteur {
+  width: 40vw;
+}
+
+.cadre-trackteur {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50vw;
+  height: 40vh;
+}
