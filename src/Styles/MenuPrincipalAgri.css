@@ -51,10 +51,7 @@
   color: white;
 
 }
-.fas {
-  font-size: 50px;
-}
-.fa-sign-out-alt {
+.container__menu .fa-sign-out-alt {
   position: absolute;
   font-size: 40px;
   right: 20px;
@@ -84,7 +81,7 @@ h2{
     color: white;
 
 }
-.fa-phone-volume{
+.container__depannage .fa-phone-volume{
     font-size:  50px;
     color: white;
 }
