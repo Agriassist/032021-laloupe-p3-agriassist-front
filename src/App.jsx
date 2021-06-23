@@ -1,14 +1,18 @@
 import React from 'react';
 import './App.css';
 import PageConnection from './components/PageConnection';
-import MenuPricipal from './components/MenuPricipal';
+import MenuPrincipalAgri from './components/MenuPrincipalAgri';
 import Intro from './components/Intro';
-import Profil from './components/Profil';
+import ParcMateriel from './components/ParcMateriel';
+import Document from './components/Document';
+import PageFin from './components/PageFin';
+import Popup from './components/Popup'
 
 function App() {
   return (
     <main className="container__site">
-      <Profil />
+      {/* <PageConnection /> */}
+      <ParcMateriel />
     </main>
   );
 }

@@ -1,0 +1,15 @@
+
+.logo_agriassist{
+    width: 50%;
+  }
+  .img__profil {
+    border-radius: 50%;
+    width: 20%;
+    height: 70%;
+  }
+  .haut_de_page{
+    display : flex;
+    align-items: center;
+    height: 15vh;
+    justify-content: space-evenly;
+  }

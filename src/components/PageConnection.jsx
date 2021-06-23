@@ -11,8 +11,6 @@ export default function PageConnection() {
   const refAuthen = useRef(null);
 
   useEffect(() => {
-    console.log(refImg);
-
     const TimelineLogin = gsap.timeline();
 
     TimelineLogin.from(refImg.current, { y: -50, duration: 0.7, delay: 4.625, opacity: 0, ease: 'power2.out' })
@@ -22,7 +20,6 @@ export default function PageConnection() {
   }, []);
   return (
     <div className="container__pageconnection">
-
       <Intro />
 
       <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
