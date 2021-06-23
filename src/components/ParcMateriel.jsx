@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 
 import AllParcMateriel from './AllParcMateriel';
 import OneParcMateriel from './OneParcMateriel';
+import HautDePage from './HautDePage';
 
 function ParcMateriel() {
 
@@ -10,6 +11,7 @@ function ParcMateriel() {
 
     return (
         <div>
+            <HautDePage />
               {materielId ? <OneParcMateriel /> : <AllParcMateriel setMaterielId={setMaterielId}/>}
         </div>
     )
