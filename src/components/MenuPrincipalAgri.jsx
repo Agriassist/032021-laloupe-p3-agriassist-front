@@ -16,7 +16,7 @@ export default function MenuPrincipal() {
         </div>
         <div className="bloc">
           <div className="bloc__logo2">
-            <i class="fas fa-id-card"></i>
+            <i className="fas fa-id-card"></i>
           </div>
           <p>Mes Profils</p>
         </div>
@@ -28,14 +28,13 @@ export default function MenuPrincipal() {
         </div>
         <div className="bloc">
           <div className="bloc__logo4">
-            <i class="fas fa-folder-open"></i>
+            <i className="fas fa-folder-open"></i>
           </div>
           <p>Mes Documents</p>
         </div>
       </div>
-
       <div className="container__depannage">
-        <i class="fas fa-phone-volume"></i>
+        <i className="fas fa-phone-volume"></i>
         <h2>DEPANNAGE</h2>
         <a rel="nofollow" href="https://www.qr-code-generator.com">
           <img

@@ -12,7 +12,8 @@ function App() {
   return (
     <main className="container__site">
       {/* <PageConnection /> */}
-      <ParcMateriel />
+      {/* <ParcMateriel /> */}
+      <MenuPrincipalAgri />
     </main>
   );
 }
