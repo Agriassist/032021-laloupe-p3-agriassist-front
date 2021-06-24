@@ -16,39 +16,39 @@ export default function Document_Facture() {
 
       <div className="container__facturelogo">
         <div className="bloc__facturelogo">
-          <i class="fas fa-eye"></i>
-          <i class="far fa-arrow-alt-circle-down"></i>
-          <i class="far fa-times-circle"></i>
+          <i className="fas fa-eye"></i>
+          <i className="far fa-arrow-alt-circle-down"></i>
+          <i className="far fa-times-circle"></i>
         </div>
         <div className="bloc__facturelogo">
-          <i class="fas fa-eye"></i>
-          <i class="far fa-arrow-alt-circle-down"></i>
-          <i class="far fa-times-circle"></i>
+          <i className="fas fa-eye"></i>
+          <i className="far fa-arrow-alt-circle-down"></i>
+          <i className="far fa-times-circle"></i>
         </div>
         <div className="bloc__facturelogo">
-          <i class="fas fa-eye"></i>
-          <i class="far fa-arrow-alt-circle-down"></i>
-          <i class="far fa-times-circle"></i>
+          <i className="fas fa-eye"></i>
+          <i className="far fa-arrow-alt-circle-down"></i>
+          <i className="far fa-times-circle"></i>
         </div>
         <div className="bloc__facturelogo">
-          <i class="fas fa-eye"></i>
-          <i class="far fa-arrow-alt-circle-down"></i>
-          <i class="far fa-times-circle"></i>
+          <i className="fas fa-eye"></i>
+          <i className="far fa-arrow-alt-circle-down"></i>
+          <i className="far fa-times-circle"></i>
         </div>
         <div className="bloc__facturelogo">
-          <i class="fas fa-eye"></i>
-          <i class="far fa-arrow-alt-circle-down"></i>
-          <i class="far fa-times-circle"></i>
+          <i className="fas fa-eye"></i>
+          <i className="far fa-arrow-alt-circle-down"></i>
+          <i className="far fa-times-circle"></i>
         </div>
         <div className="bloc__facturelogo">
-          <i class="fas fa-eye"></i>
-          <i class="far fa-arrow-alt-circle-down"></i>
-          <i class="far fa-times-circle"></i>
+          <i className="fas fa-eye"></i>
+          <i className="far fa-arrow-alt-circle-down"></i>
+          <i className="far fa-times-circle"></i>
         </div>
         <div className="bloc__facturelogo">
-          <i class="fas fa-eye"></i>
-          <i class="far fa-arrow-alt-circle-down"></i>
-          <i class="far fa-times-circle"></i>
+          <i className="fas fa-eye"></i>
+          <i className="far fa-arrow-alt-circle-down"></i>
+          <i className="far fa-times-circle"></i>
         </div>
       </div>
     </div>
