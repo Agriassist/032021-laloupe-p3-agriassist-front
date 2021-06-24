@@ -34,6 +34,7 @@
   background-repeat: round;
   border-radius: 5px;
   box-shadow:  5px 5px 5px black;
+  font-size: 40px;
 }
 .bloc__logo2 {
   background-image: url(./src/fondprofil.jpg);
