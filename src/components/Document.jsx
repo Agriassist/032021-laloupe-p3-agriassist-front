@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styles/Document.css';
-import agriculteur from '../agriculteur.png';
+import agriculteur from '../images/agriculteur.png';
 import Document_BonTravail from './Document_BonTravail';
 
 export default function Document() {

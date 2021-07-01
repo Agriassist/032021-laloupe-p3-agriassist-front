@@ -19,12 +19,12 @@ function OneParcMateriel(props) {
         setInfos(infos);
       });
   }, []);
-
+console.log(infos);
   return (
     <div>
       <p>Marque: {infos.marque}</p>
       <p> Modèle : {infos.modele}</p>
-      <p>Mise en service: {infos.modele}</p>
+      <p>Mise en service: {infos.MES}</p>
       <p> Numéro de série: {infos.serialNumber}</p>
       <p> Dernière vidange moteur: {infos.prev_oil}</p>
       <p> Prochaine vidange dans: {infos.next_oil}</p>

@@ -13,7 +13,7 @@ import { Link, Switch, Route } from 'react-router-dom';
 function App() {
   return (
     <main className="container__site">
-      {/* <PageConnection /> */}
+      <PageConnection />
 
       <Switch>
         <Route exact path="/">
