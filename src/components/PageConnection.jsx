@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+<<<<<<< HEAD
 import axios from 'axios';
+=======
+import { useHistory } from 'react-router-dom';
+>>>>>>> dev
 import { gsap } from 'gsap';
 import '../Styles/PageConnection.css';
-import logoAgri from '../logoAgri.png';
+import logoAgri from '../images/logoAgri.png';
 import Intro from './Intro';
 
 export default function PageConnection() {

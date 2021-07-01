@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function OneParcMateriel() {
+function OneParcMateriel(props) {
+  const [infos, setInfos] = useState({});
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/api/materiels/${props.materielId}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        const [marque, modele, MES, serialNumber, prev_oil, next_oil] = [
+          data.marque.name,
+          data.modele.name,
+          data.materiel.year,
+          data.materiel.serial_number,
+          data.materiel.prev_oil_change,
+          data.materiel.next_oil_change,
+        ];
+        const infos = { marque, modele, MES, serialNumber, prev_oil, next_oil };
+        setInfos(infos);
+      });
+  }, []);
+console.log(infos);
   return (
     <div>
-      <p>Marque: Berthoud </p>
-      <p> Modèle Raptor 4200 Ektar36</p>
-      <p>Mise en service: 02/2018</p>
-      <p> Numéro de série: XXXXX</p>
-      <p> Dernière vidange moteur: XXXh</p>
-      <p> Prochaine vidange dans XXXh</p>
+      <p>Marque: {infos.marque}</p>
+      <p> Modèle : {infos.modele}</p>
+      <p>Mise en service: {infos.MES}</p>
+      <p> Numéro de série: {infos.serialNumber}</p>
+      <p> Dernière vidange moteur: {infos.prev_oil}</p>
+      <p> Prochaine vidange dans: {infos.next_oil}</p>
       <p> Concess prioritaire pour dépannage: Ets Cloué</p>
     </div>
   );

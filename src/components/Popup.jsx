@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../Styles/Popup.css';
-import agriculteur from '../agriculteur.png';
+import agriculteur from '../images/agriculteur.png';
 
 export default function Popup() {
   const [popup, setPopup] = useState(true);

@@ -15,11 +15,21 @@ import Document_Facture from './components/Document_Facture';
 import AllParcMateriel from './components/AllParcMateriel'
 import CreareAccount from './components/CreareAccount';
 import MenuPrincipalConce from './components/MenuPrincipalConce';
+import { Link, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
     <main className="container__site">
       <PageConnection />
+
+      <Switch>
+        <Route exact path="/">
+          <MenuPrincipalAgri />
+        </Route>
+        <Route path="/materiel">
+          <ParcMateriel />
+        </Route>
+      </Switch>
     </main>
   );
 }
