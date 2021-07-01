@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Styles/Popup.css';
 import agriculteur from '../images/agriculteur.png';
 
 export default function Popup() {
+  const [popup, setPopup] = useState(true);
+
+  const popupVisible = () => {
+    setPopup(!popup);
+  };
   return (
-    <div className="container">
+    <div className={popup ? 'container' : 'container__none'}>
       <div className="container__popup">
         <img src={agriculteur} alt="agriculteur" />
-        <i className="far fa-times-circle"></i>
+        <i className="far fa-times-circle" onClick={popupVisible}></i>
         <p id="popup__user">Thomas</p>
         <div className="trait__principal"></div>
         <p className="text__popup">Mon Profil</p>

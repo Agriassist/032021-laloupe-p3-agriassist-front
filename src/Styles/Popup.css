@@ -9,6 +9,9 @@
   position: absolute;
   top: 0;
 }
+.container__none{
+  display: none;
+}
 .container__popup {
   background: #fff;
   height: 55%;
