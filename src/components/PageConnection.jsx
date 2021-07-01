@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { gsap } from 'gsap';
 import '../Styles/PageConnection.css';
-import logoAgri from '../logoAgri.png';
+import logoAgri from '../images/logoAgri.png';
 import Intro from './Intro';
 
 export default function PageConnection() {
@@ -25,6 +26,7 @@ export default function PageConnection() {
       <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
       <input id="input__one" type="text" placeholder="Identifiant" ref={refInputOne} />
       <input id="input__two" type="password" placeholder="Mot de Passe" ref={refInputTwo} />
+      <button id="btn__login">alalalal</button>
       <div className="container__authentification " ref={refAuthen}>
         <i className="fas fa-fingerprint"></i>
 
