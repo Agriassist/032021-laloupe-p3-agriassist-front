@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-<<<<<<< HEAD
 import axios from 'axios';
-=======
-import { useHistory } from 'react-router-dom';
->>>>>>> dev
 import { gsap } from 'gsap';
 import '../Styles/PageConnection.css';
 import logoAgri from '../images/logoAgri.png';
@@ -30,22 +26,13 @@ export default function PageConnection() {
   const submitLogin = (e) => {
     e.preventDefault();
     if (email && password) {
-      const data = new FormData();
-      data.append(
-        'login',
-        JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      );
+      console.log(email);
 
-      console.log(data);
       axios({
         method: 'POST',
         url: 'http://localhost:8000/api/login',
-        data,
+        data: { email, password },
       })
-        .then((data) => data.data)
         .then((data) => {
           console.log(data);
           setEmail('');
@@ -62,14 +49,18 @@ export default function PageConnection() {
 
       <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
       <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
-      <input
-        id="input__two"
-        type="password"
-        placeholder="Mot de Passe"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        ref={refInputTwo}
-      />
+      <div className="container__input__password">
+        <input
+          id="input__two"
+          type="password"
+          placeholder="Mot de Passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          ref={refInputTwo}
+        />
+
+        <i class="fas fa-eye"></i>
+      </div>
       <button id="btn__login__account" onClick={submitLogin}>
         Login
       </button>
