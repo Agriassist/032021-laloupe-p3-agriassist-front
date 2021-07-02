@@ -1,5 +1,5 @@
 import React from 'react';
-import logoAgri from '../logoAgri.png';
+import logoAgri from '../images/logoAgri.png';
 import '../Styles/PageFin.css';
 
 export default function PageFin() {

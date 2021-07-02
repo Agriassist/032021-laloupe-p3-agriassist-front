@@ -12,7 +12,7 @@ function ParcMateriel() {
     <div className="container__menu">
       <div>
         <HautDePage />
-        {materielId ? <OneParcMateriel /> : <AllParcMateriel setMaterielId={setMaterielId} />}
+        {materielId ? <OneParcMateriel materielId={materielId} /> : <AllParcMateriel setMaterielId={setMaterielId} />}
       </div>
     </div>
   );

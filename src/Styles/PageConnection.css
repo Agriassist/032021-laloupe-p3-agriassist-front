@@ -74,3 +74,15 @@
     opacity: 1;
 
 }
+
+#btn__login__account {
+    padding: 10px 10px;
+    background: rgb(235, 96, 4);
+    color: #fff;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    margin: 0px auto;
+    border: none;
+    border: 2px solid #fff;
+    border-radius: 10px;
+  }

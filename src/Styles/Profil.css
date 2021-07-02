@@ -58,10 +58,12 @@
   margin-top: 3rem;
 }
 
-.profil_img {
+.fa-users{
+  font-size: 50px;
+  padding: 17px 10px;
   border-radius: 50%;
-  width: 25%;
-  height: 97px;
+  border: 1px solid #000;
+  background: #fff;
   position: absolute;
   top: -30px;
   left: 140px;
@@ -73,7 +75,7 @@
   font-size: 25px;
 }
 
-.quatrebloc__container {
+.quatrebloc__containerprofil {
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -83,7 +85,7 @@
 
 }
 
-.bloc_bloc {
+.profil_bloc {
   display: flex;
   width: 40%;
   background-color: #3d85c6;
@@ -112,14 +114,31 @@
   font-size: 14px;
   color: white;
 }
-
-.fas {
-  font-size: 50px;
+.profil__data {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 78%;
+  margin: auto auto;
 }
-
-.fa-sign-out-alt {
-  position: absolute;
-  font-size: 40px;
-  right: 20px;
-  top: 40px;
+.profil__data p {
+  margin: 10px 0px 0px 10px;
+}
+.profil__datadmin {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 20%;
+  margin-top: 1rem;
+}
+.profil__datadmin p {
+  margin: 10px 0px 0px 10px;
+}
+.img__bloc__admin {
+  width: 25%;
+  height: 118%;
+  border-radius: 50%;
+}
+#role__admin{
+  font-style: italic;
 }

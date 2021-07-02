@@ -16,30 +16,31 @@ export default function Profil() {
           <p>Mes profils</p>
         </div>
       </header>
-      <div className="quatrebloc__container">
-        <div className="bloc_bloc">
-          <div className="logo__bloc">
-            <i className="fas fa-tractor"></i>
+      <div className="quatrebloc__containerprofil">
+        <div className="profil_bloc">
+          <div className="profil__datadmin">
+            <img className="img__bloc__admin" src={agriculteur} alt="profil" />
+            <p>Benjamin</p>
           </div>
-          <p>Benjamin</p>
+          <p id="role__admin">Administrateur</p>
         </div>
-        <div className="bloc_bloc">
-          <div className="logo__bloc">
-            <i className="fas fa-users"></i>
+        <div className="profil_bloc">
+          <div className="profil__data">
+            <img className="img__bloc" src={agriculteur} alt="profil" />
+            <p>Thomas</p>
           </div>
-          <p>Claire</p>
         </div>
-        <div className="bloc_bloc">
-          <div className="logo__bloc">
-            <i className="fas fa-map-marked-alt"></i>
+        <div className="profil_bloc">
+          <div className="profil__data">
+            <img className="img__bloc" src={agriculteur} alt="profil" />
+            <p>Axel</p>
           </div>
-          <p>Thomas</p>
         </div>
-        <div className="bloc_bloc">
-          <div className="logo__bloc">
-            <i className="fas fa-euro-sign"></i>
+        <div className="profil_bloc">
+          <div className="profil__data">
+            <img className="img__bloc" src={agriculteur} alt="profil" />
+            <p>Claire</p>
           </div>
-          <p>Axel</p>
         </div>
       </div>
     </div>

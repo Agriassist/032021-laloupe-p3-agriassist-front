@@ -1,19 +1,20 @@
 import React from 'react';
 import '../Styles/MenuPrincipalAgri.css';
 import HautDePage from './HautDePage';
+import { Link, Switch, Route } from 'react-router-dom';
 
 export default function MenuPrincipal() {
   return (
     <div className="container__menu">
       <HautDePage />
       <div className="container__quatrebloc">
-        <div className="bloc">
+        <Link to="/materiel" className="bloc">
           <div className="bloc__logo1">
             {/* <img className="imagefondparcmateriel" alt="tracesrouestracteurs" src="./src/fondparcmateriel.jpg" width="50%" /> */}
             <i className="fas fa-tractor"></i>
           </div>
           <p>Mon Parc Materiel</p>
-        </div>
+        </Link>
         <div className="bloc">
           <div className="bloc__logo2">
             <i className="fas fa-id-card"></i>

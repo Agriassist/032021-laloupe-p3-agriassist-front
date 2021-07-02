@@ -94,14 +94,14 @@
   display: flex;
   margin-top: 25px;
 }
-.fa-eye {
+.bloc__facturelogo .fa-eye {
   font-size: 25px;
 }
-.fa-arrow-alt-circle-down {
+.bloc__facturelogo .fa-arrow-alt-circle-down {
   font-size: 25px;
   margin-left: 15px;
 }
-.fa-home {
+.container__backhome .fa-home {
   font-size: 50px;
 }
 .container__backhome {
