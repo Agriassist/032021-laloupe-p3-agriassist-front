@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-<<<<<<< HEAD
 import axios from 'axios';
-=======
 import { useHistory } from 'react-router-dom';
->>>>>>> dev
 import { gsap } from 'gsap';
 import '../Styles/PageConnection.css';
 import logoAgri from '../images/logoAgri.png';
@@ -30,26 +27,14 @@ export default function PageConnection() {
   const submitLogin = (e) => {
     e.preventDefault();
     if (email && password) {
-      const data = new FormData();
-      data.append(
-        'login',
-        JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      );
-
-      console.log(data);
       axios({
         method: 'POST',
         url: 'http://localhost:8000/api/login',
-        data,
+        data: { email, password },
       })
-        .then((data) => data.data)
+        // .then((data) => data.data)
         .then((data) => {
-          console.log(data);
-          setEmail('');
-          setPassword('');
+          console.log(data.data.token);
         })
         .catch((err) => {
           alert(err.message);
