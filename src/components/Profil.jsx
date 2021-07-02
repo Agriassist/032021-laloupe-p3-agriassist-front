@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styles/Profil.css';
-import agriculteur from '../agriculteur.png';
+import agriculteur from '../images/agriculteur.png';
 import HautDePage from './HautDePage';
 
 export default function Profil() {
