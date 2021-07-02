@@ -1,5 +1,5 @@
 import '../Styles/OneParcMateriel.css';
-import agriculteur from '../agriculteur.png';
+import agriculteur from '../images/agriculteur.png';
 import React, { useState, useEffect } from 'react';
 
 function OneParcMateriel(props) {

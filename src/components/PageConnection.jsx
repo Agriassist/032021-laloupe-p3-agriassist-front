@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-<<<<<<< HEAD
 import axios from 'axios';
-=======
 import { useHistory } from 'react-router-dom';
->>>>>>> dev
 import { gsap } from 'gsap';
 import '../Styles/PageConnection.css';
 import logoAgri from '../images/logoAgri.png';
@@ -30,26 +27,14 @@ export default function PageConnection() {
   const submitLogin = (e) => {
     e.preventDefault();
     if (email && password) {
-      const data = new FormData();
-      data.append(
-        'login',
-        JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      );
-
       console.log(data);
       axios({
         method: 'POST',
         url: 'http://localhost:8000/api/login',
-        data,
+        data: { email, password },
       })
-        .then((data) => data.data)
         .then((data) => {
-          console.log(data);
-          setEmail('');
-          setPassword('');
+          console.log(data.data.token);
         })
         .catch((err) => {
           alert(err.message);
@@ -61,29 +46,21 @@ export default function PageConnection() {
       <div className="container__pageconnection">
         <Intro />
 
-<<<<<<< HEAD
         <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
-        <input id="input__one" type="text" placeholder="Identifiant" ref={refInputOne} />
-        <input id="input__two" type="password" placeholder="Mot de Passe" ref={refInputTwo} />
+        <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
+        <input
+          id="input__two"
+          type="password"
+          placeholder="Mot de Passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          ref={refInputTwo}
+        />
+        <button id="btn__login__account" onClick={submitLogin}>
+          Login
+        </button>
         <div className="container__authentification " ref={refAuthen}>
           <i className="fas fa-fingerprint"></i>
-=======
-      <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
-      <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
-      <input
-        id="input__two"
-        type="password"
-        placeholder="Mot de Passe"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        ref={refInputTwo}
-      />
-      <button id="btn__login__account" onClick={submitLogin}>
-        Login
-      </button>
-      <div className="container__authentification " ref={refAuthen}>
-        <i className="fas fa-fingerprint"></i>
->>>>>>> dev
 
           <a rel="nofollow" href="https://www.qr-code-generator.com">
             <img
