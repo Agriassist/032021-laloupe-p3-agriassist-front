@@ -8,10 +8,7 @@ import ParcMateriel from './components/ParcMateriel';
 import Document from './components/Document';
 import PageFin from './components/PageFin';
 import Popup from './components/Popup';
-<<<<<<< HEAD
 import MenuConcess from './components/MenuConcess';
-import Profil from './components/Profil';
-=======
 import OneParcMateriel from './components/OneParcMateriel';
 import Profil from './components/Profil';
 import ParamsProfil from './components/ParamsProfil';
@@ -21,18 +18,10 @@ import AllParcMateriel from './components/AllParcMateriel'
 import CreareAccount from './components/CreareAccount';
 import MenuPrincipalConce from './components/MenuPrincipalConce';
 import { Link, Switch, Route } from 'react-router-dom';
->>>>>>> dev
 
 function App() {
   return (
     <main className="container__site">
-<<<<<<< HEAD
-      {/* <PageConnection /> */}
-      {/* <ParcMateriel /> */}
-      {/* <MenuPrincipalAgri /> */}
-      {/* <Profil/> */}
-      <Document />
-=======
       <PageConnection />
 
       <Switch>
@@ -43,7 +32,6 @@ function App() {
           <ParcMateriel />
         </Route>
       </Switch>
->>>>>>> dev
     </main>
   );
 }
