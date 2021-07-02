@@ -29,7 +29,7 @@
   width: 80%;
   height: 50%;
   margin: auto auto;
-  background-image: url(./src/fondparcmateriel.jpg);
+  background-image: url(./src/images/fondparcmateriel.jpg);
   background-size: contain;
   background-repeat: round;
   border-radius: 5px;
@@ -37,13 +37,13 @@
   font-size: 40px;
 }
 .bloc__logo2 {
-  background-image: url(./src/fondprofil.jpg);
+  background-image: url(./src/images/fondprofil.jpg);
 }
 .bloc__logo3 {
-  background-image: url(./src/fondgeoloca.jpg);
+  background-image: url(./src/images/fondgeoloca.jpg);
 }
 .bloc__logo4 {
-  background-image: url(./src/fonddoc.jpg);
+  background-image: url(./src/images/fonddoc.jpg);
 }
 .bloc p {
   font-family: 'Montserrat';

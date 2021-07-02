@@ -21,6 +21,7 @@ export default function Document_BonTravail() {
           <i className="far fa-arrow-alt-circle-down"></i>
           <i className="far fa-times-circle"></i>
         </div>
+
         <div className="bloc__bonlogo">
           <i className="fas fa-eye"></i>
           <i className="far fa-arrow-alt-circle-down"></i>
