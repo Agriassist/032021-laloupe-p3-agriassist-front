@@ -16,10 +16,10 @@
   width: 40%;
   background-color: #3d85c6;
   flex-wrap: wrap;
+  justify-content: space-around;
   margin-top: 1rem;
   height: 150px;
   border-radius: 20px;
-  justify-content: space-around;
   border: 5px solid rgb(255, 255, 255);
 }
 .bloc__logo1, .bloc__logo2, .bloc__logo3, .bloc__logo4 {
@@ -76,7 +76,7 @@
   opacity: 1;
   padding: 10px 10px;
 }
-h2{
+.titleDepannage{
     font-size: 20px;
     font-family: 'Montserrat';
     color: white;

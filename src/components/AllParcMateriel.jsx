@@ -9,26 +9,36 @@ function AllParcMateriel(props) {
   }
 
   return (
-    <div>
-      <header className="parc-header">Mon parc matériel</header>
-      <section className="parc-image">
-        <figure className="cadre-trackteur" onClick={() => selectMateriel(1)}>
-          <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
-          <figcaption>oui va s y oui-oui</figcaption>
-        </figure>
-        <figure className="cadre-trackteur" onClick={() => selectMateriel(2)}>
-          <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
-          <figcaption>oui va s y oui-oui</figcaption>
-        </figure>
-        <figure className="cadre-trackteur" onClick={() => selectMateriel(3)}>
-          <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
-          <figcaption>oui va s y oui-oui</figcaption>
-        </figure>
-        <figure className="cadre-trackteur" onClick={() => selectMateriel(4)}>
-          <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
-          <figcaption>oui va s y oui-oui</figcaption>
-        </figure>
-      </section>
+    <div className="container__menu">
+      <div>
+        <header className="parc-header">
+          <div className="blocMonMateriel">
+            <div className="blocMonMateriel__logo">
+              {/* <img className="imagefondparcmateriel" alt="tracesrouestracteurs" src="./src/fondparcmateriel.jpg" width="50%" /> */}
+              <i className="fas fa-tractor"></i>
+            </div>
+            <p>Mon Parc Materiel</p>
+          </div>
+        </header>
+        <section className="parc-image">
+          <figure className="cadre-trackteur" onClick={() => selectMateriel(1)}>
+            <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
+            <figcaption className="materielName">Moissonneuse New Holland</figcaption>
+          </figure>
+          <figure className="cadre-trackteur" onClick={() => selectMateriel(2)}>
+            <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
+            <figcaption className="materielName">Tracteur John Deere</figcaption>
+          </figure>
+          <figure className="cadre-trackteur" onClick={() => selectMateriel(3)}>
+            <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
+            <figcaption className="materielName">Tracteur Massey Ferguson</figcaption>
+          </figure>
+          <figure className="cadre-trackteur" onClick={() => selectMateriel(4)}>
+            <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
+            <figcaption className="materielName">Ensileuse Claas</figcaption>
+          </figure>
+        </section>
+      </div>
     </div>
   );
 }

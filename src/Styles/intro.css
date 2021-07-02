@@ -6,7 +6,7 @@
     justify-content: space-around;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(233,237,238,255);
+    background: linear-gradient(#3d85c6, #ffffff);
     animation-name: switch;
     animation-fill-mode: forwards;
     animation-timing-function:ease;
@@ -26,7 +26,9 @@
     animation-fill-mode: forwards;
     animation-duration: 0.5s;
   }
-  
+  .intro-text{
+    font-family: 'Montserrat';
+  }
   @keyframes lettre {
     from {
       opacity: 0;

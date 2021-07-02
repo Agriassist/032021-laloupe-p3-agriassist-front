@@ -1,13 +1,21 @@
 import React from 'react';
 import '../Styles/Profil.css';
 import agriculteur from '../agriculteur.png';
+import HautDePage from './HautDePage';
 
 export default function Profil() {
   return (
-    <div className="menu_container">
-      <div className="trait_blue"></div>
-      <i class="fas fa-users"></i>
-      <p id="user_name">Mes Profils</p>
+    <div className="container__menu">
+      <HautDePage />
+      <header className="profil-header">
+        <div className="blocMesProfils">
+          <div className="blocMesProfils__logo">
+            {/* <img className="imagefondparcmateriel" alt="tracesrouestracteurs" src="./src/fondparcmateriel.jpg" width="50%" /> */}
+            <i className="fas fa-id-card"></i>
+          </div>
+          <p>Mes profils</p>
+        </div>
+      </header>
       <div className="quatrebloc__containerprofil">
         <div className="profil_bloc">
           <div className="profil__datadmin">
