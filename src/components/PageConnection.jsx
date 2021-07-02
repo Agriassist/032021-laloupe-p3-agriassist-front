@@ -27,7 +27,10 @@ export default function PageConnection() {
   const submitLogin = (e) => {
     e.preventDefault();
     if (email && password) {
+<<<<<<< HEAD
       console.log(data);
+=======
+>>>>>>> dev
       axios({
         method: 'POST',
         url: 'http://localhost:8000/api/login',
