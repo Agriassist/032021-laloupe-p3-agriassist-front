@@ -34,10 +34,9 @@ export default function MenuPrincipal() {
           <p>Mes Documents</p>
         </div>
       </div>
-
       <div className="container__depannage">
         <i className="fas fa-phone-volume"></i>
-        <h2>DEPANNAGE</h2>
+        <h2 className="titleDepannage">DEPANNAGE</h2>
         <a rel="nofollow" href="https://www.qr-code-generator.com">
           <img
             id="Qr__Code_Menu"

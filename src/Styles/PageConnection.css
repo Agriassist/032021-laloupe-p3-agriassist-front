@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 .container__pageconnection{
-    background-color: var(--blueColor);
+    background: linear-gradient(#ffffff, #3d85c6);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -28,12 +28,14 @@
     margin-top: 6rem;
     padding: 5px;
     opacity: 1;
+    font-family: 'Montserrat';
 }
 
 #input__two{
     margin-top: 2rem;
     padding: 5px;
     opacity: 1;
+    font-family: 'Montserrat';
 }
 ::placeholder{
     opacity: 1;

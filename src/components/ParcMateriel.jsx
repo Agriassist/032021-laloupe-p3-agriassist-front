@@ -9,9 +9,11 @@ function ParcMateriel() {
   const [materielId, setMaterielId] = useState();
 
   return (
-    <div>
-      <HautDePage />
-      {materielId ? <OneParcMateriel materielId={materielId} /> : <AllParcMateriel setMaterielId={setMaterielId} />}
+    <div className="container__menu">
+      <div>
+        <HautDePage />
+        {materielId ? <OneParcMateriel materielId={materielId} /> : <AllParcMateriel setMaterielId={setMaterielId} />}
+      </div>
     </div>
   );
 }
