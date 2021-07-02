@@ -22,19 +22,19 @@ function AllParcMateriel(props) {
         </header>
         <section className="parc-image">
           <figure className="cadre-trackteur" onClick={() => selectMateriel(1)}>
-            <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
+            <img src="./src/images/agriculteur.png" alt="trackteur" className="image-trackteur" />
             <figcaption className="materielName">Moissonneuse New Holland</figcaption>
           </figure>
           <figure className="cadre-trackteur" onClick={() => selectMateriel(2)}>
-            <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
+            <img src="./src/images/agriculteur.png" alt="trackteur" className="image-trackteur" />
             <figcaption className="materielName">Tracteur John Deere</figcaption>
           </figure>
           <figure className="cadre-trackteur" onClick={() => selectMateriel(3)}>
-            <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
+            <img src="./src/images/agriculteur.png" alt="trackteur" className="image-trackteur" />
             <figcaption className="materielName">Tracteur Massey Ferguson</figcaption>
           </figure>
           <figure className="cadre-trackteur" onClick={() => selectMateriel(4)}>
-            <img src="./src/agriculteur.png" alt="trackteur" className="image-trackteur" />
+            <img src="./src/images/agriculteur.png" alt="trackteur" className="image-trackteur" />
             <figcaption className="materielName">Ensileuse Claas</figcaption>
           </figure>
         </section>
