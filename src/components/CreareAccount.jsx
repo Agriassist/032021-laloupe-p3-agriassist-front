@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styles/CreateAccount.css';
-import logoAgri from '../logoAgri.png';
+import logoAgri from '../images/logoAgri.png';
 
 export default function CreareAccount() {
   return (
