@@ -4,13 +4,25 @@
   }
   .img_profil {
     border-radius: 50%;
-    width: 20%;
-    height: 70%;
+    width: 7vh;
+    height: auto;
   }
   .haut_de_page{
     display : flex;
     align-items: center;
-    height: 15vh;
+    height: 12vh;
     justify-content: space-evenly;
+    margin-bottom: 2vh;
   }
 
+  .adresse_mail_img_profil{
+    font-family: 'Montserrat';
+    text-align: center;
+    font-size: 9px;
+    color:black;
+  }
+ .espace_identification_profil{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }

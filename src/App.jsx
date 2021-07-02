@@ -9,6 +9,7 @@ import Document from './components/Document';
 import PageFin from './components/PageFin';
 import Popup from './components/Popup';
 import MenuConcess from './components/MenuConcess';
+import Profil from './components/Profil';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
       {/* <PageConnection /> */}
       {/* <ParcMateriel /> */}
       {/* <MenuPrincipalAgri /> */}
-      <MenuConcess />
+      {/* <Profil/> */}
+      <Document />
     </main>
   );
 }

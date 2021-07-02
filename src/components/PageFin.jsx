@@ -8,15 +8,17 @@ export default function PageFin() {
 
   console.log(phraseEnd.length / timer + 1 + 's');
   return (
-    <div className="end-contenair">
-      <img className="end-logo" src={logoAgri} alt="ddd" />
-      <section className="end-text">
-        {phraseEnd.map((text, index) => (
-          <span style={{ animationDelay: index / timer + 's' }} key={index} className="animat">
-            {text}
-          </span>
-        ))}
-      </section>
+    <div className="container__menu">
+      <div className="end-contenair">
+        <img className="end-logo" src={logoAgri} alt="ddd" />
+        <section className="end-text">
+          {phraseEnd.map((text, index) => (
+            <span style={{ animationDelay: index / timer + 's' }} key={index} className="animat">
+              {text}
+            </span>
+          ))}
+        </section>
+      </div>
     </div>
   );
 }
