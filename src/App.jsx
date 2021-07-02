@@ -8,6 +8,7 @@ import ParcMateriel from './components/ParcMateriel';
 import Document from './components/Document';
 import PageFin from './components/PageFin';
 import Popup from './components/Popup';
+import OneParcMateriel from './components/OneParcMateriel';
 import Profil from './components/Profil';
 import ParamsProfil from './components/ParamsProfil';
 import Document_BonTravail from './components/Document_BonTravail';
