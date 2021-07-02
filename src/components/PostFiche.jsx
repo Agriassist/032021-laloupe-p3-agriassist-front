@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import axios from 'axios';
-import '../Styles/ParamsProfil.css';
+import React, { useState, useEffect } from 'react';
+import '../Styles/PostFiche.css';
 import camera from '../camera.png';
+import HautDePage from '../components/HautDePage';
 
-export default function ParamsProfil() {
+export default function PostFiche() {
   const [fileSelected, setFileSelected] = useState(null);
   const [file, setFile] = useState(null);
 
@@ -40,30 +40,18 @@ export default function ParamsProfil() {
     }
   };
   return (
-    <div className="container__paramsprofil">
-      <i id="edit__profil" class="fas fa-user-edit"></i>
-
-      <div className="container__imgprofil">
+    <div className="container__postfiche">
+      <HautDePage />
+      <input type="file" accept="image/*" id="upload__fiche__tech" onChange={onChangeFile} />
+      <div className="container__fiche__img">
         {file && <img src={`http://localhost:8000/api/images_profil/${file.filename}`} alt="test" id="img__multer" />}
+        <img id="fiche__technique" src="" alt="" />
+        <label htmlFor="upload__fiche__tech">
+          <img src={camera} alt="selection_image" id="upload__fiche__tech" />
+        </label>
       </div>
-      <div className="container__info__profil">
-        <div className="pseudo__container">
-          <h3>Pseudo:</h3>
-          <p>ThomasDev28</p>
-        </div>
-        <div className="name__container">
-          <h3>Nom Prénom:</h3>
-          <p>Thbaut Thomas</p>
-        </div>
-        <div className="email__container">
-          <h3>Email:</h3>
-          <p>thomas28@outlook.com</p>
-        </div>
-        <div className="phone__container">
-          <h3>Téléphone:</h3>
-          <p>02 37 57 48 12</p>
-        </div>
-      </div>
+
+      <button id="btn__fiche" onClick={submitFiles}>Post Fiche</button>
     </div>
   );
 }
