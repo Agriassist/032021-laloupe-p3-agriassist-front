@@ -38,5 +38,5 @@ console.log(infos);
       </div>
       </div>
   );
-
+  }
 export default OneParcMateriel;
