@@ -1,3 +1,5 @@
+import '../Styles/OneParcMateriel.css';
+import agriculteur from '../images/agriculteur.png';
 import React, { useState, useEffect } from 'react';
 
 function OneParcMateriel(props) {
@@ -19,18 +21,22 @@ function OneParcMateriel(props) {
         setInfos(infos);
       });
   }, []);
-console.log(infos);
+  console.log(infos);
   return (
-    <div>
-      <p>Marque: {infos.marque}</p>
-      <p> Modèle : {infos.modele}</p>
-      <p>Mise en service: {infos.MES}</p>
-      <p> Numéro de série: {infos.serialNumber}</p>
-      <p> Dernière vidange moteur: {infos.prev_oil}</p>
-      <p> Prochaine vidange dans: {infos.next_oil}</p>
-      <p> Concess prioritaire pour dépannage: Ets Cloué</p>
+    <div className="OPM_container">
+      <div className="OPM_blue_trait"></div>
+      <img className="OPM_image_profil" src={agriculteur} alt="profil_pictures"></img>
+      <p className="OPM_title">Mon Parc</p>
+      <div className="OPM_infos">
+        <p>Marque: {infos.marque}</p>
+        <p> Modèle : {infos.modele}</p>
+        <p>Mise en service: {infos.MES}</p>
+        <p> Numéro de série: {infos.serialNumber}</p>
+        <p> Dernière vidange moteur: {infos.prev_oil}</p>
+        <p> Prochaine vidange dans: {infos.next_oil}</p>
+        <p> Concess prioritaire pour dépannage: Ets Cloué</p>
+      </div>
     </div>
   );
 }
-
 export default OneParcMateriel;

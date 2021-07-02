@@ -32,7 +32,6 @@ export default function PageConnection() {
         url: 'http://localhost:8000/api/login',
         data: { email, password },
       })
-        // .then((data) => data.data)
         .then((data) => {
           console.log(data.data.token);
         })
@@ -42,31 +41,33 @@ export default function PageConnection() {
     }
   };
   return (
-    <div className="container__pageconnection">
-      <Intro />
+    <div className="container__menu">
+      <div className="container__pageconnection">
+        <Intro />
 
-      <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
-      <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
-      <input
-        id="input__two"
-        type="password"
-        placeholder="Mot de Passe"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        ref={refInputTwo}
-      />
-      <button id="btn__login__account" onClick={submitLogin}>
-        Login
-      </button>
-      <div className="container__authentification " ref={refAuthen}>
-        <i className="fas fa-fingerprint"></i>
+        <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
+        <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
+        <input
+          id="input__two"
+          type="password"
+          placeholder="Mot de Passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          ref={refInputTwo}
+        />
+        <button id="btn__login__account" onClick={submitLogin}>
+          Login
+        </button>
+        <div className="container__authentification " ref={refAuthen}>
+          <i className="fas fa-fingerprint"></i>
 
-        <a rel="nofollow" href="https://www.qr-code-generator.com">
-          <img
-            id="Qr__Code"
-            src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
-            alt=""></img>
-        </a>
+          <a rel="nofollow" href="https://www.qr-code-generator.com">
+            <img
+              id="Qr__Code"
+              src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
+              alt=""></img>
+          </a>
+        </div>
       </div>
     </div>
   );
