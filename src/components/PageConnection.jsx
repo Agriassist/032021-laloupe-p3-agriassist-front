@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from 'react';
+import { useStateValue } from '../contexts/Context';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { gsap } from 'gsap';
@@ -7,11 +8,12 @@ import '../Styles/PageConnection.css';
 import logoAgri from '../images/logoAgri.png';
 import Intro from './Intro';
 
-export default function PageConnection(props) {
+export default function PageConnection() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  console.log(props);
+  // eslint-disable-next-line no-unused-vars
+  const [{ token, status, id }, dispatch] = useStateValue();
 
   const refImg = useRef(null);
   const refInputOne = useRef(null);
@@ -38,9 +40,9 @@ export default function PageConnection(props) {
         data: { email, password },
       })
         .then((data) => {
-          props.setToken(data.data.token);
-          props.setStatus(data.data.status);
-          props.setId(data.data.id);
+          dispatch({ type: 'SET_TOKEN', token: data.data.token });
+          dispatch({ type: 'SET_STATUS', status: data.data.status });
+          dispatch({ type: 'SET_ID', id: data.data.id });
           if (data.data.token !== undefined) {
             history.push('/users');
           } else {
