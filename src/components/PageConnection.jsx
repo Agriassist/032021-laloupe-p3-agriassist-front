@@ -60,6 +60,15 @@ export default function PageConnection(props) {
         <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
         <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
 
+        <input
+          id="input__two"
+          type="password"
+          placeholder="Mot de Passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          ref={refInputTwo}
+        />
+
         <button to="/users" id="btn__login__account" onClick={submitLogin}>
           Login
         </button>
