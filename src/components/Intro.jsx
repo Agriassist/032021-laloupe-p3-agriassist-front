@@ -6,7 +6,6 @@ function Intro() {
   const phraseIntro = 'BIENVENUE ...'.split('');
   const timer = 8;
 
-
   return (
     <div className="intro-contenair" style={{ animationDelay: phraseIntro.length / timer + 1 + 's' }}>
       <img className="intro-logo" src={logoAgri} alt="ddd" />
