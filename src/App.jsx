@@ -18,7 +18,6 @@ import AllParcMateriel from './components/AllParcMateriel';
 import CreareAccount from './components/CreareAccount';
 import MenuPrincipalConce from './components/MenuPrincipalConce';
 import { Link, Switch, Route } from 'react-router-dom';
-import UpdateProfil from './components/UpdateProfil';
 import AllAgriConcId from './components/AllAgriConcId';
 import PostFiche from './components/PostFiche';
 
