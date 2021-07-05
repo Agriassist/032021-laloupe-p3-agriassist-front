@@ -41,6 +41,7 @@ function App() {
           <AllParcMateriel token={token} />
         </Route>
       </Switch>
+      <ParcMateriel />
     </main>
   );
 }
