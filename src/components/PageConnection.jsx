@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
-=======
 import { useHistory } from 'react-router-dom';
->>>>>>> dev
 import { gsap } from 'gsap';
 import '../Styles/PageConnection.css';
 import logoAgri from '../images/logoAgri.png';
@@ -50,7 +47,6 @@ export default function PageConnection() {
 
         <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
         <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
-<<<<<<< HEAD
         <div className="container__input__password">
           <input
             id="input__two"
@@ -63,16 +59,6 @@ export default function PageConnection() {
 
           <i class="fas fa-eye"></i>
         </div>
-=======
-        <input
-          id="input__two"
-          type="password"
-          placeholder="Mot de Passe"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          ref={refInputTwo}
-        />
->>>>>>> dev
         <button id="btn__login__account" onClick={submitLogin}>
           Login
         </button>

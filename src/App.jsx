@@ -25,9 +25,10 @@ import PostFiche from './components/PostFiche';
 function App() {
   return (
     <main className="container__site">
-      <PageConnection />
-
       <Switch>
+        <Route path="/user/:id">
+          <UpdateProfil />
+        </Route>
         <Route exact path="/menu">
           <MenuPrincipalAgri />
         </Route>
