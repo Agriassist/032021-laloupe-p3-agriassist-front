@@ -36,7 +36,7 @@ export default function PageConnection() {
     if (email && password) {
       axios({
         method: 'POST',
-        url: 'http://localhost:8000/api/login',
+        url: `${process.env.REACT_APP_API_URL}/api/login`,
         data: { email, password },
       })
         .then((data) => {

@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+// import axios from 'axios';
 import '../Styles/UpdateProfil.css';
 import camera from '../camera.png';
 
 export default function UpdateProfil() {
-  const [fileSelected, setFileSelected] = useState(null);
-  const [file, setFile] = useState(null);
+  const setFileSelected = useState(null)[1];
+  const file = useState(null)[0];
 
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
@@ -16,34 +16,34 @@ export default function UpdateProfil() {
       alert("Veuillez selectionner un format d'image valide");
     }
   };
-  const submitFiles = (e) => {
-    e.preventDefault();
-    if (fileSelected) {
-      const data = new FormData();
-      data.append('file', fileSelected);
-      data.append('configuration', JSON.stringify({ alt: '' }));
-      axios({
-        method: 'POST',
-        url: 'http://localhost:8000/images_profil',
-        data,
-      })
-        .then((data) => data.data)
-        .then((data) => {
-          console.log(data);
-          setFile({
-            filename: data.picture_profil,
-          });
-        })
-        .catch((err) => {
-          alert(err.response.status);
-        });
-    }
-  };
+  // const submitFiles = (e) => {
+  //   e.preventDefault();
+  //   if (fileSelected) {
+  //     const data = new FormData();
+  //     data.append('file', fileSelected);
+  //     data.append('configuration', JSON.stringify({ alt: '' }));
+  //     axios({
+  //       method: 'POST',
+  //       url: `${process.env.REACT_APP_API_URL}/images_profil`,
+  //       data,
+  //     })
+  //       .then((data) => data.data)
+  //       .then((data) => {
+  //         console.log(data);
+  //         setFile({
+  //           filename: data.picture_profil,
+  //         });
+  //       })
+  //       .catch((err) => {
+  //         alert(err.response.status);
+  //       });
+  //   }
+  // };
   return (
     <div className="container__updateprofil">
       <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
       <div className="container__imgprofil">
-        {file && <img src={`http://localhost:8000/api/images_profil/${file.filename}`} alt="test" id="img__multer" />}
+        {file && <img src={`${process.env.REACT_APP_API_URL}/api/images_profil/${file.filename}`} alt="test" id="img__multer" />}
         <label htmlFor="multer">
           <img src={camera} alt="selection_image" id="imgPhoto" />
         </label>
