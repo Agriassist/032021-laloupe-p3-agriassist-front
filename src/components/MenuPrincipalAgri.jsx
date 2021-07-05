@@ -3,7 +3,7 @@ import '../Styles/MenuPrincipalAgri.css';
 import HautDePage from './HautDePage';
 import { Link, Switch, Route } from 'react-router-dom';
 
-export default function MenuPrincipal() {
+export default function MenuPrincipalAgri() {
   return (
     <div className="container__menu">
       <HautDePage />

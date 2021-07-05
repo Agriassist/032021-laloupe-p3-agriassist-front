@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import '../Styles/ParamsProfil.css';
+import '../Styles/UpdateProfil.css';
 import camera from '../camera.png';
 
-export default function ParamsProfil() {
+export default function UpdateProfil() {
   const [fileSelected, setFileSelected] = useState(null);
   const [file, setFile] = useState(null);
 
@@ -40,28 +40,30 @@ export default function ParamsProfil() {
     }
   };
   return (
-    <div className="container__paramsprofil">
-      <i id="edit__profil" class="fas fa-user-edit"></i>
-
+    <div className="container__updateprofil">
+      <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
       <div className="container__imgprofil">
         {file && <img src={`http://localhost:8000/api/images_profil/${file.filename}`} alt="test" id="img__multer" />}
+        <label htmlFor="multer">
+          <img src={camera} alt="selection_image" id="imgPhoto" />
+        </label>
       </div>
-      <div className="container__info__profil">
-        <div className="pseudo__container">
+      <div className="container__update__profil">
+        <div className="pseudo__update">
           <h3>Pseudo:</h3>
-          <p>ThomasDev28</p>
+          <input type="text" />
         </div>
-        <div className="name__container">
+        <div className="name__update">
           <h3>Nom Prénom:</h3>
-          <p>Thbaut Thomas</p>
+          <input type="text" />
         </div>
-        <div className="email__container">
+        <div className="email__update">
           <h3>Email:</h3>
-          <p>thomas28@outlook.com</p>
+          <input type="email" name="" id="" />
         </div>
-        <div className="phone__container">
+        <div className="phone__update">
           <h3>Téléphone:</h3>
-          <p>02 37 57 48 12</p>
+          <input type="text" name="" id="" />
         </div>
       </div>
     </div>

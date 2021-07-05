@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -6,14 +7,18 @@ import '../Styles/PageConnection.css';
 import logoAgri from '../images/logoAgri.png';
 import Intro from './Intro';
 
-export default function PageConnection() {
+export default function PageConnection(props) {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+
+  console.log(props);
 
   const refImg = useRef(null);
   const refInputOne = useRef(null);
   const refInputTwo = useRef(null);
   const refAuthen = useRef(null);
+
+  let history = useHistory();
 
   useEffect(() => {
     const TimelineLogin = gsap.timeline();
@@ -33,7 +38,14 @@ export default function PageConnection() {
         data: { email, password },
       })
         .then((data) => {
-          console.log(data.data.token);
+          props.setToken(data.data.token);
+          props.setStatus(data.data.status);
+          props.setId(data.data.id);
+          if (data.data.token !== undefined) {
+            history.push('/users');
+          } else {
+            alert('wrong password or email');
+          }
         })
         .catch((err) => {
           alert(err.message);
@@ -47,6 +59,7 @@ export default function PageConnection() {
 
         <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
         <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
+
         <input
           id="input__two"
           type="password"
@@ -55,7 +68,8 @@ export default function PageConnection() {
           onChange={(e) => setPassword(e.target.value)}
           ref={refInputTwo}
         />
-        <button id="btn__login__account" onClick={submitLogin}>
+
+        <button to="/users" id="btn__login__account" onClick={submitLogin}>
           Login
         </button>
         <div className="container__authentification " ref={refAuthen}>
