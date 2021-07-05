@@ -1,0 +1,52 @@
+.intro-contenair{
+  position: absolute;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#3d85c6, #ffffff);
+    animation-name: switch;
+    animation-fill-mode: forwards;
+    animation-timing-function:ease;
+    animation-duration: 2s;
+}
+
+.intro-logo{
+    width: 100%;
+}
+
+.animat {
+    display: inline-block;
+    min-width: 6px;
+    opacity: 0;
+    font-size: 40px;
+    animation-name: lettre;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+  }
+  .intro-text{
+    font-family: 'Montserrat';
+  }
+  @keyframes lettre {
+    from {
+      opacity: 0;
+      transform: scale(4);
+    }
+  
+    to {
+      opacity: 100%;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes switch {
+    from {
+      transform: translateY(0);
+    }
+  
+    to {
+        transform: translateY(-100vh);
+    }
+  }

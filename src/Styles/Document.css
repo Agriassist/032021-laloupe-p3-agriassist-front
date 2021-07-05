@@ -1,0 +1,163 @@
+
+.blocMesDocuments {
+  display: flex;
+  width: 40%;
+  background-color: #3d85c6;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  height: 150px;
+  border-radius: 20px;
+  justify-content: space-around;
+  border: 5px solid rgb(255, 255, 255);
+}
+.blocMesDocuments__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 50%;
+  margin: auto auto;
+  background-image: url(./src/images/fondparcmateriel.jpg);
+  background-size: contain;
+  background-repeat: round;
+  border-radius: 5px;
+  box-shadow:  5px 5px 5px black;
+  font-size: 40px;
+}
+
+.blocMesDocuments p {
+  font-family: 'Montserrat';
+  text-align: center;
+  font-size: 14px;
+  color: white;
+
+}
+
+.document-header {
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  background-color: #3d85c6;
+  font-size: 20px;
+  font-family: 'Montserrat';
+  color: white;
+  border-radius: 20px;
+  border: 5px solid rgb(255, 255, 255);
+}
+
+.container__doc {
+  position: relative;
+}
+.container__allnothome {
+  height: 70vh;
+}
+
+#name__user {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 25px;
+}
+.btn__doc {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 3rem;
+}
+.btn__doc button {
+  border: none;
+  border-radius: 5px;
+  width: 40%;
+  padding: 20px;
+  background-color: #3d85c6;
+  font-size: 15px;
+  font-family: 'Montserrat';
+  color: white;
+}
+
+.container__facture {
+  display: flex;
+  justify-content: space-around;
+  margin: 3rem auto 0px auto;
+  width: 85%;
+  overflow: scroll;
+  z-index: -10;
+  height: 37vh;
+}
+
+.bloc__facturetext p {
+  margin-top: 28px;
+  font-size: 18px;
+}
+.bloc__facturelogo {
+  display: flex;
+  margin-top: 25px;
+}
+.bloc__facturelogo .fa-eye {
+  font-size: 25px;
+}
+.bloc__facturelogo .fa-arrow-alt-circle-down {
+  font-size: 25px;
+  margin-left: 15px;
+}
+.container__backhome .fa-home {
+  font-size: 50px;
+}
+.container__backhome {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.container__bon {
+  display: flex;
+  justify-content: space-around;
+  margin: 3rem auto 0px auto;
+  width: 85%;
+  overflow: scroll;
+  height: 37vh;
+  z-index: -10;
+}
+
+.bloc__bontext p {
+  margin-top: 28px;
+  font-size: 18px;
+}
+.bloc__bonlogo {
+  display: flex;
+  margin-top: 25px;
+}
+.bloc__bonlogo .fa-eye {
+  font-size: 25px;
+}
+.bloc__bonlogo .fa-arrow-alt-circle-down {
+  font-size: 25px;
+  margin-left: 15px;
+}
+.bloc__bonlogo .fa-times-circle {
+  font-size: 25px;
+  margin-left: 15px;
+}
+.fa-home {
+  font-size: 50px;
+}
+.container__backhome {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 4rem;
+}
+.container__BDC{
+  background-color: white;
+}
+.container__FAC{
+  background-color: white;
+}
+
+button:hover, button:focus {
+  color: black;
+  background-color: #FBA000;
+  cursor: pointer;
+}

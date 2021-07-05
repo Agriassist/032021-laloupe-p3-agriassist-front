@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+.container__paramsprofil {
+  width: 100%;
+  height: 100vh;
+  background: var(--blueColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+#edit__profil{
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  padding: 10px 10px;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 25px;
+}
+
+#multer {
+  margin: 5rem auto 2rem auto;
+}
+#img__multer {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.container__imgprofil {
+  height: 185px;
+  width: 185px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  position: relative;
+  margin: 2rem auto 2rem auto;
+}
+
+#upload__img {
+  margin-top: 2rem;
+  padding: 15px 15px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#imgPhoto {
+  width: 15%;
+  padding: 5px;
+  margin-top: 10%;
+  background-color: #eee;
+  border: 5px solid #ccc;
+  border-radius: 44%;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+#imgPhoto:hover {
+  background-color: rgb(180, 180, 180);
+  border: 5px solid #111;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.container__info__profil {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.pseudo__container h3,
+.name__container h3,
+.email__container h3,
+.phone__container h3 {
+  text-align: center;
+ text-decoration: underline;
+ margin-top: 2rem;
+ font-family: 'Varela Round', sans-serif;
+ font-style: italic;
+ font-size: 25px;
+}
+
+.pseudo__container p,
+.name__container p,
+.email__container p,
+.phone__container p{
+  margin-top: 1rem;
+  font-family: 'Varela Round', sans-serif;
+  text-align: center;
+}
