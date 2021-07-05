@@ -18,6 +18,9 @@ import AllParcMateriel from './components/AllParcMateriel';
 import CreareAccount from './components/CreareAccount';
 import MenuPrincipalConce from './components/MenuPrincipalConce';
 import { Link, Switch, Route } from 'react-router-dom';
+import UpdateProfil from './components/UpdateProfil';
+import AllAgriConcId from './components/AllAgriConcId';
+import PostFiche from './components/PostFiche';
 
 function App() {
   const [token, setToken] = useState(undefined);
@@ -28,10 +31,14 @@ function App() {
   return (
     <main className="container__site">
       <Switch>
+<<<<<<< HEAD
         <Route exact path="/">
           <PageConnection setToken={setToken} setStatus={setStatus} setId={setId} />
         </Route>
         <Route path="/users">
+=======
+        <Route exact path="/menu">
+>>>>>>> dev
           <MenuPrincipalAgri />
         </Route>
         <Route path="/materiel">

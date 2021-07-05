@@ -9,7 +9,6 @@ export default function HautDePage() {
       <div className="espace_identification_profil">
       <img className="img_profil" src={agriculteur} alt="agriculteur" />
       <figcaption className="adresse_mail_img_profil">adresse_mail@orange.fr</figcaption>
-      </div>
     </div>
   );
 }
