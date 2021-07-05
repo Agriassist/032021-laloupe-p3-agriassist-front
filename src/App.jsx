@@ -31,14 +31,10 @@ function App() {
   return (
     <main className="container__site">
       <Switch>
-<<<<<<< HEAD
         <Route exact path="/">
           <PageConnection setToken={setToken} setStatus={setStatus} setId={setId} />
         </Route>
         <Route path="/users">
-=======
-        <Route exact path="/menu">
->>>>>>> dev
           <MenuPrincipalAgri />
         </Route>
         <Route path="/materiel">
