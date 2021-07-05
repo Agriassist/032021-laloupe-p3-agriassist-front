@@ -8,7 +8,7 @@ function OneParcMateriel() {
   const [{ materielId }] = useStateValue();
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/materiels/${materielId}`)
+    fetch(`${process.env.REACT_APP_API_URL}/api/materiels/${materielId}`)
       .then((resp) => resp.json())
       .then((data) => {
         const [marque, modele, MES, serialNumber, prev_oil, next_oil] = [

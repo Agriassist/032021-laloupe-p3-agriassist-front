@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../Styles/PostFiche.css';
 import camera from '../camera.png';
 import HautDePage from '../components/HautDePage';
+import axios from 'axios';
 
 export default function PostFiche() {
   const [fileSelected, setFileSelected] = useState(null);
@@ -24,7 +25,7 @@ export default function PostFiche() {
       data.append('configuration', JSON.stringify({ alt: '' }));
       axios({
         method: 'POST',
-        url: 'http://localhost:8000/images_profil',
+        url: `${process.env.REACT_APP_API_URL}/images_profil`,
         data,
       })
         .then((data) => data.data)
@@ -44,14 +45,16 @@ export default function PostFiche() {
       <HautDePage />
       <input type="file" accept="image/*" id="upload__fiche__tech" onChange={onChangeFile} />
       <div className="container__fiche__img">
-        {file && <img src={`http://localhost:8000/api/images_profil/${file.filename}`} alt="test" id="img__multer" />}
+        {file && <img src={`${process.env.REACT_APP_API_URL}/api/images_profil/${file.filename}`} alt="test" id="img__multer" />}
         <img id="fiche__technique" src="" alt="" />
         <label htmlFor="upload__fiche__tech">
           <img src={camera} alt="selection_image" id="upload__fiche__tech" />
         </label>
       </div>
 
-      <button id="btn__fiche" onClick={submitFiles}>Post Fiche</button>
+      <button id="btn__fiche" onClick={submitFiles}>
+        Post Fiche
+      </button>
     </div>
   );
 }
