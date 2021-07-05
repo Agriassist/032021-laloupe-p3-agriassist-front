@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import './App.css';
+import { useStateValue } from './contexts/Context';
 import PageConnection from './components/PageConnection';
 import MenuPrincipalAgri from './components/MenuPrincipalAgri';
 import Intro from './components/Intro';
@@ -23,28 +24,29 @@ import AllAgriConcId from './components/AllAgriConcId';
 import PostFiche from './components/PostFiche';
 
 function App() {
-  const [token, setToken] = useState(undefined);
-  const [status, setStatus] = useState(undefined);
-  const [id, setId] = useState(undefined);
-  console.log(token, status, id);
+  const [{ token, status, id }, dispatch] = useStateValue();
 
+  console.log(token, status, id);
   return (
     <main className="container__site">
       <Switch>
         <Route exact path="/">
-          <PageConnection setToken={setToken} setStatus={setStatus} setId={setId} />
+          <PageConnection />
         </Route>
         <Route path="/users">
           <MenuPrincipalAgri />
         </Route>
         <Route path="/materiel">
-          <ParcMateriel />
+          <ParcMateriel id={id} />
         </Route>
         <Route path="/AllParcMateriel">
           <AllParcMateriel token={token} />
         </Route>
+        <Route path="/OneParcMateriel">
+          <OneParcMateriel />
+        </Route>
       </Switch>
-      <ParcMateriel />
+      {/* <ParcMateriel /> */}
     </main>
   );
 }
