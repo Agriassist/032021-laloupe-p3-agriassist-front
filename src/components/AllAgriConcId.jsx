@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HautDePage from './HautDePage';
+import axios from 'axios';
 import '../Styles/AllAgriConcId.css';
+import cardAgri from '../components/cardAgri';
 
 export default function AllAgriConcId() {
   return (

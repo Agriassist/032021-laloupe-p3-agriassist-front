@@ -21,7 +21,7 @@ function AllParcMateriel(props) {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `http://localhost:8000/api/materiels/users/${props.id}`,
+      url: `${process.env.REACT_APP_API_URL}/api/materiels/users/${props.id}`,
     })
       .then((data) => {
         console.log(data.data);

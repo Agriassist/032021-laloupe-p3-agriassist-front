@@ -98,8 +98,12 @@
      position: absolute;
      bottom: 15px;
      right: 60px;
+     visibility: hidden;
     
      
      
 
+  }
+  input[type=password]:focus .fa-eye{
+      visibility: visible;
   }
