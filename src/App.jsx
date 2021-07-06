@@ -43,6 +43,9 @@ function App() {
         <Route path="/OneParcMateriel">
           <OneParcMateriel />
         </Route>
+        <Route path="/profil">
+          <Profil />
+        </Route>
       </Switch>
       {/* <ParcMateriel /> */}
     </main>

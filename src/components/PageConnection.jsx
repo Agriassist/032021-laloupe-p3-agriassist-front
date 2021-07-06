@@ -61,13 +61,6 @@ export default function PageConnection() {
 
         <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
         <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
-        <div className="container__input__password">
-  
-
-          <i class="fas fa-eye"></i>
-        </div>
-        <button id="btn__login__account" onClick={submitLogin}>
-
         <input
           id="input__two"
           type="password"
@@ -87,7 +80,8 @@ export default function PageConnection() {
             <img
               id="Qr__Code"
               src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
-              alt=""></img>
+              alt=""
+            />
           </a>
         </div>
       </div>

@@ -1,7 +1,7 @@
-import React from 'react';
 import '../Styles/MenuPrincipalAgri.css';
 import HautDePage from './HautDePage';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import React from 'react';
 
 export default function MenuPrincipalAgri() {
   return (
@@ -10,17 +10,16 @@ export default function MenuPrincipalAgri() {
       <div className="container__quatrebloc">
         <Link to="/materiel" className="bloc">
           <div className="bloc__logo1">
-            {/* <img className="imagefondparcmateriel" alt="tracesrouestracteurs" src="./src/fondparcmateriel.jpg" width="50%" /> */}
             <i className="fas fa-tractor"></i>
           </div>
           <p>Mon Parc Materiel</p>
         </Link>
-        <div className="bloc">
+        <Link to="/profil" className="bloc">
           <div className="bloc__logo2">
             <i className="fas fa-id-card"></i>
           </div>
           <p>Mes Profils</p>
-        </div>
+        </Link>
         <div className="bloc">
           <div className="bloc__logo3">
             <i className="fas fa-map-marked-alt"></i>
