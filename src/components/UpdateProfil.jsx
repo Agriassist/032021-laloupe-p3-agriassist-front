@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../Styles/UpdateProfil.css';
 import camera from '../camera.png';
 import defaultpicture from '../images/twitter.jpg';
+import { data } from 'autoprefixer';
 
 export default function UpdateProfil() {
   const [fileSelected, setFileSelected] = useState(null);
@@ -13,6 +14,7 @@ export default function UpdateProfil() {
   const [prenom, setPrenom] = useState('');
   const [email, setEmail] = useState('');
   const [telephone, setTelephone] = useState('');
+  const [imgphoto, setImgphoto] = useState('');
   console.log(file);
 
   const { id } = useParams();
@@ -62,7 +64,10 @@ export default function UpdateProfil() {
         setPrenom(data.prenom);
         setEmail(data.email);
         setTelephone(data.phone);
-        setFile(data.photo_profil);
+        if (data.photo_profil === 'twitter.jpg') {
+        } else {
+          setFile(data.photo_profil);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -114,14 +119,21 @@ export default function UpdateProfil() {
     }
   };
 
+  const changeImg = () => {
+    if (data.photo_profil === 'twitter.jpg') {
+      setImgphoto('http://localhost:8000/api/images_profil/twitter.jpg');
+    } else {
+      setImgphoto(`http://localhost:8000/api/images_profil/${file.filename}`);
+    }
+  };
+
   return (
     <>
       {pseudo && (
         <div className="container__updateprofil">
           <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
           <div className="container__imgprofil">
-            <img src={`http://localhost:8000/api/images_profil/${file.filename}`} alt="test" id="img__multer" />
-            <img src={`http://localhost:8000/api/images_profil/twitter.jpg`} alt="test" id="img__multer" />
+            <img src={imgphoto} onChange={changeImg} alt="test" id="img__multer" />
 
             <label htmlFor="multer">
               <img src={camera} alt="selection_image" id="imgPhoto" />
