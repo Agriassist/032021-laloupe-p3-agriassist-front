@@ -1,5 +1,11 @@
-import { createContext } from 'react';
+/* eslint-disable react/function-component-definition */
+/* eslint-disable react/prop-types */
+import React, { createContext, useContext, useReducer } from 'react';
 
-const Context = createContext(null);
+export const StateContext = createContext();
 
-export default Context;
+export const StateProvider = ({ reducer, initialState, children }) => (
+  <StateContext.Provider value={useReducer(reducer, initialState)}>{children}</StateContext.Provider>
+);
+
+export const useStateValue = () => useContext(StateContext);

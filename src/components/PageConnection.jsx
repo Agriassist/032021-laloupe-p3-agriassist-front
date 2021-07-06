@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from 'react';
+import { useStateValue } from '../contexts/Context';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { gsap } from 'gsap';
@@ -10,10 +12,15 @@ export default function PageConnection() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
+  // eslint-disable-next-line no-unused-vars
+  const [{ token, status, id }, dispatch] = useStateValue();
+
   const refImg = useRef(null);
   const refInputOne = useRef(null);
   const refInputTwo = useRef(null);
   const refAuthen = useRef(null);
+
+  let history = useHistory();
 
   useEffect(() => {
     const TimelineLogin = gsap.timeline();
@@ -29,11 +36,18 @@ export default function PageConnection() {
     if (email && password) {
       axios({
         method: 'POST',
-        url: 'http://localhost:8000/api/login',
+        url: `${process.env.REACT_APP_API_URL}/api/login`,
         data: { email, password },
       })
         .then((data) => {
-          console.log(data.data.token);
+          dispatch({ type: 'SET_TOKEN', token: data.data.token });
+          dispatch({ type: 'SET_STATUS', status: data.data.status });
+          dispatch({ type: 'SET_ID', id: data.data.id });
+          if (data.data.token !== undefined) {
+            history.push('/users');
+          } else {
+            alert('wrong password or email');
+          }
         })
         .catch((err) => {
           alert(err.message);
@@ -48,18 +62,22 @@ export default function PageConnection() {
         <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
         <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
         <div className="container__input__password">
-          <input
-            id="input__two"
-            type="password"
-            placeholder="Mot de Passe"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            ref={refInputTwo}
-          />
+  
 
           <i class="fas fa-eye"></i>
         </div>
         <button id="btn__login__account" onClick={submitLogin}>
+
+        <input
+          id="input__two"
+          type="password"
+          placeholder="Mot de Passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          ref={refInputTwo}
+        />
+
+        <button to="/users" id="btn__login__account" onClick={submitLogin}>
           Login
         </button>
         <div className="container__authentification " ref={refAuthen}>

@@ -1,12 +1,14 @@
 import '../Styles/OneParcMateriel.css';
 import agriculteur from '../images/agriculteur.png';
 import React, { useState, useEffect } from 'react';
+import { useStateValue } from '../contexts/Context';
 
-function OneParcMateriel(props) {
+function OneParcMateriel() {
   const [infos, setInfos] = useState({});
+  const [{ materielId }] = useStateValue();
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/materiels/${props.materielId}`)
+    fetch(`${process.env.REACT_APP_API_URL}/api/materiels/${materielId}`)
       .then((resp) => resp.json())
       .then((data) => {
         const [marque, modele, MES, serialNumber, prev_oil, next_oil] = [
