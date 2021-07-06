@@ -35,18 +35,9 @@ function AllParcMateriel(props) {
   return (
     <div className="container__menu">
       <HautDePage />
-      <header className="parc-header">
-        <div className="blocMonMateriel">
-          <div className="blocMonMateriel__logo">
-            {/* <img className="imagefondparcmateriel" alt="tracesrouestracteurs" src="./src/fondparcmateriel.jpg" width="50%" /> */}
-            <i className="fas fa-tractor"></i>
-          </div>
-          <p>Mon matériel</p>
-        </div>
-      </header>
       <div className="parc-image">
         {infos.map((text, index) => (
-          <Link className="cadre-trackteur" key={index} onClick={() => selectMateriel} to="/OneParcMateriel" role="link">
+          <Link className="cadre-trackteur" key={index} onClick={() => selectMateriel(text.id)} to="/OneParcMateriel" role="link">
             <img className="image-trackteur" alt={index} src="./src/images/tracteurimagemateriel.jpg" />
             <p className="materielName">
               {text.serial_number}&nbsp;
