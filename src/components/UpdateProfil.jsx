@@ -8,7 +8,7 @@ import { data } from 'autoprefixer';
 
 export default function UpdateProfil() {
   const [fileSelected, setFileSelected] = useState(null);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState('twitter.jpg');
   const [pseudo, setPseudo] = useState('');
   const [name, setName] = useState('');
   const [prenom, setPrenom] = useState('');
@@ -64,15 +64,20 @@ export default function UpdateProfil() {
         setPrenom(data.prenom);
         setEmail(data.email);
         setTelephone(data.phone);
-        if (data.photo_profil === 'twitter.jpg') {
-        } else {
-          setFile(data.photo_profil);
-        }
+        setFile(data.photo_profil);
+        console.log(data.photo_profil);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    if (file === 'twitter.jpg') {
+      console.log('1');
+      setImgphoto('http://localhost:8000/api/images_profil/twitter.jpg');
+    } else {
+      console.log('2');
+      setImgphoto(`http://localhost:8000/api/images_profil/${file}`);
+    }
+  }, [file]);
 
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
@@ -119,21 +124,13 @@ export default function UpdateProfil() {
     }
   };
 
-  const changeImg = () => {
-    if (data.photo_profil === 'twitter.jpg') {
-      setImgphoto('http://localhost:8000/api/images_profil/twitter.jpg');
-    } else {
-      setImgphoto(`http://localhost:8000/api/images_profil/${file.filename}`);
-    }
-  };
-
   return (
     <>
       {pseudo && (
         <div className="container__updateprofil">
           <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
           <div className="container__imgprofil">
-            <img src={imgphoto} onChange={changeImg} alt="test" id="img__multer" />
+            <img src={imgphoto} alt="test" id="img__multer" />
 
             <label htmlFor="multer">
               <img src={camera} alt="selection_image" id="imgPhoto" />

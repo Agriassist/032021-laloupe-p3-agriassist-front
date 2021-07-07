@@ -20,6 +20,9 @@ import MenuPrincipalConce from './components/MenuPrincipalConce';
 import { Link, Switch, Route } from 'react-router-dom';
 import AllAgriConcId from './components/AllAgriConcId';
 import PostFiche from './components/PostFiche';
+import UpdateProfil from './components/UpdateProfil';
+import FicheTech from './components/FicheTech';
+import CreateMateriel from './components/CreateMateriel';
 
 function App() {
   const [{ token, status, id }, dispatch] = useStateValue();
@@ -27,8 +30,9 @@ function App() {
   console.log(token, status, id);
   return (
     <main className="container__site">
+      <CreateMateriel />
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <PageConnection />
         </Route>
         <Route path="/users">
@@ -42,8 +46,12 @@ function App() {
         </Route>
         <Route path="/OneParcMateriel">
           <OneParcMateriel />
+        </Route> */}
+        <Route path="/parametre/:id">
+          <UpdateProfil />
         </Route>
       </Switch>
+
       {/* <ParcMateriel /> */}
     </main>
   );
