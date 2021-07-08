@@ -1,4 +1,3 @@
-import { data } from 'autoprefixer';
 import React, { useState, useEffect } from 'react';
 import '../Styles/Document.css';
 import FicheTech from './FicheTech';
