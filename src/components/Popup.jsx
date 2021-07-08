@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import '../Styles/Popup.css';
 import agriculteur from '../images/agriculteur.png';
+import { useStateValue } from '../contexts/Context';
 
 export default function Popup() {
-  const [popup, setPopup] = useState(true);
+  const [{ popup }, dispatch] = useStateValue();
 
   const popupVisible = () => {
-    setPopup(!popup);
+    dispatch({ type: 'SET_POPUP', popup: !popup });
   };
+
+
   return (
     <div className={popup ? 'container' : 'container__none'}>
       <div className="container__popup">
