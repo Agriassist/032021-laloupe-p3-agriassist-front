@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/CreateAccount.css';
 import logoAgri from '../images/logoAgri.png';
+import axios from 'axios';
 
 export default function CreareAccount() {
   const [pseudo, setPseudo] = useState('');

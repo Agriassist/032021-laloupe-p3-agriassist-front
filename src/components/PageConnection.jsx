@@ -62,6 +62,9 @@ export default function PageConnection() {
 
         <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
         <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
+        <div className="container__input__password">
+          <i class="fas fa-eye"></i>
+        </div>
         <input
           id="input__two"
           type="password"
