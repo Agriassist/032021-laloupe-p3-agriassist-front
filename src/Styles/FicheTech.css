@@ -1,0 +1,20 @@
+.bloc__bontext p {
+    margin-top: 28px;
+    font-size: 18px;
+  }
+
+  .bloc__bonlogo {
+    display: flex;
+    margin-top: 25px;
+  }
+  .bloc__bonlogo .fa-eye {
+    font-size: 25px;
+  }
+  .bloc__bonlogo .fa-arrow-alt-circle-down {
+    font-size: 25px;
+    margin-left: 15px;
+  }
+  .bloc__bonlogo .fa-times-circle {
+    font-size: 25px;
+    margin-left: 15px;
+  }
