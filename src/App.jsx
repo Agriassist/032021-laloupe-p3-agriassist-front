@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 import { useStateValue } from './contexts/Context';
 import PageConnection from './components/PageConnection';
@@ -21,8 +22,47 @@ import { Link, Switch, Route } from 'react-router-dom';
 import AllAgriConcId from './components/AllAgriConcId';
 import PostFiche from './components/PostFiche';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 function App() {
   const [{ token, status, id }, dispatch] = useStateValue();
+
+  const refreshToken = () => {
+    console.log("ok");
+    axios({
+      method: 'POST',
+      url: `${API_BASE_URL}/api/login/refresh_token`,
+      withCredentials: true,
+    })
+      .then(({ data }) => {
+        const { id, status, token } = data;
+        console.log(id, status, token);
+        console.log('before refresh token: ', 15 * 60 * 1000 - 5000);
+
+        // setTimeout pour renouvler avant expiration l'access_token
+        setTimeout(() => {
+          console.log('inside setTimeout refresh token: ', 15 * 60 * 1000 - 5000);
+          refreshToken();
+        }, 15 * 60 * 1000 - 10000);
+        dispatch({ type: 'SET_ID', id });
+        dispatch({ type: 'SET_TOKEN', token: token });
+        dispatch({ type: 'SET_STATUS', status: status });
+
+        // dispatch({ type: 'SET_TOKEN', token: data.data.token });
+        // dispatch({ type: 'SET_STATUS', status: data.data.status });
+        // dispatch({ type: 'SET_ID', id: data.data.id });
+        console.log('good');
+      })
+      .catch((err) => {
+        // console.log('error refresh: ', err.response.data);
+        dispatch({ type: 'RESET_USER' });
+        dispatch({ type: 'RESET_JWT' });
+      });
+  };
+
+  useEffect(() => {
+    refreshToken();
+  }, []);
 
   console.log(token, status, id);
   return (

@@ -38,6 +38,7 @@ export default function PageConnection() {
         method: 'POST',
         url: `${process.env.REACT_APP_API_URL}/api/login`,
         data: { email, password },
+        withCredentials: true,
       })
         .then((data) => {
           dispatch({ type: 'SET_TOKEN', token: data.data.token });

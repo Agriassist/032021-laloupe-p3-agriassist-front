@@ -37,7 +37,7 @@ export default function Profil() {
                 return user.id === data.data[y].id;
               });
               if (itemIndex <= -1) {
-                if (data.data[y].statue === 'concessionnaire') {
+                if (data.data[y].status === 'concessionnaire') {
                   preTableau.push(data.data[y]);
                 }
               }

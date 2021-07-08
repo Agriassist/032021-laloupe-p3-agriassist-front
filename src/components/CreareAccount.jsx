@@ -9,21 +9,21 @@ export default function CreareAccount() {
   const [email, setEmail] = useState('');
   const [telephone, setTelephone] = useState('');
   const [password, setPassword] = useState('');
-  const [statue, setStatue] = useState('');
+  const [status, setstatus] = useState('');
 
   const handleChange = (event) => {
-    setStatue(event.target.value);
+    setstatus(event.target.value);
   };
 
   const submitCreation = (e) => {
     e.preventDefault();
-    if (statue === '') {
-      alert('Select a statue');
+    if (status === '') {
+      alert('Select a status');
     } else {
       axios({
         method: 'POST',
         url: 'http://localhost:8000/api/users',
-        data: { identifiant: pseudo, prenom: prenom, nom: name, email: email, phone: telephone, statue: statue },
+        data: { identifiant: pseudo, prenom: prenom, nom: name, email: email, phone: telephone, status: status },
       })
         .then((data) => data.data)
         .then((data) => {
@@ -34,7 +34,7 @@ export default function CreareAccount() {
           setEmail('');
           setPassword('');
           setTelephone('');
-          setStatue('');
+          setstatus('');
         })
         .catch((err) => {
           alert('Lien creation fail');
@@ -49,7 +49,7 @@ export default function CreareAccount() {
         <input id="input__two__account" type="text" placeholder="Email" value={email} />
         <input id="input__three__account" type="password" placeholder="Mot de Passe" value={password} />
         <input id="input__four__account" type="text" placeholder="Téléphone" value={telephone} />
-        <select name="status__choice" id="status__choice" value={statue} onChange={handleChange}>
+        <select name="status__choice" id="status__choice" value={status} onChange={handleChange}>
           <option value="administrateur">Administrateur</option>
           <option value="agriculteur">Agriculteur</option>
           <option value="concessionnaire">Concessionnaire</option>
