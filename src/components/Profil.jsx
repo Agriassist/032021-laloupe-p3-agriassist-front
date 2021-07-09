@@ -9,7 +9,6 @@ export default function Profil() {
   const [{ id }] = useStateValue();
   const [name, setName] = useState([]);
   const preTableau = [...name];
-  let filteredArray;
 
   // var arrTwo = ["Hello 1 ", " Hello 2 ", "Hello 1 ", " Hello 2 ", "Hello 1 again"]
 
