@@ -3,7 +3,8 @@
 .blocMesProfils {
   display: flex;
   width: 40%;
-  background-color: #3d85c6;
+  /* background-color: #3d85c6; */
+  background-color: #3d86c625;
   flex-wrap: wrap;
   margin-top: 1rem;
   height: 150px;
@@ -18,7 +19,7 @@
   width: 80%;
   height: 50%;
   margin: auto auto;
-  background-image: url(./src/fondparcmateriel.jpg);
+  background-image: url(./src/images/fondparcmateriel.jpg);
   background-size: contain;
   background-repeat: round;
   border-radius: 5px;
@@ -30,22 +31,23 @@
   font-family: 'Montserrat';
   text-align: center;
   font-size: 14px;
-  color: white;
+  color: black;
 
 }
 
 .profil-header {
-  margin-top: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 10vh;
-  background-color: #3d85c6;
+  /* background-color: #3d85c6; */
+  background-color: #3d86c625;
+  border: 5px solid rgb(255, 255, 255);
   font-size: 20px;
   font-family: 'Montserrat';
   color: white;
   border-radius: 20px;
-  border: 5px solid rgb(255, 255, 255);
+  margin-top: 5vh;
 }
 .menu_container {
   position: relative;
@@ -81,12 +83,12 @@
   width: 100%;
   flex-wrap: wrap;
   height: 50vh;
-  margin-top: 5vh;
+  margin-top: 10vh;
 
 }
 
 .profil_bloc {
-  display: flex;
+  /* display: flex;
   width: 40%;
   background-color: #3d85c6;
   flex-wrap: wrap;
@@ -94,7 +96,19 @@
   height: 150px;
   border-radius: 20px;
   justify-content: space-around;
-  border: 5px solid rgb(255, 255, 255);
+  border: 5px solid rgb(255, 255, 255); */
+
+  display: flex;
+  width: 40%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 1rem;
+  height: 150px;
+  /* background-color: #3d86c68a; */
+  background-color: #3d86c648;
+  /* background-color: #3d86c63d; */
+  border-radius: 20px;
+  /* border: 2px solid rgb(255, 255, 255); */
 }
 
 .logo__bloc {
