@@ -92,7 +92,6 @@ function App() {
         </Route>
       </Switch>
       <Popup />
-      {/* <ParcMateriel /> */}
     </main>
   );
 }
