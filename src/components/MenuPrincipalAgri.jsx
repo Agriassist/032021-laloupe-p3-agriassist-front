@@ -2,8 +2,11 @@ import '../Styles/MenuPrincipalAgri.css';
 import HautDePage from './HautDePage';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { useStateValue } from '../contexts/Context';
 
 export default function MenuPrincipalAgri() {
+  const [{ status }] = useStateValue();
+
   return (
     <div className="container__menu">
       <HautDePage />
@@ -14,12 +17,14 @@ export default function MenuPrincipalAgri() {
           </div>
           <p>Mon Parc Materiel</p>
         </Link>
-        <Link to="/profil" className="bloc">
-          <div className="bloc__logo2">
-            <i className="fas fa-id-card"></i>
-          </div>
-          <p>Mes Profils</p>
-        </Link>
+        {status === 'agriculteur' && (
+          <Link to="/profil" className="bloc">
+            <div className="bloc__logo2">
+              <i className="fas fa-id-card"></i>
+            </div>
+            <p>Mes Profils</p>
+          </Link>
+        )}
         <div className="bloc">
           <div className="bloc__logo3">
             <i className="fas fa-map-marked-alt"></i>
