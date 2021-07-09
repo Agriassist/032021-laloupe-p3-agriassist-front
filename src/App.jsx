@@ -8,9 +8,7 @@ import MenuPrincipalAgri from './components/MenuPrincipalAgri';
 import Intro from './components/Intro';
 import ParcMateriel from './components/ParcMateriel';
 import Document from './components/Document';
-import PageFin from './components/PageFin';
 import Popup from './components/Popup';
-import MenuConcess from './components/MenuConcess';
 import Profil from './components/Profil';
 import OneParcMateriel from './components/OneParcMateriel';
 import Document_BonTravail from './components/Document_BonTravail';
@@ -18,7 +16,6 @@ import Document_Facture from './components/Document_Facture';
 import AllParcMateriel from './components/AllParcMateriel';
 import CreareAccount from './components/CreareAccount';
 import { Link, Switch, Route } from 'react-router-dom';
-import AllAgriConcId from './components/AllAgriConcId';
 import PostFiche from './components/PostFiche';
 import UpdateProfil from './components/UpdateProfil';
 import FicheTech from './components/FicheTech';
@@ -30,7 +27,7 @@ function App() {
   const [{ token, status, id }, dispatch] = useStateValue();
 
   const refreshToken = () => {
-    console.log("ok");
+    console.log('ok');
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/login/refresh_token`,
@@ -86,6 +83,15 @@ function App() {
         </Route>
         <Route path="/profil">
           <Profil />
+        </Route>
+        <Route path="/document">
+          <Document />
+        </Route>
+        <Route path="/document_facture">
+          <Document_Facture />
+        </Route>
+        <Route path="/document_bontravail">
+          <Document_BonTravail />
         </Route>
         <Route path="/popup">
           <Popup />

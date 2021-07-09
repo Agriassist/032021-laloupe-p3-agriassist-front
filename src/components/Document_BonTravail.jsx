@@ -13,8 +13,8 @@ export default function Document_BonTravail() {
   useEffect(() => {
     fetch('http://localhost:8000/carnet_entretien/')
       .then((res) => res.json())
-      .then((data) => data.data[0]);
-    setFiche(data);
+      .then((data) => data.data[0])
+      .then((data) => setFiche(data));
   }, []);
 
   function deleteFiche() {
@@ -28,7 +28,7 @@ export default function Document_BonTravail() {
 
   return (
     <div className="container__BDC">
-      <img className={ficheVisible ? 'fiche__no__visible' : 'fiche__visible'} src={data.fiche} alt="fiche-tech" />
+      <img className={ficheVisible ? 'fiche__no__visible' : 'fiche__visible'} src={fiche} alt="fiche-tech" />
       <div className="container__bon">
         {/* <p>Claire</p>
           <p>Thomas</p>

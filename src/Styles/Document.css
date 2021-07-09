@@ -1,7 +1,7 @@
 .blocMesDocuments {
   display: flex;
   width: 40%;
-  background-color: #3d85c6;
+  background-color: #3d86c625;
   flex-wrap: wrap;
   margin-top: 1rem;
   height: 150px;
@@ -28,7 +28,8 @@
   font-family: 'Montserrat';
   text-align: center;
   font-size: 14px;
-  color: white;
+  /* color: white; */
+  color: black;
 }
 
 .document-header {
@@ -37,7 +38,7 @@
   align-items: center;
   justify-content: center;
   height: 10vh;
-  background-color: #3d85c6;
+  background-color: #3d86c625;
   font-size: 20px;
   font-family: 'Montserrat';
   color: white;
@@ -62,6 +63,7 @@
   justify-content: space-evenly;
   width: 100%;
   margin-top: 3rem;
+  margin-top: 10vh;
 }
 .btn__doc button {
   border: none;
@@ -82,15 +84,19 @@
   overflow: scroll;
   z-index: -10;
   height: 37vh;
+  background-color: white;
+  padding: 10px 0;
+  border-radius: 10px;
 }
 
 .bloc__facturetext p {
   margin-top: 28px;
-  font-size: 18px;
+  font-size: 14px;
+  font-family: 'Montserrat';
 }
 .bloc__facturelogo {
   display: flex;
-  margin-top: 25px;
+  margin-top: 22px;
 }
 .bloc__facturelogo .fa-eye {
   font-size: 25px;
@@ -120,8 +126,10 @@
 }
 
 .bloc__bontext p {
+  font-family: 'Montserrat';
   margin-top: 28px;
   font-size: 18px;
+
 }
 .bloc__bonlogo {
   display: flex;
@@ -130,14 +138,11 @@
 .bloc__bonlogo .fa-eye {
   font-size: 25px;
 }
-.bloc__bonlogo .fa-arrow-alt-circle-down {
+.bloc__bonlogo .fa-arrow-alt-circle-down, .fa-times-circle {
   font-size: 25px;
   margin-left: 15px;
 }
-.bloc__bonlogo .fa-times-circle {
-  font-size: 25px;
-  margin-left: 15px;
-}
+
 .fa-home {
   font-size: 50px;
 }
@@ -148,14 +153,11 @@
   margin-top: 4rem;
 }
 .container__BDC {
-  background-color: white;
+  /* background-color: white; */
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.container__FAC {
-  background-color: white;
 }
 
 button:hover,
