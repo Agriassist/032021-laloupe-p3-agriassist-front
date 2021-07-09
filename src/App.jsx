@@ -70,9 +70,9 @@ function App() {
   console.log(token, status, id);
   return (
     <main className="container__site">
-      <CreateMateriel />
+      {/* <CreateMateriel /> */}
       <Switch>
-        {/* <Route exact path="/">
+        <Route exact path="/">
           <PageConnection />
         </Route>
         <Route path="/users">
@@ -86,7 +86,7 @@ function App() {
         </Route>
         <Route path="/OneParcMateriel">
           <OneParcMateriel />
-        </Route> */}
+        </Route>
         <Route path="/parametre/:id">
           <UpdateProfil />
         </Route>

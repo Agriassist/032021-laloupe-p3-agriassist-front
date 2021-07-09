@@ -4,7 +4,6 @@ import axios from 'axios';
 import '../Styles/UpdateProfil.css';
 import camera from '../camera.png';
 import defaultpicture from '../images/twitter.jpg';
-import { data } from 'autoprefixer';
 
 export default function UpdateProfil() {
   const [fileSelected, setFileSelected] = useState(null);
