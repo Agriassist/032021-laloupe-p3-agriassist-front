@@ -3,6 +3,8 @@ export const initialState = {
   status: undefined,
   id: undefined,
   materielId: null,
+  csrfToken: null,
+  popup: null,
 };
 
 const reducer = (state, action) => {
@@ -31,6 +33,9 @@ const reducer = (state, action) => {
     }
     case 'RESET_MATERIEL_ID': {
       return { ...state, materielId: null };
+    }
+    case 'SET_POPUP': {
+      return { ...state, popup: action.popup };
     }
     default: {
       return state;

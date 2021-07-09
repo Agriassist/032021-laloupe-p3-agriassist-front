@@ -1,26 +1,30 @@
-import React from 'react';
 import '../Styles/MenuPrincipalAgri.css';
 import HautDePage from './HautDePage';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import React from 'react';
+import { useStateValue } from '../contexts/Context';
 
 export default function MenuPrincipalAgri() {
+  const [{ status }] = useStateValue();
+
   return (
     <div className="container__menu">
       <HautDePage />
       <div className="container__quatrebloc">
         <Link to="/materiel" className="bloc">
           <div className="bloc__logo1">
-            {/* <img className="imagefondparcmateriel" alt="tracesrouestracteurs" src="./src/fondparcmateriel.jpg" width="50%" /> */}
             <i className="fas fa-tractor"></i>
           </div>
           <p>Mon Parc Materiel</p>
         </Link>
-        <div className="bloc">
-          <div className="bloc__logo2">
-            <i className="fas fa-id-card"></i>
-          </div>
-          <p>Mes Profils</p>
-        </div>
+        {status === 'agriculteur' && (
+          <Link to="/profil" className="bloc">
+            <div className="bloc__logo2">
+              <i className="fas fa-id-card"></i>
+            </div>
+            <p>Mes Profils</p>
+          </Link>
+        )}
         <div className="bloc">
           <div className="bloc__logo3">
             <i className="fas fa-map-marked-alt"></i>

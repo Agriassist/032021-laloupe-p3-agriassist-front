@@ -31,6 +31,21 @@ export default function PageConnection() {
       .from(refAuthen.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' });
   }, []);
 
+  useEffect(() => {
+    axios({
+      method: 'POST',
+      url: `${process.env.REACT_APP_API_URL}/api/login/recupCookie`,
+      withCredentials: true,
+    }).then((data) => {
+      console.log(data.data);
+      if (data.data) {
+        history.push('/users');
+      } else {
+        alert('session expired');
+      }
+    });
+  }, []);
+
   const submitLogin = (e) => {
     e.preventDefault();
     if (email && password) {
@@ -38,6 +53,7 @@ export default function PageConnection() {
         method: 'POST',
         url: `${process.env.REACT_APP_API_URL}/api/login`,
         data: { email, password },
+        withCredentials: true,
       })
         .then((data) => {
           dispatch({ type: 'SET_TOKEN', token: data.data.token });
@@ -50,10 +66,11 @@ export default function PageConnection() {
           }
         })
         .catch((err) => {
-          alert(err.message);
+          alert(err.response.data);
         });
     }
   };
+
   return (
     <div className="container__menu">
       <div className="container__pageconnection">
@@ -83,7 +100,8 @@ export default function PageConnection() {
             <img
               id="Qr__Code"
               src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
-              alt=""></img>
+              alt=""
+            />
           </a>
         </div>
       </div>

@@ -16,7 +16,7 @@
   width: 80%;
   height: 50%;
   margin: auto auto;
-  background-image: url(./src/images/fondparcmateriel.jpg);
+  background-image: url(../images/fondparcmateriel.jpg);
   background-size: contain;
   background-repeat: round;
   border-radius: 5px;
