@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import all from 'gsap/src/all';
 // import { data } from 'autoprefixer';
 
 export default function CreateMateriel() {
@@ -8,11 +9,12 @@ export default function CreateMateriel() {
   const [type, setType] = useState('');
   const [prevOil, setPrevOil] = useState('');
   const [nextOil, setNextOil] = useState('');
-  const [agriculteurName, setAgriculteurName] = useState('');
-  const [agriculteurPrenom, setAgriculteurPrenom] = useState('');
-  const [concessionnaireName, setConcessionnaireName] = useState('');
-  const [concessionnairePrenom, setConcessionnairePrenom] = useState('');
+  const [agriculteurIdentifiant, setAgriculteurIdentifiant] = useState('');
+  const [concessionnaireIdentifiant, setConcessionnaireIdentifiant] = useState('');
   const [tableau, setTableau] = useState([]);
+  const [modele, setModele] = useState('');
+  const [tableauModele, setTableauModele] = useState([]);
+  const [tableauMate, setTableauMate] = useState([]);
   function choiceModele(event) {
     setType(event.target.value);
   }
@@ -29,6 +31,15 @@ export default function CreateMateriel() {
       .then((data) => data.data)
       .then((data) => {
         setTableau(data);
+        console.log(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios('http://localhost:8000/api/modele')
+      .then((data) => data.data)
+      .then((data) => {
+        setTableauModele(data);
         console.log(data);
       });
   }, []);
@@ -55,46 +66,41 @@ export default function CreateMateriel() {
     //         alert('concessionnaire prenom pas trouve');
     //       } else {
 
-    if (agriculteurPrenom != data.prenom || agriculteurName != data.name) {
-      alert("cette personne n'existe pas!!!!");
-    } else {
-      if (data.status != 'agriculteur') {
-        alert('cette personne pas etre un agriculteur');
-      } else {
-        if (concessionnairePrenom != data.prenom || concessionnaireName != data.name) {
-          alert("cette personne n'existe pas!!!!");
-        } else {
-          if (data.status != 'concessionaire') {
-            alert('cette personne pas etre un concessionnaire');
-          } else {
-            // const user = [data.prenom, data.name, data.status];
-            const userAgri = [agriculteurName, agriculteurPrenom];
-            const userConc = [concessionnaireName, concessionnairePrenom];
-            if (userAgri.match(data.id) && userConc.match(data.id)) {
-              return data.id;
-            }
-          }
-          axios({
-            method: 'POST',
-            url: `http://localhost:8000/api/materiels`,
-            data: { year: year, serial_number: serialNumber, type: type, next_oil_change: nextOil, prev_oil_change: prevOil },
-          })
-            .then((data) => data.data)
-            .then((data) => {
-              console.log(data);
-              setYear('');
-              setSerialNumber('');
-              setType('');
-              setPrevOil('');
-              setNextOil('');
-            })
-            .catch((err) => {
-              alert('Lien creation fail');
-            });
-          // }
-        }
-      }
-    }
+    axios({
+      method: 'POST',
+      url: `http://localhost:8000/api/materiels`,
+      data: { year: year, serial_number: serialNumber, type: type, next_oil_change: nextOil, prev_oil_change: prevOil, modele_id: modele.id },
+    })
+      .then((data) => data.data)
+      .then((data) => {
+        console.log(data);
+        setYear('');
+        setSerialNumber('');
+        setType('');
+        setPrevOil('');
+        setNextOil('');
+        setAgriculteurIdentifiant('');
+        setConcessionnaireIdentifiant('');
+      })
+      .axios({
+        method: 'POST',
+        url: 'http://localhost:8000/api/park',
+        data: { user_id: agriculteurIdentifiant},
+      })
+      .axios('http://localhost:8000/api/materiels')
+      .then((allData) => allData.data)
+      .then((allData) => {
+        setTableauMate(allData);
+      })
+      .axios({
+        method: 'POST',
+        url: 'http://localhost:8000/api/park',
+        data: { materiel_id: allData.id },
+      })
+      .catch((err) => {
+        alert('Lien creation fail');
+      });
+    // }
   }
 
   // useEffect(() => {
@@ -117,22 +123,45 @@ export default function CreateMateriel() {
       <input type="text" value={nextOil} onChange={(e) => setNextOil(e.target.value)} />
 
       <h2>Agriculteur</h2>
-      <input type="text" placeholder="..." value={agriculteurName} onChange={(e) => setAgriculteurName(e.target.value)} />
-      <input type="text" placeholder="..." value={agriculteurPrenom} onChange={(e) => setAgriculteurPrenom(e.target.value)} />
-      <h2>Concessionnaire</h2>
-      <input type="text" placeholder="..." value={concessionnaireName} onChange={(e) => setConcessionnaireName(e.target.value)} />
-      <input type="text" placeholder="..." value={concessionnairePrenom} onChange={(e) => setConcessionnairePrenom(e.target.value)} />
+      <input type="text" placeholder="..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+      {tableau && agriculteurIdentifiant && (
+        <ul>
+          {tableau
+            .filter((users) => users.nom.startsWith(agriculteurIdentifiant) && users.statue === 'agriculteur')
+            .map((filteredPerson, index) => (
+              <li key={index} style={{ fontSize: 20 }}>
+                {filteredPerson.nom}
+              </li>
+            ))}{' '}
+        </ul>
+      )}
 
-      {tableau
-        .filter((users) => users.name === agriculteurName && users.status === 'agriculteur')
-        .slice(0, 20)
-        .map((filteredPerson, index) => (
-          <>
-            <li key={index} style={{ fontSize: 20 }}>
-              {filteredPerson.name}
-            </li>
-          </>
-        ))}
+      <h2>Concessionnaire</h2>
+      <input type="text" placeholder="..." value={concessionnaireIdentifiant} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
+      {tableau && concessionnaireIdentifiant && (
+        <ul>
+          {tableau
+            .filter((users) => users.nom.startsWith(concessionnaireIdentifiant) && users.statue === 'concessionnaire')
+            .map((filteredConc, index) => (
+              <li key={index} style={{ fontSize: 20 }}>
+                {filteredConc.nom}
+              </li>
+            ))}{' '}
+        </ul>
+      )}
+
+      <input type="text" placeholder="Modele_id" value={modele} onChange={(e) => setModele(e.target.value)} />
+      {tableauModele && modele && (
+        <ul>
+          {tableauModele
+            .filter((modeles) => modeles.nom.startsWith(modele))
+            .map((filteredModele, index) => (
+              <li key={index} style={{ fontSize: 20 }}>
+                {filteredModele.nom}
+              </li>
+            ))}{' '}
+        </ul>
+      )}
 
       <button className="btn__materiel" onClick={submitMateriel}>
         Submit
