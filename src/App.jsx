@@ -87,12 +87,6 @@ function App() {
         <Route path="/document">
           <Document />
         </Route>
-        <Route path="/document_facture">
-          <Document_Facture />
-        </Route>
-        <Route path="/document_bontravail">
-          <Document_BonTravail />
-        </Route>
         <Route path="/popup">
           <Popup />
         </Route>
