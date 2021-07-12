@@ -6,7 +6,7 @@ import Document_Facture from './Document_Facture';
 import HautDePage from './HautDePage';
 
 export default function Document() {
-  const [onClickChoice, setOnClickChoice] = useState('');
+  const [onClickChoice, setOnClickChoice] = useState(1);
   function change(params) {
     setOnClickChoice(params);
   }
