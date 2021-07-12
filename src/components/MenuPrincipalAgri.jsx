@@ -38,16 +38,18 @@ export default function MenuPrincipalAgri() {
           <p>Mes Documents</p>
         </div>
       </div>
-      <div className="container__depannage">
-        <i className="fas fa-phone-volume"></i>
-        <h2 className="titleDepannage">DEPANNAGE</h2>
-        <a rel="nofollow" href="https://www.qr-code-generator.com">
-          <img
-            id="Qr__Code_Menu"
-            src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
-            alt=""></img>
-        </a>
-      </div>
+      {status === 'agriculteur' && (
+        <div className="container__depannage">
+          <i className="fas fa-phone-volume"></i>
+          <h2 className="titleDepannage">DEPANNAGE</h2>
+          <a rel="nofollow" href="https://www.qr-code-generator.com">
+            <img
+              id="Qr__Code_Menu"
+              src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
+              alt=""></img>
+          </a>
+        </div>
+      )}
     </div>
   );
 }

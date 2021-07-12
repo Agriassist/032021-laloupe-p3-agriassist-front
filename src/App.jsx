@@ -8,9 +8,7 @@ import MenuPrincipalAgri from './components/MenuPrincipalAgri';
 import Intro from './components/Intro';
 import ParcMateriel from './components/ParcMateriel';
 import Document from './components/Document';
-import PageFin from './components/PageFin';
 import Popup from './components/Popup';
-import MenuConcess from './components/MenuConcess';
 import Profil from './components/Profil';
 import OneParcMateriel from './components/OneParcMateriel';
 import Document_BonTravail from './components/Document_BonTravail';
@@ -18,7 +16,6 @@ import Document_Facture from './components/Document_Facture';
 import AllParcMateriel from './components/AllParcMateriel';
 import CreareAccount from './components/CreareAccount';
 import { Link, Switch, Route } from 'react-router-dom';
-import AllAgriConcId from './components/AllAgriConcId';
 import PostFiche from './components/PostFiche';
 import UpdateProfil from './components/UpdateProfil';
 import FicheTech from './components/FicheTech';
@@ -30,7 +27,6 @@ function App() {
   const [{ token, status, id }, dispatch] = useStateValue();
 
   const refreshToken = () => {
-    console.log("ok");
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/login/refresh_token`,
@@ -46,6 +42,7 @@ function App() {
           console.log('inside setTimeout refresh token: ', 15 * 60 * 1000 - 5000);
           refreshToken();
         }, 15 * 60 * 1000 - 10000);
+
         dispatch({ type: 'SET_ID', id });
         dispatch({ type: 'SET_TOKEN', token: token });
         dispatch({ type: 'SET_STATUS', status: status });
@@ -62,7 +59,9 @@ function App() {
     refreshToken();
   }, []);
 
-  console.log(token, status, id);
+  console.log(`%c${token}`, 'color:red');
+  console.log(`%c${status}`, 'color:green');
+  console.log(`%c${id}`, 'color:brown');
   return (
     <main className="container__site">
       <Switch>
