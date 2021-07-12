@@ -66,7 +66,7 @@ function App() {
   return (
     <main className="container__site">
       <Switch>
-        {(status === 'agriculteur' || 'concessionnaire' || 'administrateur') && (
+        {(status === 'agriculteur' || status === 'concessionnaire' || status === 'administrateur') && (
           <>
             <Route path="/users">
               <MenuPrincipalAgri />
