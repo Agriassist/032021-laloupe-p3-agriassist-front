@@ -3,7 +3,6 @@ export const initialState = {
   status: undefined,
   id: undefined,
   materielId: null,
-  csrfToken: null,
   popup: null,
 };
 

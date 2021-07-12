@@ -45,8 +45,8 @@ function App() {
         }, 15 * 60 * 1000 - 10000);
 
         dispatch({ type: 'SET_ID', id });
-        dispatch({ type: 'SET_TOKEN', token: token });
-        dispatch({ type: 'SET_STATUS', status: status });
+        dispatch({ type: 'SET_TOKEN', token });
+        dispatch({ type: 'SET_STATUS', status });
         console.log('good');
       })
       .catch((err) => {
@@ -66,32 +66,36 @@ function App() {
   return (
     <main className="container__site">
       <Switch>
-        <Route exact path="/">
+        {status === ('agriculteur' || 'concessionnaire' || 'administrateur') && (
+          <>
+            <Route path="/users">
+              <MenuPrincipalAgri />
+            </Route>
+            <Route path="/materiel">
+              <ParcMateriel id={id} />
+            </Route>
+            <Route path="/AllParcMateriel">
+              <AllParcMateriel token={token} />
+            </Route>
+            <Route path="/OneParcMateriel">
+              <OneParcMateriel />
+            </Route>
+            <Route path="/parametre/:id">
+              <UpdateProfil />
+            </Route>
+            <Route path="/profil">
+              <Profil />
+            </Route>
+            <Route path="/document">
+              <Document />
+            </Route>
+            <Route path="/popup">
+              <Popup />
+            </Route>
+          </>
+        )}
+        <Route path="/">
           <PageConnection />
-        </Route>
-        <Route path="/users">
-          <MenuPrincipalAgri />
-        </Route>
-        <Route path="/materiel">
-          <ParcMateriel id={id} />
-        </Route>
-        <Route path="/AllParcMateriel">
-          <AllParcMateriel token={token} />
-        </Route>
-        <Route path="/OneParcMateriel">
-          <OneParcMateriel />
-        </Route>
-        <Route path="/parametre/:id">
-          <UpdateProfil />
-        </Route>
-        <Route path="/profil">
-          <Profil />
-        </Route>
-        <Route path="/document">
-          <Document />
-        </Route>
-        <Route path="/popup">
-          <Popup />
         </Route>
       </Switch>
       <Popup />
