@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../Styles/Popup.css';
 import agriculteur from '../images/agriculteur.png';
 import { useStateValue } from '../contexts/Context';
 import { Link } from 'react-router-dom';
+
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export default function Popup() {
   const [{ popup }, dispatch] = useStateValue();
@@ -16,7 +19,14 @@ export default function Popup() {
     dispatch({ type: 'RESET_ID' });
     dispatch({ type: 'RESET_STATUS' });
     dispatch({ type: 'RESET_MATERIEL_ID' });
-    location.reload();
+
+    axios({
+      method: 'GET',
+      url: `${API_BASE_URL}/api/users/logout`,
+      withCredentials: true,
+    });
+
+    dispatch({ type: 'SET_POPUP', popup: !popup });
   };
 
   return (
