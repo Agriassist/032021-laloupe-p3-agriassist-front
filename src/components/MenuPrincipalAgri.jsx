@@ -31,12 +31,12 @@ export default function MenuPrincipalAgri() {
           </div>
           <p>Geolocalisation</p>
         </div>
-        <div className="bloc">
+        <Link to="/document" className="bloc">
           <div className="bloc__logo4">
             <i className="fas fa-folder-open"></i>
           </div>
           <p>Mes Documents</p>
-        </div>
+        </Link>
       </div>
       <div className="container__depannage">
         <i className="fas fa-phone-volume"></i>
