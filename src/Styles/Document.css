@@ -129,7 +129,6 @@
   font-family: 'Montserrat';
   margin-top: 28px;
   font-size: 18px;
-
 }
 .bloc__bonlogo {
   display: flex;
@@ -138,7 +137,8 @@
 .bloc__bonlogo .fa-eye {
   font-size: 25px;
 }
-.bloc__bonlogo .fa-arrow-alt-circle-down, .fa-times-circle {
+.bloc__bonlogo .fa-arrow-alt-circle-down,
+.fa-times-circle {
   font-size: 25px;
   margin-left: 15px;
 }
@@ -160,8 +160,10 @@
   align-items: center;
 }
 
-button:hover,
-button:focus {
+.boutton__facture:hover,
+.boutton__bontravail:hover,
+.boutton__facture:focus,
+.boutton__bontravail:focus {
   color: black;
   background-color: #fba000;
   cursor: pointer;
