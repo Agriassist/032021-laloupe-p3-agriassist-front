@@ -27,6 +27,7 @@ function App() {
   const [{ token, status, id }, dispatch] = useStateValue();
 
   const refreshToken = () => {
+    console.log('ok');
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/login/refresh_token`,
@@ -85,6 +86,9 @@ function App() {
         </Route>
         <Route path="/profil">
           <Profil />
+        </Route>
+        <Route path="/document">
+          <Document />
         </Route>
         <Route path="/popup">
           <Popup />
