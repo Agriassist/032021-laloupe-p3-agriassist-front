@@ -160,8 +160,6 @@
   align-items: center;
 }
 
-.boutton__facture:hover,
-.boutton__bontravail:hover,
 .boutton__facture:focus,
 .boutton__bontravail:focus {
   color: black;
