@@ -79,7 +79,7 @@ export default function PageConnection() {
       <div className="container__pageconnection">
         <Intro />
 
-        <img id="img__logo" src={logoAgri} alt="logo" ref={refImg} />
+        <img id="img__logo1" src={logoAgri} alt="logo" ref={refImg} />
         <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
         <div className="container__input__password">
           <i class="fas fa-eye"></i>
@@ -93,7 +93,7 @@ export default function PageConnection() {
           ref={refInputTwo}
         />
 
-        <button to="/users" id="btn__login__account" onClick={submitLogin}>
+        <button className="btn__login__account" to="/users" id="btn__login__account" onClick={submitLogin}>
           Login
         </button>
         <div className="container__authentification " ref={refAuthen}>

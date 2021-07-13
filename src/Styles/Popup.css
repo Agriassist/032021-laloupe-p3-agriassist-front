@@ -36,10 +36,11 @@
 }
 
 .container__popup img {
-  width: 30%;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  height: 23%;
   margin-top: 1rem;
+  object-fit: fill;
 }
 #popup__user {
   margin: 8px auto 1rem auto;
@@ -68,10 +69,12 @@
   background-color: #3d86c625;
   /* border: 1px solid rgb(255, 255, 255); */
   border-radius: 20px;
-  height: 10vh;
+  height: 7vh;
   width: 20vh;
   box-shadow: 5px 3px 3px black;
   margin-bottom: 2vh;
+  align-items: center;
+  text-align: center;
 }
 
 .trait__popup {
@@ -101,4 +104,16 @@
   top: 20px;
   right: 20px;
   font-size: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+  .container__popup {
+    width: 27%;
+  }
+  .text__popup {
+    font-size: 18px;
+  }
+  .bloc__deconnection {
+    font-size: 18px;
+  }
 }

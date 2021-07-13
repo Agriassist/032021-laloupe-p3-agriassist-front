@@ -64,7 +64,12 @@ export default function Profil() {
           <p>Mes profils</p>
         </div>
       </header>
-      <div className="quatrebloc__containerprofil">
+
+      <div className="container_image_en_construction">
+        {/* <i className="image_en_construction"></i> */}
+      <p>Page en construction</p>
+      </div>
+      {/* <div className="quatrebloc__containerprofil">
         <div className="profil_bloc">
           <div className="profil__datadmin">
             <img className="img__bloc__admin" src={agriculteur} alt="profil" />
@@ -90,7 +95,7 @@ export default function Profil() {
             <p>Claire</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

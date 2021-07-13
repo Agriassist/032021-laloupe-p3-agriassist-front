@@ -32,10 +32,10 @@
   justify-content: center;
   align-items: center;
   width: 80%;
-  height: 50%;
+  height: 65%;
   margin: auto auto;
   background-image: url(./src/images/fondparcmateriel.jpg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: round;
   border-radius: 5px;
   box-shadow: 5px 5px 5px black;
@@ -90,4 +90,31 @@
 .container__depannage .fa-phone-volume {
   font-size: 50px;
   color: white;
+}
+
+@media screen and (min-width: 1024px) {
+  .bloc {
+    width: 35%;
+    flex-direction: column;
+    height: 60%;
+  }
+  .bloc__logo1,
+  .bloc__logo2,
+  .bloc__logo3,
+  .bloc__logo4 {
+    width: 60%;
+    height: 85%;
+  }
+  .bloc p {
+    font-size: 25px;
+  }
+
+  .container__depannage {
+    width: 40%;
+    margin: 11rem auto 0px auto;
+  }
+
+  .titleDepannage {
+    font-size: 35px;
+  }
 }
