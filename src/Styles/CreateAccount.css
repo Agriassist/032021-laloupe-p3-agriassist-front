@@ -47,6 +47,18 @@
     padding: 5px;
     opacity: 1;
   }
+
+  #input__five__account {
+    margin-top: 2rem;
+    padding: 5px;
+    opacity: 1;
+  }
+  
+  #input__six__account {
+    margin-top: 2rem;
+    padding: 5px;
+    opacity: 1;
+  }
 ::placeholder {
   opacity: 1;
   text-align: center;
