@@ -11,7 +11,9 @@ function Intro() {
       <img className="intro-logo" src={logoAgri} alt="ddd" />
       <section className="intro-text">
         {phraseIntro.map((text, index) => (
-          <span style={{ animationDelay: index / timer + 's' }} key={index} className="animat">{text}</span>
+          <span style={{ animationDelay: index / timer + 's' }} key={index} className="animat">
+            {text}
+          </span>
         ))}
       </section>
     </div>

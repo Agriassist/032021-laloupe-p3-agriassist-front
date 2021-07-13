@@ -6,7 +6,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../contexts/Context';
 import '../Styles/parcMateriel.css';
-import HautDePage from './HautDePage';
 
 function AllParcMateriel(props) {
   const [infos, setInfos] = useState([]);
