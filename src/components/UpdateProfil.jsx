@@ -4,6 +4,8 @@ import axios from 'axios';
 import '../Styles/UpdateProfil.css';
 import camera from '../camera.png';
 import defaultpicture from '../images/twitter.jpg';
+import { useStateValue } from '../contexts/Context';
+
 
 export default function UpdateProfil() {
   const [fileSelected, setFileSelected] = useState(null);
@@ -16,45 +18,14 @@ export default function UpdateProfil() {
   const [imgphoto, setImgphoto] = useState('');
   console.log(file);
 
-  const { id } = useParams();
-  // const [fileSelected, setFileSelected] = useState(null);
-  // const [file, setFile] = useState(null);
-
-  // const onChangeFile = (event) => {
-  //   const { type } = event.target.files[0];
-  //   if (type !== 'image/png' || type == 'image/jpeg') {
-  //     console.log(event.target.files[0]);
-  //     setFileSelected(event.target.files[0]);
-  //   } else {
-  //     alert("Veuillez selectionner un format d'image valide");
-  //   }
-  // };
-  // const submitFiles = (e) => {
-  //   e.preventDefault();
-  //   if (fileSelected) {
-  //     const data = new FormData();
-  //     data.append('file', fileSelected);
-  //     data.append('configuration', JSON.stringify({ alt: '' }));
-  //     axios({
-  //       method: 'POST',
-  //       url: 'http://localhost:8000/images_profil',
-  //       data,
-  //     })
-  //       .then((data) => data.data)
-  //       .then((data) => {
-  //         console.log(data);
-  //         setFile({
-  //           filename: data.picture_profil,
-  //         });
-  //       })
-  //       .catch((err) => {
-  //         alert(err.response.status);
-  //       });
-  //   }
-  // };
+  const [{ token, id }, dispatch] = useStateValue();
 
   useEffect(() => {
-    axios(`http://localhost:8000/api/users/${id}`)
+    axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_API_URL}/api/users/${id}`,
+      headers: { authorization: 'Bearer ' + token },
+    })
       .then((data) => data.data)
       .then((data) => {
         console.log(data);
@@ -90,9 +61,11 @@ export default function UpdateProfil() {
 
   const SubmitUpdateProfil = (e) => {
     e.preventDefault();
+    let data;
     if (fileSelected) {
-      const data = new FormData();
+      data = new FormData();
       data.append('file', fileSelected);
+      console.log(pseudo, prenom, telephone);
       data.append(
         'user',
         JSON.stringify({
@@ -103,24 +76,33 @@ export default function UpdateProfil() {
           phone: telephone,
         }),
       );
-      axios({
-        method: 'PUT',
-        url: `http://localhost:8000/api/users/${id}`,
-        data: data,
-      })
-        .then((data) => data.data)
-        .then((data) => {
-          setFile(data.photo_profil);
-          setPseudo(data.identifiant);
-          setName(data.nom);
-          setPrenom(data.prenom);
-          setEmail(data.email);
-          setTelephone(data.phone);
-        })
-        .catch((err) => {
-          alert('Lien creation fail');
-        });
+    } else {
+      data = {
+        identifiant: pseudo,
+        prenom: prenom,
+        nom: name,
+        email: email,
+        phone: telephone,
+        photo_profil: file,
+      };
     }
+    axios({
+      method: 'PUT',
+      url: `http://localhost:8000/api/users/${id}`,
+      data: data,
+    })
+      .then((data) => data.data)
+      .then((data) => {
+        setFile(data.photo_profil);
+        setPseudo(data.identifiant);
+        setName(data.nom);
+        setPrenom(data.prenom);
+        setEmail(data.email);
+        setTelephone(data.phone);
+      })
+      .catch((err) => {
+        alert('Lien creation fail');
+      });
   };
 
   return (
