@@ -3,7 +3,7 @@ import '../Styles/CreateAccount.css';
 import logoAgri from '../images/logoAgri.png';
 import axios from 'axios';
 
-export default function CreareAccount() {
+export default function CreateAccount() {
   const [pseudo, setPseudo] = useState('');
   const [name, setName] = useState('');
   const [prenom, setPrenom] = useState('');

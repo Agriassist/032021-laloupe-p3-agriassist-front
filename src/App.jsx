@@ -14,7 +14,7 @@ import OneParcMateriel from './components/OneParcMateriel';
 import Document_BonTravail from './components/Document_BonTravail';
 import Document_Facture from './components/Document_Facture';
 import AllParcMateriel from './components/AllParcMateriel';
-import CreareAccount from './components/CreareAccount';
+import CreateAccount from './components/CreateAccount';
 import { Link, Switch, Route } from 'react-router-dom';
 import PostFiche from './components/PostFiche';
 import UpdateProfil from './components/UpdateProfil';
@@ -66,7 +66,7 @@ function App() {
   return (
     <main className="container__site">
       <Switch>
-        {status === ('agriculteur' || 'concessionnaire' || 'administrateur') && (
+        {(status === 'agriculteur' || status === 'concessionnaire' || status === 'administrateur') && (
           <>
             <Route path="/users">
               <MenuPrincipalAgri />
@@ -92,9 +92,11 @@ function App() {
             <Route path="/popup">
               <Popup />
             </Route>
-            <Route path="/popup">
-              <CreareAccount />
-            </Route>
+            {status === 'administrateur' && (
+              <Route path="/create_account">
+                <CreateAccount />
+              </Route>
+            )}
           </>
         )}
         <Route path="/">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import '../Styles/Document.css';
 import agriculteur from '../images/agriculteur.png';
 import Document_BonTravail from './Document_BonTravail';
@@ -7,16 +7,23 @@ import HautDePage from './HautDePage';
 
 export default function Document() {
   const [onClickChoice, setOnClickChoice] = useState(1);
+
+  const focus = useRef(null);
+
   function change(params) {
     setOnClickChoice(params);
   }
+
+  useEffect(() => {
+    focus.current.focus();
+  }, []);
+
   return (
     <div className="container__menu">
       <HautDePage />
       <header className="document-header">
         <div className="blocMesDocuments">
           <div className="blocMesDocuments__logo">
-            {/* <img className="imagefondparcmateriel" alt="tracesrouestracteurs" src="./src/fondparcmateriel.jpg" width="50%" /> */}
             <i className="fas fa-folder-open"></i>
           </div>
           <p>Mes documents</p>
@@ -25,7 +32,7 @@ export default function Document() {
       <div className="container__doc">
         <div className="container__allnothome">
           <div className="btn__doc">
-            <button className="boutton__facture" onClick={() => change(1)}>
+            <button className="boutton__facture" ref={focus} onClick={() => change(1)}>
               Facture
             </button>
             <button className="boutton__bontravail" onClick={() => change(2)}>

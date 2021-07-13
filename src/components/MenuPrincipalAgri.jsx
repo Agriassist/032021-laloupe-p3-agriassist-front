@@ -50,6 +50,7 @@ export default function MenuPrincipalAgri() {
           </a>
         </div>
       )}
+      {status === 'administrateur' && <Link to="/create_account">creation de compte</Link>}
     </div>
   );
 }
