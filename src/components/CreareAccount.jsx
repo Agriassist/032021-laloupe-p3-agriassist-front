@@ -46,10 +46,14 @@ export default function CreareAccount() {
     <div>
       <div className="container__create__account">
         <img id="img__logo" src={logoAgri} alt="logo" />
-        <input id="input__one__account" type="text" placeholder="Identifiant" value={pseudo} />
-        <input id="input__two__account" type="text" placeholder="Email" value={email} />
-        <input id="input__three__account" type="password" placeholder="Mot de Passe" value={password} />
-        <input id="input__four__account" type="text" placeholder="Téléphone" value={telephone} />
+        <input type="text" />
+        <input id="input__one__account" type="text" placeholder="Identifiant" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
+        <input id="input__two__account" type="text" placeholder="Identifiant" value={name} onChange={(e) => setName(e.target.value)} />
+        <input id="input__three__account" type="text" placeholder="Identifiant" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+
+        <input id="input__four__account" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input id="input__five__account" type="password" placeholder="Mot de Passe" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input id="input__six__account" type="text" placeholder="Téléphone" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
         <select name="status__choice" id="status__choice" value={status} onChange={handleChange}>
           <option value="administrateur">Administrateur</option>
           <option value="agriculteur">Agriculteur</option>

@@ -92,6 +92,9 @@ function App() {
             <Route path="/popup">
               <Popup />
             </Route>
+            <Route path="/popup">
+              <CreareAccount />
+            </Route>
           </>
         )}
         <Route path="/">
