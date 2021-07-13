@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../Styles/CreateAccount.css';
 import logoAgri from '../images/logoAgri.png';
 import axios from 'axios';
+import HautDePage from './HautDePage';
 
 export default function CreateAccount() {
   const [pseudo, setPseudo] = useState('');
@@ -45,7 +46,7 @@ export default function CreateAccount() {
   return (
     <div>
       <div className="container__create__account">
-        <img id="img__logo" src={logoAgri} alt="logo" />
+        <HautDePage />
         <input id="input__one__account" type="text" placeholder="Identifiant" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
         <input id="input__two__account" type="text" placeholder="nom" value={name} onChange={(e) => setName(e.target.value)} />
         <input id="input__three__account" type="text" placeholder="prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
