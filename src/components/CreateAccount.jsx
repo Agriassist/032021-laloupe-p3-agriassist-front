@@ -24,7 +24,7 @@ export default function CreateAccount() {
       axios({
         method: 'POST',
         url: 'http://localhost:8000/api/users',
-        data: { identifiant: pseudo, prenom: prenom, nom: name, email: email, phone: telephone, status: status },
+        data: { identifiant: pseudo, prenom: prenom, nom: name, email: email, phone: telephone, statue: status, hassPassword: password },
       })
         .then((data) => data.data)
         .then((data) => {
@@ -38,7 +38,7 @@ export default function CreateAccount() {
           setstatus('');
         })
         .catch((err) => {
-          alert('Lien creation fail');
+          alert(err);
         });
     }
   };
@@ -47,9 +47,12 @@ export default function CreateAccount() {
       <div className="container__create__account">
         <img id="img__logo" src={logoAgri} alt="logo" />
         <input id="input__one__account" type="text" placeholder="Identifiant" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
-        <input id="input__two__account" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input id="input__three__account" type="password" placeholder="Mot de Passe" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <input id="input__four__account" type="text" placeholder="Téléphone" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+        <input id="input__two__account" type="text" placeholder="nom" value={name} onChange={(e) => setName(e.target.value)} />
+        <input id="input__three__account" type="text" placeholder="prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+
+        <input id="input__four__account" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input id="input__five__account" type="password" placeholder="Mot de Passe" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input id="input__six__account" type="text" placeholder="Téléphone" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
         <select name="status__choice" id="status__choice" value={status} onChange={handleChange}>
           <option value="administrateur">Administrateur</option>
           <option value="agriculteur">Agriculteur</option>
