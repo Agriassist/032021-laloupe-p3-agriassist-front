@@ -38,7 +38,7 @@ export default function CreareAccount() {
           setstatus('');
         })
         .catch((err) => {
-          alert('Lien creation fail');
+          alert(err);
         });
     }
   };
