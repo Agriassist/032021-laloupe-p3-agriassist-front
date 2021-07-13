@@ -6,52 +6,43 @@ import axios from 'axios';
 import { useStateValue } from '../contexts/Context';
 
 export default function Profil() {
-  const [{ id }] = useStateValue();
-  const [name, setName] = useState([]);
-  const preTableau = [...name];
+  // const [{ id }] = useStateValue();
+  // const [name, setName] = useState([]);
+  // const preTableau = [...name];
 
-  // var arrTwo = ["Hello 1 ", " Hello 2 ", "Hello 1 ", " Hello 2 ", "Hello 1 again"]
+  // useEffect(() => {
+  //   axios({
+  //     method: 'GET',
+  //     url: `${process.env.REACT_APP_API_URL}/api/materiels/users/${id}`,
+  //   })
+  //     .then((data) => {
+  //       console.log(data.data);
+  //       for (let i = 0; i < data.data.length; i++) {
+  //         axios({
+  //           method: 'GET',
+  //           url: `${process.env.REACT_APP_API_URL}/api/users/materiel/${data.data[i].id}`,
+  //         }).then((data) => {
+  //           console.log(data.data);
+  //           for (let y = 0; y < data.data.length; y++) {
+  //             const itemIndex = preTableau.findIndex((user) => {
+  //               return user.id === data.data[y].id;
+  //             });
+  //             if (itemIndex <= -1) {
+  //               if (data.data[y].status === 'concessionnaire') {
+  //                 preTableau.push(data.data[y]);
+  //               }
+  //             }
+  //             console.log(preTableau);
+  //           }
+  //         });
+  //       }
+  //       setName(preTableau);
+  //     })
+  //     .catch((err) => {
+  //       alert(err.message);
+  //     });
+  // }, []);
 
-  // const filteredArray = arrTwo.filter(function (ele, pos) {
-  //   return arrTwo.indexOf(ele) == pos;
-  // });
-
-  // console.log("The filtered array ", filteredArray);
-
-  useEffect(() => {
-    axios({
-      method: 'GET',
-      url: `${process.env.REACT_APP_API_URL}/api/materiels/users/${id}`,
-    })
-      .then((data) => {
-        console.log(data.data);
-        for (let i = 0; i < data.data.length; i++) {
-          axios({
-            method: 'GET',
-            url: `${process.env.REACT_APP_API_URL}/api/users/materiel/${data.data[i].id}`,
-          }).then((data) => {
-            console.log(data.data);
-            for (let y = 0; y < data.data.length; y++) {
-              const itemIndex = preTableau.findIndex((user) => {
-                return user.id === data.data[y].id;
-              });
-              if (itemIndex <= -1) {
-                if (data.data[y].status === 'concessionnaire') {
-                  preTableau.push(data.data[y]);
-                }
-              }
-              console.log(preTableau);
-            }
-          });
-        }
-        setName(preTableau);
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  }, []);
-
-  console.log(name);
   return (
     <div className="container__menu">
       <HautDePage />
@@ -67,7 +58,7 @@ export default function Profil() {
 
       <div className="container_image_en_construction">
         {/* <i className="image_en_construction"></i> */}
-      <p>Page en construction</p>
+        <p>Page en construction</p>
       </div>
       {/* <div className="quatrebloc__containerprofil">
         <div className="profil_bloc">
