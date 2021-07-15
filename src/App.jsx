@@ -20,6 +20,8 @@ import PostFiche from './components/PostFiche';
 import UpdateProfil from './components/UpdateProfil';
 import FicheTech from './components/FicheTech';
 import CreateMateriel from './components/CreateMateriel';
+import UpdateMateriel from './components/CreateMateriel';
+
 
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
@@ -97,8 +99,14 @@ function App() {
                 <Route path="/create_account">
                   <CreateAccount />
                 </Route>
-                <Route path="/update">
+                <Route path="/update_profil">
                   <UpdateProfil />
+                </Route>
+                <Route path="/create_materiel">
+                  <CreateMateriel />
+                </Route>
+                <Route path="/update_mat">
+                  <UpdateMateriel />
                 </Route>
               </>
             )}
