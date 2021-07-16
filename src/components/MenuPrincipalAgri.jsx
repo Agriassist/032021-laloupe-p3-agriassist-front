@@ -53,7 +53,9 @@ export default function MenuPrincipalAgri() {
       {status === 'administrateur' && (
         <>
           <Link to="/create_account">creation de compte</Link>
-          <Link to="/update">modification de compte</Link>
+          <Link to="/update_profil">modification de compte</Link>
+          <Link to="/create_materiel">creation de materiel</Link>
+          <Link to="/update_materiel">modification de materiel</Link>
         </>
       )}
     </div>
