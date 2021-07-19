@@ -5,7 +5,7 @@ import '../Styles/UpdateProfil.css';
 import camera from '../camera.png';
 import defaultpicture from '../images/twitter.jpg';
 import { useStateValue } from '../contexts/Context';
-
+import HautDePage from './HautDePage';
 
 export default function UpdateProfil() {
   const [fileSelected, setFileSelected] = useState(null);
@@ -106,7 +106,8 @@ export default function UpdateProfil() {
   };
 
   return (
-    <>
+    <div className="container__menu">
+      <HautDePage />
       {pseudo && (
         <div className="container__updateprofil">
           <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
@@ -130,19 +131,20 @@ export default function UpdateProfil() {
               <h3>Nom:</h3>
               <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
-            <div className="email__update" />
-            <h3>Email:</h3>
-            <input type="email" name="" id="" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <div className="email__update">
+              <h3>Email:</h3>
+              <input type="email" name="" id="" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="phone__update">
+              <h3>Téléphone:</h3>
+              <input type="text" name="" id="" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+            </div>
+            <div className="btn__submit__update" onClick={SubmitUpdateProfil}>
+              <h3>Update Profil</h3>
+            </div>
           </div>
-          <div className="phone__update">
-            <h3>Téléphone:</h3>
-            <input type="text" name="" id="" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
-          </div>
-          <button id="btn__submit__update" onClick={SubmitUpdateProfil}>
-            Update Profil
-          </button>
         </div>
       )}
-    </>
+    </div>
   );
 }
