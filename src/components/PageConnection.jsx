@@ -93,7 +93,7 @@ export default function PageConnection() {
           ref={refInputTwo}
         />
 
-        <button className="btn__login__account" to="/users" id="btn__login__account" onClick={submitLogin}>
+        <button className="btn__login__account" to="/users" id="btn__login__account" onTouchStart={submitLogin} onClick={submitLogin}>
           Login
         </button>
         <div className="container__authen ">

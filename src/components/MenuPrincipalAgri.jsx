@@ -60,9 +60,11 @@ export default function MenuPrincipalAgri() {
             <Link to="/update" className="bloc__compte">
               <div className="bloc__logo6">
                 <i className="fas fa-id-card"></i>
-              </div> 
+              </div>
               <p>Modification de compte</p>
             </Link>
+            <Link to="/create_materiel">creation de materiel</Link>
+            <Link to="/update_materiel">modification de materiel</Link>
           </>
         )}
       </div>
