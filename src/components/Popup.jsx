@@ -35,7 +35,7 @@ export default function Popup() {
         <img src={agriculteur} alt="agriculteur" />
         <i className="far fa-times-circle" onClick={popupVisible}></i>
         <p id="popup__user">Thomas</p>
-        <Link to="/profil" className="boutton__text__popup" onClick={popupVisible}>
+        <Link to="/update" className="boutton__text__popup" onClick={popupVisible}>
           <p className="text__popup">Mon Profil</p>
         </Link>
         <Link to="/materiel" className="boutton__text__popup" onClick={popupVisible}>
@@ -43,6 +43,10 @@ export default function Popup() {
         </Link>
         <Link to="/document" className="boutton__text__popup" onClick={popupVisible}>
           <p className="text__popup">Mes Documents</p>
+        </Link>
+        <Link to="/users" className="bloc__retour__accueil" onClick={popupVisible}>
+          <p className="bloc__retour">Retour à l'accueil</p>
+          <i class="fas fa-house-user"></i>
         </Link>
         <div className="bloc__deconnection" onClick={logout}>
           <p>Deconnection</p>

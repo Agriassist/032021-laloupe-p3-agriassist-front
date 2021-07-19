@@ -105,7 +105,7 @@
   font-size: 25px;
   margin-left: 15px;
 }
-.container__backhome .fa-home {
+.container__backhome {
   font-size: 50px;
 }
 .container__backhome {
@@ -143,9 +143,6 @@
   margin-left: 15px;
 }
 
-.fa-home {
-  font-size: 50px;
-}
 .container__backhome {
   display: flex;
   justify-content: center;
