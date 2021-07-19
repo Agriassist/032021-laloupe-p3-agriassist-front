@@ -1,44 +1,85 @@
-.container__postfiche{
-    width: 100%;
-    height: 100vh;
+.container__postfiche {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--blueColor);
+}
+
+#upload__fiche__tech {
+  width: 100%;
+  padding: 10px 10px;
+  background: grey;
+  border: 2px solid #000;
+  border-radius: 50%;
+  margin: 2rem 0px;
+  cursor: pointer;
+}
+
+.container__listpdf {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.one__pdf {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.one__pdf:hover{
+  cursor: pointer;
+}
+.one__pdf i {
+  margin-right: 1vh;
+  color: rgba(255, 0, 0, 0.815);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.container__fiche__img {
+  width: 75%;
+  height: 40%;
+  border: 2px solid #000;
+  border-radius: 15px;
+  margin-top: 3rem;
+  position: relative;
+}
+#btn__fiche {
+  margin: 2rem auto;
+  padding: 10px 10px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.container__pdf {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container__pdf label {
+  width: 7%;
+}
+
+@media screen and (min-width: 1024px) {
+  .container__listpdf {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--blueColor);
-}
-
-#fiche__technique{
-   
-
-}
-
-#upload__fiche__tech{
-    width: 7%;
-    padding: 10px 10px;
-    background: grey;
-    border: 2px solid #000;
-    border-radius: 50%;
-    position: absolute;
-    bottom: -15px;
-    right: -15px;
-
-}
-
-.container__fiche__img{
-    width: 75%;
-    height: 40%;
-    border: 2px solid #000;
-    border-radius: 15px;
-    margin-top: 3rem;
-    position: relative;
-}
-#btn__fiche{
-    margin-top: 2rem;
-    padding: 10px 10px;
-    background: #000;
-    color: #fff;
-    border: none;
-    border: 2px solid #fff;
-    border-radius: 15px;
-
+    flex-direction: row;
+    width: 45%;
+    margin: 2rem auto 0px auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .container__listpdf i{
+    font-size: 35px;
+  }.container__listpdf p{
+    font-size: 35px;
+    font-style: italic;
+  }
+  .one__pdf{
+    margin: 1rem 1rem 1rem 0px;
+  }
 }

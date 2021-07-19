@@ -50,14 +50,26 @@ export default function MenuPrincipalAgri() {
           </a>
         </div>
       )}
-      {status === 'administrateur' && (
-        <>
-          <Link to="/create_account">creation de compte</Link>
-          <Link to="/update_profil">modification de compte</Link>
-          <Link to="/create_materiel">creation de materiel</Link>
-          <Link to="/update_materiel">modification de materiel</Link>
-        </>
-      )}
+      <div className="container__icone__admin">
+        <div className="icone__admin">
+          {status === 'administrateur' && (
+            <>
+              <Link to="/create_account">
+                <i class="fas fa-user-plus" style={{color: "blue"}}></i>
+              </Link>
+              <Link to="/update_profil">
+                <i class="fas fa-user-edit" style={{color: "orange"}}></i>
+              </Link>
+              <Link to="/create_materiel">
+                <i class="fas fa-tractor" style={{color: "brown"}}></i>
+              </Link>
+              <Link to="/fiche">
+                <i class="fas fa-tools"></i>
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
