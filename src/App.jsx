@@ -5,7 +5,6 @@ import './App.css';
 import { useStateValue } from './contexts/Context';
 import PageConnection from './components/PageConnection';
 import MenuPrincipalAgri from './components/MenuPrincipalAgri';
-import Intro from './components/Intro';
 import ParcMateriel from './components/ParcMateriel';
 import Document from './components/Document';
 import Popup from './components/Popup';
@@ -21,7 +20,6 @@ import UpdateProfil from './components/UpdateProfil';
 import FicheTech from './components/FicheTech';
 import CreateMateriel from './components/CreateMateriel';
 import UpdateMateriel from './components/CreateMateriel';
-
 
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
@@ -70,6 +68,9 @@ function App() {
       <Switch>
         {(status === 'agriculteur' || status === 'concessionnaire' || status === 'administrateur') && (
           <>
+            <Route path="/fiche">
+             <PostFiche />  
+            </Route>
             <Route path="/users">
               <MenuPrincipalAgri />
             </Route>
