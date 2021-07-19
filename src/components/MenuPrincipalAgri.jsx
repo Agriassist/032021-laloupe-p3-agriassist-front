@@ -57,7 +57,7 @@ export default function MenuPrincipalAgri() {
               </div>
               <p>Création de compte</p>
             </Link>
-            <Link to="/update" className="bloc__compte">
+            <Link to="/update_profil" className="bloc__compte">
               <div className="bloc__logo6">
                 <i className="fas fa-id-card"></i>
               </div>
