@@ -37,38 +37,36 @@ export default function MenuPrincipalAgri() {
           </div>
           <p>Mes Documents</p>
         </Link>
-      </div>
-      {status === 'agriculteur' && (
-        <div className="container__depannage">
-          <i className="fas fa-phone-volume"></i>
-          <h2 className="titleDepannage">DEPANNAGE</h2>
-          <a rel="nofollow" href="https://www.qr-code-generator.com">
-            <img
-              id="Qr__Code_Menu"
-              src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
-              alt=""></img>
-          </a>
-        </div>
-      )}
-      <div className="container__icone__admin">
-        <div className="icone__admin">
-          {status === 'administrateur' && (
-            <>
-              <Link to="/create_account">
-                <i class="fas fa-user-plus" style={{color: "blue"}}></i>
-              </Link>
-              <Link to="/update_profil">
-                <i class="fas fa-user-edit" style={{color: "orange"}}></i>
-              </Link>
-              <Link to="/create_materiel">
-                <i class="fas fa-tractor" style={{color: "brown"}}></i>
-              </Link>
-              <Link to="/fiche">
-                <i class="fas fa-tools"></i>
-              </Link>
-            </>
-          )}
-        </div>
+        {status === 'agriculteur' && (
+          <div className="container__depannage">
+            <i className="fas fa-phone-volume"></i>
+            <h2 className="titleDepannage">DEPANNAGE</h2>
+            <a rel="nofollow" href="https://www.qr-code-generator.com">
+              <img
+                id="Qr__Code_Menu"
+                src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
+                alt=""></img>
+            </a>
+          </div>
+        )}
+        {status === 'administrateur' && (
+          <>
+            <Link to="/create_account" className="bloc__compte">
+              <div className="bloc__logo5">
+                <i className="fas fa-id-card"></i>
+              </div>
+              <p>Création de compte</p>
+            </Link>
+            <Link to="/update_profil" className="bloc__compte">
+              <div className="bloc__logo6">
+                <i className="fas fa-id-card"></i>
+              </div>
+              <p>Modification de compte</p>
+            </Link>
+            <Link to="/create_materiel">creation de materiel</Link>
+            <Link to="/update_materiel">modification de materiel</Link>
+          </>
+        )}
       </div>
     </div>
   );

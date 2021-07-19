@@ -1,15 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-.container__updateprofil{
+.container__updateprofil {
   width: 100%;
   height: 100vh;
-  background: var(--blueColor);
+  background: #3d86c6;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 }
-
-
 
 #multer {
   margin: 5rem auto 2rem auto;
@@ -18,13 +16,13 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .container__imgprofil {
   height: 185px;
   width: 185px;
   border-radius: 50%;
-  border: 1px solid #000;
   position: relative;
   margin: 2rem auto 2rem auto;
 }
@@ -70,36 +68,56 @@ input[type='file'] {
 }
 
 .pseudo__update,
-.name__update, 
-.email__update, 
+.prenom__update,
+.name__update,
+.email__update,
 .phone__update {
-    width: 70%;
+  width: 70%;
 }
 
 .pseudo__update h3,
+.prenom__update h3,
 .name__update h3,
 .email__update h3,
 .phone__update h3 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
   text-align: center;
- text-decoration: underline;
- margin-top: 2rem;
- font-family: 'Varela Round', sans-serif;
- font-style: italic;
- font-size: 25px;
+  /* text-decoration: underline; */
+  margin-top: 2rem;
+  font-family: 'Montserrat';
+  font-size: 25px;
+  color: white;
 }
 
 .pseudo__update input,
 .name__update input,
+.prenom__update input,
 .email__update input,
-.phone__update input{
-    width: 100%;
-    height: 25px;
-    margin: 1rem auto;
-    border-radius: 10px;
-    border: none;
-    border: 1px solid #000;
-
+.phone__update input {
+  width: 100%;
+  height: 25px;
+  margin: 1rem auto;
+  font-family: 'Montserrat';
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  text-align: center;
 }
 
+.btn__submit__update {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem auto;
+  font-family: 'Montserrat';
+  text-align: center;
+  font-size: 14px;
+  /* color: white; */
+  color: black;
+  background-color: rgb(231, 160, 6);
+  /* border: 1px solid rgb(255, 255, 255); */
+  border-radius: 20px;
+  width: 30vh;
+  box-shadow: 5px 3px 3px black;
+  padding: 10px 0;
+}

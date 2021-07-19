@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-export default function UpdateMateriel() {
+function UpdateMateriel() {
     return (
         <div>
             
         </div>
     )
 }
+
+export default UpdateMateriel

@@ -47,7 +47,7 @@ export default function CreateAccount() {
     <div>
       <div className="container__create__account">
         <HautDePage />
-        <input id="input__one__account" type="text" placeholder="Identifiant" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
+        <input id="input__one__account" type="text" placeholder="Pseudo" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
         <input id="input__two__account" type="text" placeholder="nom" value={name} onChange={(e) => setName(e.target.value)} />
         <input id="input__three__account" type="text" placeholder="prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
 
