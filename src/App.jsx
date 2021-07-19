@@ -20,13 +20,13 @@ import PostFiche from './components/PostFiche';
 import UpdateProfil from './components/UpdateProfil';
 import FicheTech from './components/FicheTech';
 import CreateMateriel from './components/CreateMateriel';
-import UpdateMateriel from './components/CreateMateriel';
+import UpdateMateriel from './components/UpdateMateriel';
 
 
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 function App() {
-  const [{ token, status, id }, dispatch] = useStateValue();
+  const [{ token, status, id, materielId }, dispatch] = useStateValue();
 
   const refreshToken = () => {
     console.log('ok');
@@ -106,7 +106,7 @@ function App() {
                   <CreateMateriel />
                 </Route>
                 <Route path="/update_mat">
-                  <UpdateMateriel />
+                  <UpdateMateriel materielId={materielId} />
                 </Route>
               </>
             )}

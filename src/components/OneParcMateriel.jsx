@@ -1,6 +1,7 @@
 import '../Styles/OneParcMateriel.css';
 import agriculteur from '../images/agriculteur.png';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useStateValue } from '../contexts/Context';
 
 function OneParcMateriel() {
@@ -37,6 +38,7 @@ function OneParcMateriel() {
         <p> Dernière vidange moteur: {infos.prev_oil}</p>
         <p> Prochaine vidange dans: {infos.next_oil}</p>
         <p> Concess prioritaire pour dépannage: Ets Cloué</p>
+        <Link to="/update_mat">modification de materiel</Link>
       </div>
     </div>
   );

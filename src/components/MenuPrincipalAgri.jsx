@@ -64,7 +64,6 @@ export default function MenuPrincipalAgri() {
               <p>Modification de compte</p>
             </Link>
             <Link to="/create_materiel">creation de materiel</Link>
-            <Link to="/update_materiel">modification de materiel</Link>
           </>
         )}
       </div>
