@@ -96,16 +96,18 @@ export default function PageConnection() {
         <button className="btn__login__account" to="/users" id="btn__login__account" onTouchStart={submitLogin} onClick={submitLogin}>
           Login
         </button>
-        <div className="container__authentification " ref={refAuthen}>
-          <i className="fas fa-fingerprint"></i>
+        <div className="container__authen ">
+          <div className="container__authentification " ref={refAuthen}>
+            <i className="fas fa-fingerprint"></i>
 
-          <a rel="nofollow" href="https://www.qr-code-generator.com">
-            <img
-              id="Qr__Code"
-              src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
-              alt=""
-            />
-          </a>
+            <a rel="nofollow" href="https://www.qr-code-generator.com">
+              <img
+                id="Qr__Code"
+                src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.example.com&chs=180x180&choe=UTF-8&chld=L|2"
+                alt=""
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>

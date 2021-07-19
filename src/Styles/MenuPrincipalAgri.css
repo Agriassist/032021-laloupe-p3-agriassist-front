@@ -1,7 +1,7 @@
 .container__menu {
   position: relative;
-  height: 100vh;
-  background: linear-gradient(#ffffff, #3d86c62f);
+  height: 120vh;
+  /* background: linear-gradient(#ffffff, #3d86c62f); */
 }
 
 .container__quatrebloc {
@@ -10,6 +10,7 @@
   width: 100%;
   flex-wrap: wrap;
   height: 50vh;
+  padding-bottom: 40px;
 }
 .bloc {
   display: flex;
@@ -24,10 +25,26 @@
   border-radius: 20px;
   border: 2px solid rgb(255, 255, 255);
 }
+
+.bloc__compte {
+  display: flex;
+  width: 40%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 1rem;
+  height: 150px;
+  background-color: #fba000;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid #3d86c648;
+}
+
 .bloc__logo1,
 .bloc__logo2,
 .bloc__logo3,
-.bloc__logo4 {
+.bloc__logo4,
+.bloc__logo5,
+.bloc__logo6 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,6 +58,22 @@
   box-shadow: 5px 5px 5px black;
   font-size: 40px;
 }
+
+.bloc__logo5,
+.bloc__logo6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 65%;
+  margin: auto auto;
+  background-size: cover;
+  background-repeat: round;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(0, 0, 0);
+  font-size: 40px;
+}
+
 .bloc__logo2 {
   background-image: url(./src/images/fondprofil.jpg);
 }
@@ -50,13 +83,21 @@
 .bloc__logo4 {
   background-image: url(./src/images/fonddoc.jpg);
 }
-.bloc p {
+.bloc__logo5 {
+  background-image: url(./src/images/computer.jpg);
+}
+.bloc__logo6 {
+  background-image: url(./src/images/modifcompte.jpg);
+}
+.bloc p,
+.bloc__compte p {
   font-family: 'Montserrat';
   text-align: center;
   font-size: 14px;
   /* color: white; */
   color: black;
 }
+
 .container__menu .fa-sign-out-alt {
   position: absolute;
   font-size: 40px;
@@ -93,7 +134,8 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .bloc {
+  .bloc,
+  .bloc__compte {
     width: 35%;
     flex-direction: column;
     height: 60%;
@@ -101,11 +143,14 @@
   .bloc__logo1,
   .bloc__logo2,
   .bloc__logo3,
-  .bloc__logo4 {
+  .bloc__logo4,
+  .bloc__logo5,
+  .bloc__logo6 {
     width: 60%;
     height: 85%;
   }
-  .bloc p {
+  .bloc p,
+  .bloc__compte p {
     font-size: 25px;
   }
 

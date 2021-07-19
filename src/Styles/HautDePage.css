@@ -28,6 +28,9 @@
   flex-direction: column;
   align-items: center;
 }
+.logo__home__page {
+  height: 9vh;
+}
 @media screen and (max-width: 1024px) {
   .logo_agriassist {
     width: 50%;
@@ -41,5 +44,8 @@
   }
   .haut_de_page {
     margin-top: 2vh;
-}
+  }
+  .logo__home__page {
+    height: 5vh;
+  }
 }

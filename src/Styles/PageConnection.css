@@ -46,7 +46,12 @@
   font-family: 'Varela Round', sans-serif;
   font-weight: bold;
 }
-
+.container__authen {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
 .container__authentification {
   width: 100%;
   height: auto;
@@ -54,7 +59,6 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 5rem auto 2rem auto;
 }
 .container__authentification .fas {
   font-size: 80px;
