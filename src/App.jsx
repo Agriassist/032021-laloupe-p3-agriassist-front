@@ -22,7 +22,6 @@ import FicheTech from './components/FicheTech';
 import CreateMateriel from './components/CreateMateriel';
 import UpdateMateriel from './components/UpdateMateriel';
 
-
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 function App() {
@@ -42,9 +41,16 @@ function App() {
 
         // setTimeout pour renouvler avant expiration l'access_token
         setTimeout(() => {
-          console.log('inside setTimeout refresh token: ', 15 * 60 * 1000 - 5000);
+          let ms = 15 * 60 * 1000 - 5000;
+          let min;
+          let sec;
+
+          (min = Math.floor((ms / 1000 / 60) << 0)),
+            (sec = Math.floor((ms / 1000) << 0)),
+            (ms = Math.floor(ms << 0)),
+            console.log('inside setTimeout refresh token:', min, sec, ms);
           refreshToken();
-        }, 15 * 60 * 1000 - 10000);
+        }, 15 * 60 * 1000 - 5000);
 
         dispatch({ type: 'SET_ID', id });
         dispatch({ type: 'SET_TOKEN', token });

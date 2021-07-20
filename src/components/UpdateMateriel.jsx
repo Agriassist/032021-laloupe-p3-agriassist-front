@@ -49,8 +49,6 @@ function UpdateMateriel(props) {
       .then((data) => data.data)
       .then((data) => {
         setTableauModele(data);
-        setType(data[0].name);
-        setModeleId(data[0].id);
         console.log(data);
       });
   }, []);
@@ -60,8 +58,6 @@ function UpdateMateriel(props) {
       .then((data) => data.data)
       .then((data) => {
         setTableauMarque(data);
-        setTypeMa(data[0].name);
-        setMarqueId(data[0].id);
         console.log(data);
       });
   }, []);
@@ -117,11 +113,14 @@ function UpdateMateriel(props) {
           <input type="number" defaultValue={infos.materiel.year} onChange={(e) => setYear(e.target.value)} />
           <input type="text" defaultValue={infos.materiel.serial_number} onChange={(e) => setSerialNumber(e.target.value)} />
           <select
-            defaultValue={infos.marque.name}
+            defaultValue="..."
             onChange={(e) => {
               setTypeMa(e.target.value);
               setMarqueId(e.target.selectedOptions[0].id);
             }}>
+            <option key="0" id="0">
+              ...
+            </option>
             {tableauMarque.map((text) => (
               <option key={text.id} id={text.id}>
                 {text.name}
@@ -129,11 +128,14 @@ function UpdateMateriel(props) {
             ))}
           </select>
           <select
-            defaultValue={infos.modele.name}
+            defaultValue="..."
             onChange={(e) => {
               setType(e.target.value);
               setModeleId(e.target.selectedOptions[0].id);
             }}>
+            <option key="0" id="0">
+              ...
+            </option>
             {tableauModele.map((text) => (
               <option key={text.id} id={text.id}>
                 {text.name}
