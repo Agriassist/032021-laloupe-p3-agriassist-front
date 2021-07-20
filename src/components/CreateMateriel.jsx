@@ -78,16 +78,6 @@ export default function CreateMateriel() {
         setAgriculteurIdentifiant('');
         setConcessionnaireIdentifiant('');
       })
-      .axios({
-        method: 'POST',
-        url: 'http://localhost:8000/api/park',
-        data: { user_id: agriculteurIdentifiant },
-      })
-      .axios({
-        method: 'POST',
-        url: 'http://localhost:8000/api/park',
-        data: { materiel_id: tableauMate.id },
-      })
       .catch((err) => {
         alert('Lien creation fail');
       });

@@ -20,6 +20,7 @@ function UpdateMateriel(props) {
   const [tableauMate, setTableauMate] = useState([]);
   const [marqueId, setMarqueId] = useState();
   const [modeleId, setModeleId] = useState();
+  const [park, setPark] = useState([]);
 
   useEffect(() => {
     axios({
@@ -40,12 +41,21 @@ function UpdateMateriel(props) {
       .then((data) => data.data)
       .then((data) => {
         setTableau(data);
-        console.log(data);
+        console.log(data, 'donnée all users');
       });
   }, []);
 
   useEffect(() => {
-    axios('http://localhost:8000/api/modele')
+    axios(`${process.env.REACT_APP_API_URL}/api/park/materiel/${props.materielId}`)
+      .then((data) => data.data)
+      .then((data) => {
+        setPark(data);
+        console.log(data, 'donnée users');
+      });
+  }, []);
+
+  useEffect(() => {
+    axios(`${process.env.REACT_APP_API_URL}/api/modele`)
       .then((data) => data.data)
       .then((data) => {
         setTableauModele(data);
@@ -54,7 +64,7 @@ function UpdateMateriel(props) {
   }, []);
 
   useEffect(() => {
-    axios('http://localhost:8000/api/marque')
+    axios(`${process.env.REACT_APP_API_URL}/api/marque`)
       .then((data) => data.data)
       .then((data) => {
         setTableauMarque(data);
@@ -67,7 +77,7 @@ function UpdateMateriel(props) {
 
     axios({
       method: 'POST',
-      url: `http://localhost:8000/api/materiels`,
+      url: `${process.env.REACT_APP_API_URL}/api/materiels`,
       data: {
         year: year,
         serial_number: serialNumber,
@@ -91,24 +101,27 @@ function UpdateMateriel(props) {
         setAgriculteurIdentifiant('');
         setConcessionnaireIdentifiant('');
       })
-      .axios({
-        method: 'POST',
-        url: 'http://localhost:8000/api/park',
-        data: { user_id: agriculteurIdentifiant },
-      })
-      .axios({
-        method: 'POST',
-        url: 'http://localhost:8000/api/park',
-        data: { materiel_id: tableauMate.id },
-      })
       .catch((err) => {
         alert('Lien creation fail');
       });
   }
 
+  const test = (stat) => {
+    const result = tableau.filter((text) => {
+      const tri = park.filter((user) => {
+        if (user.users_id === text.id) {
+          return text.statue === stat;
+        }
+      });
+      return tri.length > 0 ? true : false;
+    });
+    console.log(result);
+    return result[0].nom;
+  };
+
   return (
     <div className="container_materiel_creation">
-      {infos.materiel && (
+      {infos.materiel && park.length > 0 && (
         <>
           <input type="number" defaultValue={infos.materiel.year} onChange={(e) => setYear(e.target.value)} />
           <input type="text" defaultValue={infos.materiel.serial_number} onChange={(e) => setSerialNumber(e.target.value)} />
@@ -144,47 +157,47 @@ function UpdateMateriel(props) {
           </select>
           <input type="text" defaultValue={infos.materiel.prev_oil_change} onChange={(e) => setPrevOil(e.target.value)} />
           <input type="text" defaultValue={infos.materiel.next_oil_change} onChange={(e) => setNextOil(e.target.value)} />
+
+          <h2>Agriculteur</h2>
+          <input type="text" defaultValue={test('agriculteur')} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+          {tableau && agriculteurIdentifiant && (
+            <ul>
+              {tableau
+                .filter((users) => users.nom.startsWith(agriculteurIdentifiant) && users.statue === 'agriculteur')
+                .map((text, index) => (
+                  <button
+                    onClick={() => {
+                      setAgriculteurIdentifiant(text.nom);
+                      setAgriculteurId(text.id);
+                    }}
+                    key={index}
+                    style={{ fontSize: 20 }}>
+                    {text.nom}
+                  </button>
+                ))}{' '}
+            </ul>
+          )}
+
+          <h2>Concessionnaire</h2>
+          <input type="text" defaultValue={test('concessionnaire')} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
+          {tableau && concessionnaireIdentifiant && (
+            <section>
+              {tableau
+                .filter((users) => users.nom.startsWith(concessionnaireIdentifiant) && users.statue === 'concessionnaire')
+                .map((text, index) => (
+                  <button
+                    onClick={() => {
+                      setConcessionnaireIdentifiant(text.nom);
+                      setConcessionnaireId(text.id);
+                    }}
+                    key={index}
+                    style={{ fontSize: 20 }}>
+                    {text.nom}
+                  </button>
+                ))}
+            </section>
+          )}
         </>
-      )}
-
-      <h2>Agriculteur</h2>
-      <input type="text" placeholder="..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
-      {tableau && agriculteurIdentifiant && (
-        <ul>
-          {tableau
-            .filter((users) => users.nom.startsWith(agriculteurIdentifiant) && users.statue === 'agriculteur')
-            .map((text, index) => (
-              <button
-                onClick={() => {
-                  setAgriculteurIdentifiant(text.nom);
-                  setAgriculteurId(text.id);
-                }}
-                key={index}
-                style={{ fontSize: 20 }}>
-                {text.nom}
-              </button>
-            ))}{' '}
-        </ul>
-      )}
-
-      <h2>Concessionnaire</h2>
-      <input type="text" placeholder="..." value={concessionnaireIdentifiant} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
-      {tableau && concessionnaireIdentifiant && (
-        <section>
-          {tableau
-            .filter((users) => users.nom.startsWith(concessionnaireIdentifiant) && users.statue === 'concessionnaire')
-            .map((text, index) => (
-              <button
-                onClick={() => {
-                  setConcessionnaireIdentifiant(text.nom);
-                  setConcessionnaireId(text.id);
-                }}
-                key={index}
-                style={{ fontSize: 20 }}>
-                {text.nom}
-              </button>
-            ))}
-        </section>
       )}
 
       <button className="btn__materiel" onClick={submitMateriel}>
