@@ -8,7 +8,7 @@ export default function MenuPrincipalAgri() {
   const [{ status }] = useStateValue();
 
   return (
-    <div className="container__menu">
+    <div className="container__menuprincipal">
       <HautDePage />
       <div className="container__quatrebloc">
         <Link to="/materiel" className="bloc">

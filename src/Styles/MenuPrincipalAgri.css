@@ -1,4 +1,4 @@
-.container__menu {
+.container__menuprincipal {
   position: relative;
   height: 120vh;
   /* background: linear-gradient(#ffffff, #3d86c62f); */
@@ -98,7 +98,7 @@
   color: black;
 }
 
-.container__menu .fa-sign-out-alt {
+.container__menuprincipal .fa-sign-out-alt {
   position: absolute;
   font-size: 40px;
   right: 20px;

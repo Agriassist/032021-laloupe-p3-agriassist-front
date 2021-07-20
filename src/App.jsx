@@ -69,7 +69,7 @@ function App() {
         {(status === 'agriculteur' || status === 'concessionnaire' || status === 'administrateur') && (
           <>
             <Route path="/fiche">
-             <PostFiche />  
+              <PostFiche />
             </Route>
             <Route path="/users">
               <MenuPrincipalAgri />

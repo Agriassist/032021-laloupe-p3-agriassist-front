@@ -38,3 +38,20 @@
   margin: 1em auto;
   min-height: 450px;
 }
+
+.pdf__bymodele{
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pdf__bymodele i{
+  margin-right: 1vh;
+  color: rgba(255, 0, 0, 0.815);
+  font-size: 30px;
+  cursor: pointer;
+}
+.pdf__bymodele p{
+  font-size: 35px;
+  font-style: italic;
+}
