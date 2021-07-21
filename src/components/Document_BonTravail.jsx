@@ -1,46 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/Document.css';
-import FicheTech from './FicheTech';
 
 export default function Document_BonTravail() {
-  const [fiche, setFiche] = useState([]);
-  const [ficheVisible, setFicheVisible] = useState(false);
-
-  function ficheClickVisible() {
-    setFicheVisible(!ficheVisible);
-  }
-  // const [ficheId, setFicheId] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:8000/carnet_entretien/')
-      .then((res) => res.json())
-      .then((data) => data.data[0])
-      .then((data) => setFiche(data));
-  }, []);
-
-  function deleteFiche() {
-    useEffect(() => {
-      fetch({
-        method: 'DELETE',
-        url: 'http://localhost:8000/carnet_entretien/:id',
-      });
-    }, []);
-  }
-
+  const bonDeTravail = [
+    {
+      id: 1,
+      name: 'Bon n°=12458797',
+    },
+    {
+      id: 2,
+      name: 'Bon n°=12448787',
+    },
+    {
+      id: 3,
+      name: 'Bon n°=12235565',
+    },
+    {
+      id: 4,
+      name: 'Bon n°=129622545',
+    },
+    {
+      id: 5,
+      name: 'Bon n°=124587975',
+    },
+    {
+      id: 6,
+      name: 'Bon n°=124587975',
+    },
+    {
+      id: 7,
+      name: 'Bon n°=1245874545',
+    },
+    {
+      id: 8,
+      name: 'Bon n°=1245813265',
+    },
+    {
+      id: 9,
+      name: 'Bon n°=12458795626',
+    },
+  ];
   return (
     <div className="container__BDC">
-      <img className={ficheVisible ? 'fiche__no__visible' : 'fiche__visible'} src={fiche} alt="fiche-tech" />
       <div className="container__bon">
-        {/* <p>Claire</p>
-          <p>Thomas</p>
-          <p>Axel</p>
-          <p>Benjamin</p>
-          <p>Claire</p>
-          <p>Thomas</p>
-          <p>Axel</p>
-          <p>Benjamin</p> */}
+      {bonDeTravail.map((f, i) => (
+          <div key={i} className="bloc__all">
+            <div className="bloc__facturetext">
+              <p>{f.name}</p>
+            </div>
 
-        {fiche.map((fiches) => (
-          <FicheTech key={fiches.id} fiches={fiches} ficheClickVisible={ficheClickVisible} deleteFiche={deleteFiche} />
+            <div className="container__facturelogo">
+              <div className="bloc__facturelogo">
+                <i className="fas fa-eye"></i>
+                <i className="far fa-arrow-alt-circle-down"></i>
+                <i className="far fa-times-circle"></i>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>

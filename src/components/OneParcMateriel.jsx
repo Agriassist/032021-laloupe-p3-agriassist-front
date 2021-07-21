@@ -1,11 +1,14 @@
 import '../Styles/OneParcMateriel.css';
+import HautDePage from './HautDePage';
 import agriculteur from '../images/agriculteur.png';
 import React, { useState, useEffect } from 'react';
 import { useStateValue } from '../contexts/Context';
+import axios from 'axios';
 
 function OneParcMateriel() {
   const [infos, setInfos] = useState({});
   const [{ materielId }] = useStateValue();
+  const [fiche, setFiche] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/api/materiels/${materielId}`)
@@ -23,11 +26,18 @@ function OneParcMateriel() {
         setInfos(infos);
       });
   }, []);
-  console.log(infos);
+
+  useEffect(() => {
+    axios(`${process.env.REACT_APP_API_URL}/api/fiche_technique`)
+      .then((data) => data.data)
+      .then((data) => {
+        setFiche(data);
+      });
+  }, []);
+
   return (
     <div className="OPM_container">
-      <div className="OPM_blue_trait"></div>
-      <img className="OPM_image_profil" src={agriculteur} alt="profil_pictures"></img>
+      <HautDePage />
       <p className="OPM_title">Mon Parc</p>
       <div className="OPM_infos">
         <p>Marque: {infos.marque}</p>
@@ -38,6 +48,12 @@ function OneParcMateriel() {
         <p> Prochaine vidange dans: {infos.next_oil}</p>
         <p> Concess prioritaire pour dépannage: Ets Cloué</p>
       </div>
+      {fiche.map((file, i) => (
+        <div className="pdf__bymodele" key={i}>
+          <i className="fas fa-file-pdf"></i>
+          <p>{file.name}</p>
+        </div>
+      ))}
     </div>
   );
 }

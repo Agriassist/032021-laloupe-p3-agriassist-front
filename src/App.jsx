@@ -68,8 +68,8 @@ function App() {
       <Switch>
         {(status === 'agriculteur' || status === 'concessionnaire' || status === 'administrateur') && (
           <>
-            <Route path="/fiche">
-             <PostFiche />  
+            <Route path="/fiche_technique">
+              <PostFiche />
             </Route>
             <Route path="/users">
               <MenuPrincipalAgri />

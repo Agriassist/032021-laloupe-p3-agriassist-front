@@ -42,10 +42,9 @@
 }
 .parc-image {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 10vh;
-  justify-content: space-between;
-  margin-bottom: 4vh;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8vh;
 }
 
 .parc-header {
@@ -64,17 +63,19 @@
 }
 
 .image-trackteur {
-  width: 40vw;
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
+  object-fit: cover;
+  
 }
 
 .cadre-trackteur {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 50vw;
-  height: 20vh;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 20px;
+  margin-bottom: 8vh;
+
 }
 
 @media screen and (min-width: 1024px) {
@@ -92,11 +93,24 @@
   }
   .cadre-trackteur {
     height: 29vh;
+    width: 25vw;
+    
+    margin-bottom: 10vh;
   }
   .image-trackteur {
     width: 20vw;
   }
-  .parc-image{
-    flex-wrap: nowrap;
+  .parc-image {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10vh;
+    justify-content: space-evenly;
+  }
+  .image-trackteur {
+   width: 100%;
+   height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
   }
 }

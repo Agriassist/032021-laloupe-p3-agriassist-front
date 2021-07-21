@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 .container__updateprofil {
   width: 100%;
-  height: 100vh;
   background: #3d86c6;
   display: flex;
   flex-direction: column;
@@ -108,16 +107,47 @@ input[type='file'] {
 .btn__submit__update {
   display: flex;
   justify-content: space-evenly;
-  margin: 1rem auto;
   font-family: 'Montserrat';
   text-align: center;
   font-size: 14px;
-  /* color: white; */
+  margin: 2rem auto 2rem auto;
+
   color: black;
   background-color: rgb(231, 160, 6);
-  /* border: 1px solid rgb(255, 255, 255); */
+
   border-radius: 20px;
   width: 30vh;
   box-shadow: 5px 3px 3px black;
   padding: 10px 0;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+  .pseudo__update input,
+.name__update input,
+.prenom__update input,
+.email__update input,
+.phone__update input {
+  padding: 7px;
+}
+}
+
+@media screen and (mIN-width: 1024px){
+  .pseudo__update input,
+.name__update input,
+.prenom__update input,
+.email__update input,
+.phone__update input {
+  padding: 10px;
+}
+
+.pseudo__update,
+.prenom__update,
+.name__update,
+.email__update,
+.phone__update {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+}
 }
