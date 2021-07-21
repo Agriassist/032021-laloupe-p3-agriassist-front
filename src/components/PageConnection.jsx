@@ -40,8 +40,6 @@ export default function PageConnection() {
       console.log(data.data);
       if (data.data) {
         history.push('/users');
-      } else {
-        alert('session expired');
       }
     });
   }, []);

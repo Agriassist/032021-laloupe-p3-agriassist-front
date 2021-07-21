@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../Styles/Popup.css';
-import agriculteur from '../images/agriculteur.png';
 import { useStateValue } from '../contexts/Context';
 import { Link } from 'react-router-dom';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export default function Popup() {
-  const [{ popup, profil_picture }, dispatch] = useStateValue();
+  const [{ popup, profil_picture, name }, dispatch] = useStateValue();
 
   const popupVisible = () => {
     dispatch({ type: 'SET_POPUP', popup: !popup });
@@ -35,7 +34,7 @@ export default function Popup() {
       <div className="container__popup">
         <img src={`http://localhost:8000/api/images_profil/${profil_picture}`} alt="agriculteur" />
         <i className="far fa-times-circle" onClick={popupVisible}></i>
-        <p id="popup__user">Thomas</p>
+        <p id="popup__user">{name}</p>
         <Link to="/update_profil" className="boutton__text__popup" onClick={popupVisible}>
           <p className="text__popup">Mon Profil</p>
         </Link>

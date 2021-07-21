@@ -15,6 +15,8 @@ export default function HautDePage() {
 
   let history = useHistory();
 
+  const [mail, setMail] = useState('');
+
   useEffect(() => {
     axios({
       method: 'GET',
@@ -23,7 +25,10 @@ export default function HautDePage() {
     })
       .then((data) => data.data)
       .then((data) => {
+        console.log(data);
         dispatch({ type: 'SET_PROFIL_PICTURE', profil_picture: data.photo_profil });
+        dispatch({ type: 'SET_NAME', name: data.nom });
+        setMail(data.email);
       })
       .catch((err) => {
         console.log(err);
@@ -43,7 +48,7 @@ export default function HautDePage() {
       />
       <div className="espace_identification_profil">
         <img className="img_profil" src={`http://localhost:8000/api/images_profil/${profil_picture}`} onClick={menuNav} alt="agriculteur" />
-        <figcaption className="adresse_mail_img_profil">adresse_mail@orange.fr</figcaption>
+        <figcaption className="adresse_mail_img_profil">{mail}</figcaption>
       </div>
     </div>
   );
