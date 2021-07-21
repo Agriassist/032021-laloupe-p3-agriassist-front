@@ -5,7 +5,6 @@ import './App.css';
 import { useStateValue } from './contexts/Context';
 import PageConnection from './components/PageConnection';
 import MenuPrincipalAgri from './components/MenuPrincipalAgri';
-import Intro from './components/Intro';
 import ParcMateriel from './components/ParcMateriel';
 import Document from './components/Document';
 import Popup from './components/Popup';
@@ -76,6 +75,9 @@ function App() {
       <Switch>
         {(status === 'agriculteur' || status === 'concessionnaire' || status === 'administrateur') && (
           <>
+            <Route path="/fiche_technique">
+              <PostFiche />
+            </Route>
             <Route path="/users">
               <MenuPrincipalAgri />
             </Route>

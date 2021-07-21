@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import all from 'gsap/src/all';
+import HautDepage from './HautDePage';
+import '../Styles/CreateMateriel.css';
 // import { data } from 'autoprefixer';
 
 export default function CreateMateriel() {
@@ -85,8 +86,9 @@ export default function CreateMateriel() {
 
   return (
     <div className="container_materiel_creation">
-      <input type="number" value={year} onChange={(e) => setYear(e.target.value)} />
-      <input type="text" value={serialNumber} onChange={(e) => setSerialNumber(e.target.value)} />
+      <HautDepage />
+      <input type="text" placeholder="Date de mise en service..." value={year} onChange={(e) => setYear(e.target.value)} maxLength="4" />
+      <input type="text" placeholder="Numero de série..." value={serialNumber} onChange={(e) => setSerialNumber(e.target.value)} />
       <select
         defaultValue="..."
         onChange={(e) => {
@@ -117,11 +119,11 @@ export default function CreateMateriel() {
           </option>
         ))}
       </select>
-      <input type="text" value={prevOil} onChange={(e) => setPrevOil(e.target.value)} />
-      <input type="text" value={nextOil} onChange={(e) => setNextOil(e.target.value)} />
+      <input type="text" placeholder="Derniere vidange..." value={prevOil} onChange={(e) => setPrevOil(e.target.value)} />
+      <input type="text" placeholder="Prochaine vidange..." value={nextOil} onChange={(e) => setNextOil(e.target.value)} />
 
       <h2>Agriculteur</h2>
-      <input type="text" placeholder="..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+      <input type="text" placeholder="Agriculteur..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
       {tableau && agriculteurIdentifiant && (
         <ul>
           {tableau
@@ -141,7 +143,12 @@ export default function CreateMateriel() {
       )}
 
       <h2>Concessionnaire</h2>
-      <input type="text" placeholder="..." value={concessionnaireIdentifiant} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
+      <input
+        type="text"
+        placeholder="Concessionaire..."
+        value={concessionnaireIdentifiant}
+        onChange={(e) => setConcessionnaireIdentifiant(e.target.value)}
+      />
       {tableau && concessionnaireIdentifiant && (
         <section>
           {tableau

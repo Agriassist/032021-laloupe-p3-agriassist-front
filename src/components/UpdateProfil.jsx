@@ -1,9 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Styles/UpdateProfil.css';
 import camera from '../camera.png';
-import defaultpicture from '../images/twitter.jpg';
 import { useStateValue } from '../contexts/Context';
 import HautDePage from './HautDePage';
 
@@ -107,44 +105,42 @@ export default function UpdateProfil() {
 
   return (
     <div className="container__menu">
-      <HautDePage />
-      {pseudo && (
-        <div className="container__updateprofil">
-          <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
-          <div className="container__imgprofil">
-            <img src={imgphoto} alt="test" id="img__multer" />
+      <div className="container__updateprofil">
+        <HautDePage />
+        <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
+        <div className="container__imgprofil">
+          <img src={imgphoto} alt="test" id="img__multer" />
 
-            <label htmlFor="multer">
-              <img src={camera} alt="selection_image" id="imgPhoto" />
-            </label>
+          <label htmlFor="multer">
+            <img src={camera} alt="selection_image" id="imgPhoto" />
+          </label>
+        </div>
+        <div className="container__update__profil">
+          <div className="pseudo__update">
+            <h3>Pseudo:</h3>
+            <input type="text" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
           </div>
-          <div className="container__update__profil">
-            <div className="pseudo__update">
-              <h3>Pseudo:</h3>
-              <input type="text" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
-            </div>
-            <div className="prenom__update">
-              <h3>Prenom</h3>
-              <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
-            </div>
-            <div className="name__update">
-              <h3>Nom:</h3>
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
-            <div className="email__update">
-              <h3>Email:</h3>
-              <input type="email" name="" id="" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            <div className="phone__update">
-              <h3>Téléphone:</h3>
-              <input type="text" name="" id="" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
-            </div>
-            <div className="btn__submit__update" onClick={SubmitUpdateProfil}>
-              <h3>Update Profil</h3>
-            </div>
+          <div className="prenom__update">
+            <h3>Prenom</h3>
+            <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+          </div>
+          <div className="name__update">
+            <h3>Nom:</h3>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+          <div className="email__update">
+            <h3>Email:</h3>
+            <input type="email" name="" id="" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="phone__update">
+            <h3>Téléphone:</h3>
+            <input type="text" name="" id="" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+          </div>
+          <div className="btn__submit__update" onClick={SubmitUpdateProfil}>
+            <h3>Update Profil</h3>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
