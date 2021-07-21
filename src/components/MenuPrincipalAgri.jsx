@@ -8,7 +8,7 @@ export default function MenuPrincipalAgri() {
   const [{ status }] = useStateValue();
 
   return (
-    <div className="container__menuprincipal">
+    <div className="contanuprincipal">
       <HautDePage />
       <div className="container__quatrebloc">
         <Link to="/materiel" className="bloc">
@@ -51,20 +51,30 @@ export default function MenuPrincipalAgri() {
         )}
         {status === 'administrateur' && (
           <>
-            <Link to="/create_account" className="bloc__compte">
+            <Link to="/create_account" className="bloc">
               <div className="bloc__logo5">
                 <i className="fas fa-id-card"></i>
               </div>
               <p>Création de compte</p>
             </Link>
-            <Link to="/update_profil" className="bloc__compte">
+            <Link to="/update_profil" className="bloc">
               <div className="bloc__logo6">
                 <i className="fas fa-id-card"></i>
               </div>
               <p>Modification de compte</p>
             </Link>
-            <Link to="/create_materiel">creation de materiel</Link>
-            <Link to="/update_materiel">modification de materiel</Link>
+            <Link to="/create_materiel" className="bloc">
+              <div className="bloc__logo6">
+                <i className="fas fa-id-card"></i>
+              </div>
+              <p>creation de materiel</p>
+            </Link>
+            <Link to="/update_materiel" className="bloc">
+              <div className="bloc__logo6">
+                <i className="fas fa-id-card"></i>
+              </div>
+              <p>modification de materiel</p>
+            </Link>
           </>
         )}
       </div>

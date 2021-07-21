@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../Styles/Document.css';
 import agriculteur from '../images/agriculteur.png';
 import Document_BonTravail from './Document_BonTravail';
@@ -42,6 +43,26 @@ export default function Document() {
           {onClickChoice === 1 ? <Document_Facture /> : ''}
           {onClickChoice === 2 ? <Document_BonTravail /> : ''}
         </div>
+      </div>
+      <div className="container__icone__document">
+        <Link to="/fiche_technique">
+          <div className="bloc__image__doc">
+            <i class="far fa-file-pdf"></i>
+            <p>Ulpoad PDF</p>
+          </div>
+        </Link>
+        <Link to="/facture">
+          <div className="bloc__image__doc">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <p>Facture</p>
+          </div>
+        </Link>
+        <Link to="/bon-de-travail">
+          <div className="bloc__image__doc">
+            <i class="fas fa-print"></i>
+            <p>Bon de Travail</p>
+          </div>
+        </Link>
       </div>
     </div>
   );

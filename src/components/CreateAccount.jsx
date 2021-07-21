@@ -47,18 +47,18 @@ export default function CreateAccount() {
     <div>
       <div className="container__create__account">
         <HautDePage />
-        <input id="input__one__account" type="text" placeholder="Pseudo" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
-        <input id="input__two__account" type="text" placeholder="nom" value={name} onChange={(e) => setName(e.target.value)} />
-        <input id="input__three__account" type="text" placeholder="prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+        <input id="input__one__account" type="text" placeholder="Pseudo..." value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
+        <input id="input__two__account" type="text" placeholder="Nom..." value={name} onChange={(e) => setName(e.target.value)} />
+        <input id="input__three__account" type="text" placeholder="Prenom..." value={prenom} onChange={(e) => setPrenom(e.target.value)} />
 
-        <input id="input__four__account" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input id="input__five__account" type="password" placeholder="Mot de Passe" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <input id="input__six__account" type="text" placeholder="Téléphone" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+        <input id="input__four__account" type="text" placeholder="Email..." value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input id="input__five__account" type="text" placeholder="Mot de Passe..." value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input id="input__six__account" type="text" placeholder="Téléphone..." value={telephone} onChange={(e) => setTelephone(e.target.value)} />
         <select name="status__choice" id="status__choice" value={status} onChange={handleChange}>
           <option value="administrateur">Administrateur</option>
           <option value="agriculteur">Agriculteur</option>
           <option value="concessionnaire">Concessionnaire</option>
-          Select status
+          Select status...
         </select>
         <div className="container__btn">
           <button id="btn__create__account" onClick={submitCreation}>
