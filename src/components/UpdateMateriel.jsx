@@ -17,7 +17,6 @@ function UpdateMateriel(props) {
   const [tableau, setTableau] = useState([]);
   const [tableauModele, setTableauModele] = useState([]);
   const [tableauMarque, setTableauMarque] = useState([]);
-  const [tableauMate, setTableauMate] = useState([]);
   const [marqueId, setMarqueId] = useState();
   const [modeleId, setModeleId] = useState();
   const [park, setPark] = useState([]);
