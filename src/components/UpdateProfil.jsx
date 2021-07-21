@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Styles/UpdateProfil.css';
@@ -16,7 +18,7 @@ export default function UpdateProfil() {
   const [imgphoto, setImgphoto] = useState('');
   console.log(file);
 
-  const [{ token, id }, dispatch] = useStateValue();
+  const [{ token, id, profil_picture }, dispatch] = useStateValue();
 
   useEffect(() => {
     axios({
@@ -50,19 +52,21 @@ export default function UpdateProfil() {
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
     if (type !== 'image/png' || type !== 'image/jpeg') {
-      console.log(event.target.files[0]);
+      console.log(event.target.files[0], 'here');
       setFileSelected(event.target.files[0]);
+      SubmitUpdateProfil(null, event.target.files[0]);
     } else {
       alert("Veuillez selectionner un format d'image valide");
     }
   };
 
-  const SubmitUpdateProfil = (e) => {
-    e.preventDefault();
+  const SubmitUpdateProfil = (_, fichier) => {
+    console.log(fichier);
     let data;
-    if (fileSelected) {
+    console.log(fileSelected);
+    if (fichier) {
       data = new FormData();
-      data.append('file', fileSelected);
+      data.append('file', fichier);
       console.log(pseudo, prenom, telephone);
       data.append(
         'user',
@@ -72,6 +76,7 @@ export default function UpdateProfil() {
           nom: name,
           email: email,
           phone: telephone,
+          profil_picture,
         }),
       );
     } else {
@@ -97,6 +102,7 @@ export default function UpdateProfil() {
         setPrenom(data.prenom);
         setEmail(data.email);
         setTelephone(data.phone);
+        dispatch({ type: 'SET_PROFIL_PICTURE', profil_picture: data.photo_profil });
       })
       .catch((err) => {
         alert('Lien creation fail');

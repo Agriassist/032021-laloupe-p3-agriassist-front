@@ -102,13 +102,13 @@ function App() {
             <Route path="/popup">
               <Popup />
             </Route>
+            <Route path="/update_profil">
+              <UpdateProfil />
+            </Route>
             {status === 'administrateur' && (
               <>
                 <Route path="/create_account">
                   <CreateAccount />
-                </Route>
-                <Route path="/update_profil">
-                  <UpdateProfil />
                 </Route>
                 <Route path="/create_materiel">
                   <CreateMateriel />
