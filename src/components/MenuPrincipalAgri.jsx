@@ -1,24 +1,28 @@
 import '../Styles/MenuPrincipalAgri.css';
 import HautDePage from './HautDePage';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useStateValue } from '../contexts/Context';
 
 export default function MenuPrincipalAgri() {
   const [{ status }] = useStateValue();
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <div className="contanuprincipal">
       <HautDePage />
       <div className="container__quatrebloc">
-        <Link to="/materiel" className="bloc">
+        <Link to="/materiel" onClick={() => window.scroll(0, 0)} className="bloc">
           <div className="bloc__logo1">
             <i className="fas fa-tractor"></i>
           </div>
           <p>Mon Parc Materiel</p>
         </Link>
         {status === 'agriculteur' && (
-          <Link to="/profil" className="bloc">
+          <Link to="/profil" onClick={() => window.scroll(0, 0)} className="bloc">
             <div className="bloc__logo2">
               <i className="fas fa-id-card"></i>
             </div>
@@ -31,7 +35,7 @@ export default function MenuPrincipalAgri() {
           </div>
           <p>Geolocalisation</p>
         </div>
-        <Link to="/document" className="bloc">
+        <Link to="/document" onClick={() => window.scroll(0, 0)} className="bloc">
           <div className="bloc__logo4">
             <i className="fas fa-folder-open"></i>
           </div>
@@ -51,30 +55,19 @@ export default function MenuPrincipalAgri() {
         )}
         {status === 'administrateur' && (
           <>
-            <Link to="/create_account" className="bloc">
+            <Link to="/create_account" onClick={() => window.scroll(0, 0)} className="bloc">
               <div className="bloc__logo5">
                 <i className="fas fa-id-card"></i>
               </div>
               <p>Création de compte</p>
             </Link>
-            <Link to="/update_profil" className="bloc">
+            <Link to="/update_profil" onClick={() => window.scroll(0, 0)} className="bloc">
               <div className="bloc__logo6">
                 <i className="fas fa-id-card"></i>
               </div>
               <p>Modification de compte</p>
             </Link>
-            <Link to="/create_materiel" className="bloc">
-              <div className="bloc__logo6">
-                <i className="fas fa-id-card"></i>
-              </div>
-              <p>creation de materiel</p>
-            </Link>
-            <Link to="/update_materiel" className="bloc">
-              <div className="bloc__logo6">
-                <i className="fas fa-id-card"></i>
-              </div>
-              <p>modification de materiel</p>
-            </Link>
+            <Link to="/create_materiel">creation de materiel</Link>
           </>
         )}
       </div>

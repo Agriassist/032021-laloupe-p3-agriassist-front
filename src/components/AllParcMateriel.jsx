@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
@@ -33,14 +34,24 @@ function AllParcMateriel(props) {
     }, []);
   } else if (status === 'administrateur') {
     useEffect(() => {
+      let tableauMat = [];
       axios({
         method: 'GET',
         url: `${process.env.REACT_APP_API_URL}/api/materiels`,
         // headers: { authorization: 'Bearer ' + token },
       })
-        .then((data) => {
+        .then(async (data) => {
           console.log(data.data);
-          setInfos(data.data);
+          const reduc = await Promise.all(
+            data.data.map((text) =>
+              axios({
+                method: 'GET',
+                url: `${process.env.REACT_APP_API_URL}/api/materiels/${text.id}`,
+              }),
+            ),
+          );
+          tableauMat = reduc.map((mat) => mat.data);
+          setInfos(tableauMat);
         })
         .catch((err) => {
           alert(err.response.data);
@@ -50,10 +61,10 @@ function AllParcMateriel(props) {
 
   return (
     <div className="container__menu">
+      {console.log(infos)}
       <header className="parc-header">
         <div className="blocMonMateriel">
           <div className="blocMonMateriel__logo">
-            {/* <img className="imagefondparcmateriel" alt="tracesrouestracteurs" src="./src/fondparcmateriel.jpg" width="50%" /> */}
             <i className="fas fa-tractor"></i>
           </div>
           <p>Mon matériel</p>
@@ -61,12 +72,15 @@ function AllParcMateriel(props) {
       </header>
       <div className="parc-image">
         {infos.map((text, index) => (
-          <Link className="cadre-trackteur" key={index} onClick={() => selectMateriel(text.id)} to="/OneParcMateriel" role="link">
+          <Link className="cadre-trackteur" key={index} onClick={() => selectMateriel(text.materiel.id)} to="/OneParcMateriel" role="link">
             <img className="image-trackteur" alt={index} src="./src/images/tracteurimagemateriel.jpg" />
-            <p className="materielName">
-              {text.serial_number}&nbsp;
-              {text.id}&nbsp;
-            </p>
+            <section className="materielName">
+              <p> {text.marque.name}&nbsp; </p>
+              <p>
+                {text.modele.name}&nbsp;
+                {text.materiel.serial_number}&nbsp;
+              </p>
+            </section>
           </Link>
         ))}
       </div>

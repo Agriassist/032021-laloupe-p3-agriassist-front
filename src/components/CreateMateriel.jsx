@@ -37,8 +37,6 @@ export default function CreateMateriel() {
       .then((data) => data.data)
       .then((data) => {
         setTableauModele(data);
-        setType(data[0].name);
-        setModeleId(data[0].id);
         console.log(data);
       });
   }, []);
@@ -48,8 +46,6 @@ export default function CreateMateriel() {
       .then((data) => data.data)
       .then((data) => {
         setTableauMarque(data);
-        setTypeMa(data[0].name);
-        setMarqueId(data[0].id);
         console.log(data);
       });
   }, []);
@@ -83,16 +79,6 @@ export default function CreateMateriel() {
         setAgriculteurIdentifiant('');
         setConcessionnaireIdentifiant('');
       })
-      .axios({
-        method: 'POST',
-        url: 'http://localhost:8000/api/park',
-        data: { user_id: agriculteurIdentifiant },
-      })
-      .axios({
-        method: 'POST',
-        url: 'http://localhost:8000/api/park',
-        data: { materiel_id: tableauMate.id },
-      })
       .catch((err) => {
         alert('Lien creation fail');
       });
@@ -104,11 +90,14 @@ export default function CreateMateriel() {
       <input type="text" placeholder="Date de mise en service..." value={year} onChange={(e) => setYear(e.target.value)} maxLength="4" />
       <input type="text" placeholder="Numero de série..." value={serialNumber} onChange={(e) => setSerialNumber(e.target.value)} />
       <select
-        defaultValue={typeMa}
+        defaultValue="..."
         onChange={(e) => {
           setTypeMa(e.target.value);
           setMarqueId(e.target.selectedOptions[0].id);
         }}>
+        <option key="0" id="0">
+          ...
+        </option>
         {tableauMarque.map((text) => (
           <option key={text.id} id={text.id}>
             {text.name}
@@ -116,11 +105,14 @@ export default function CreateMateriel() {
         ))}
       </select>
       <select
-        defaultValue={type}
+        defaultValue="..."
         onChange={(e) => {
           setType(e.target.value);
           setModeleId(e.target.selectedOptions[0].id);
         }}>
+        <option key="0" id="0">
+          ...
+        </option>
         {tableauModele.map((text) => (
           <option key={text.id} id={text.id}>
             {text.name}

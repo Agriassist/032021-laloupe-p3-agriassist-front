@@ -2,6 +2,7 @@ import '../Styles/OneParcMateriel.css';
 import HautDePage from './HautDePage';
 import agriculteur from '../images/agriculteur.png';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useStateValue } from '../contexts/Context';
 import axios from 'axios';
 
@@ -47,6 +48,7 @@ function OneParcMateriel() {
         <p> Dernière vidange moteur: {infos.prev_oil}</p>
         <p> Prochaine vidange dans: {infos.next_oil}</p>
         <p> Concess prioritaire pour dépannage: Ets Cloué</p>
+        <Link to="/update_mat">modification de materiel</Link>
       </div>
       {fiche.map((file, i) => (
         <div className="pdf__bymodele" key={i}>
