@@ -38,7 +38,6 @@ function AllParcMateriel(props) {
       axios({
         method: 'GET',
         url: `${process.env.REACT_APP_API_URL}/api/materiels`,
-        // headers: { authorization: 'Bearer ' + token },
       })
         .then(async (data) => {
           console.log(data.data);
@@ -58,7 +57,6 @@ function AllParcMateriel(props) {
         });
     }, []);
   }
-
   return (
     <div className="container__menu">
       {console.log(infos)}

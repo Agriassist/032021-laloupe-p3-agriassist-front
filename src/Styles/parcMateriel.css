@@ -56,9 +56,8 @@
 
 .parc-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 10vh;
+  flex-direction: row;
+  justify-content: space-evenly;
   /* background-color: #3d85c6; */
   background-color: #3d86c625;
   font-size: 20px;
@@ -96,7 +95,7 @@
     font-size: 20px;
     align-items: center;
   }
-  
+
   .describe-number-serial {
     font-size: 18px;
     align-items: center;
@@ -105,11 +104,11 @@
     height: 15vh;
   }
   .cadre-trackteur {
-    height: 29vh;
-    width: 25vw;
-
+    height: 39vh;
+    width: 30vw;
     margin-bottom: 10vh;
   }
+
   .image-trackteur {
     width: 20vw;
   }
@@ -117,7 +116,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 10vh;
+    margin-top: 20vh;
     justify-content: space-evenly;
   }
   .image-trackteur {
