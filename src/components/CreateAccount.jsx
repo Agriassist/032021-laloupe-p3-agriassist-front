@@ -3,6 +3,7 @@ import '../Styles/CreateAccount.css';
 import logoAgri from '../images/logoAgri.png';
 import axios from 'axios';
 import HautDePage from './HautDePage';
+import '../Styles/OneParcMateriel.css';
 
 export default function CreateAccount() {
   const [pseudo, setPseudo] = useState('');
@@ -47,6 +48,7 @@ export default function CreateAccount() {
     <div>
       <div className="container__create__account">
         <HautDePage />
+        <p className="OPM_title">Création d'un compte</p>
         <input id="input__one__account" type="text" placeholder="Pseudo..." value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
         <input id="input__two__account" type="text" placeholder="Nom..." value={name} onChange={(e) => setName(e.target.value)} />
         <input id="input__three__account" type="text" placeholder="Prenom..." value={prenom} onChange={(e) => setPrenom(e.target.value)} />
@@ -62,7 +64,7 @@ export default function CreateAccount() {
         </select>
         <div className="container__btn">
           <button id="btn__create__account" onClick={submitCreation}>
-            Create Account
+            Créer le compte
           </button>
         </div>
       </div>

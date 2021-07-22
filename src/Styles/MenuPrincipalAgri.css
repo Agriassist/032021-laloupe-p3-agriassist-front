@@ -45,7 +45,8 @@
 .bloc__logo3,
 .bloc__logo4,
 .bloc__logo5,
-.bloc__logo6 {
+.bloc__logo6,
+.bloc__logo7 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +62,8 @@
 }
 
 .bloc__logo5,
-.bloc__logo6 {
+.bloc__logo6,
+.bloc__logo7 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,6 +91,9 @@
 }
 .bloc__logo6 {
   background-image: url(./src/images/modifcompte.jpg);
+}
+.bloc__logo7 {
+  background-image: url(./src/images/fondcreamateriel.jpg);
 }
 .bloc p,
 .bloc__compte p {

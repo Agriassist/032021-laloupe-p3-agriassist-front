@@ -48,19 +48,19 @@ export default function Document() {
         <Link to="/fiche_technique">
           <div className="bloc__image__doc">
             <i class="far fa-file-pdf"></i>
-            <p>Ulpoad PDF</p>
+            <p className="legende__icones">Télécharger un PDF</p>
           </div>
         </Link>
         <Link to="/facture">
           <div className="bloc__image__doc">
             <i class="fas fa-file-invoice-dollar"></i>
-            <p>Facture</p>
+            <p className="legende__icones">Facture</p>
           </div>
         </Link>
         <Link to="/bon-de-travail">
           <div className="bloc__image__doc">
             <i class="fas fa-print"></i>
-            <p>Bon de Travail</p>
+            <p className="legende__icones">Bon de Travail</p>
           </div>
         </Link>
       </div>

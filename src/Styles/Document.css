@@ -204,6 +204,11 @@
 .bloc__image__doc p {
   margin-bottom: 1rem;
 }
+.legende__icones {
+  font-size: 14px;
+  font-family: 'Montserrat';
+}
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .container__icone__document {
     width: 100%;

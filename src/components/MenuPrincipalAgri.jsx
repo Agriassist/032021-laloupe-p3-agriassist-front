@@ -67,7 +67,12 @@ export default function MenuPrincipalAgri() {
               </div>
               <p>Modification de compte</p>
             </Link>
-            <Link to="/create_materiel">creation de materiel</Link>
+            <Link to="/create_materiel" onClick={() => window.scroll(0, 0)} className="bloc">
+              <div className="bloc__logo7">
+                <i className="fas fa-tractor"></i>
+              </div>
+              <p>Création de materiel</p>
+            </Link>
           </>
         )}
       </div>

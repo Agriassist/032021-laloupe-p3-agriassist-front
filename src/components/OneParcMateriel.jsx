@@ -41,14 +41,30 @@ function OneParcMateriel() {
       <HautDePage />
       <p className="OPM_title">Mon Parc</p>
       <div className="OPM_infos">
-        <p>Marque: {infos.marque}</p>
-        <p> Modèle : {infos.modele}</p>
-        <p>Mise en service: {infos.MES}</p>
-        <p> Numéro de série: {infos.serialNumber}</p>
-        <p> Dernière vidange moteur: {infos.prev_oil}</p>
-        <p> Prochaine vidange dans: {infos.next_oil}</p>
-        <p> Concess prioritaire pour dépannage: Ets Cloué</p>
-        <Link to="/update_mat">modification de materiel</Link>
+        <p>
+          Marque : <span>{infos.marque}</span>
+        </p>
+        <p>
+          Modèle : <span>{infos.modele}</span>
+        </p>
+        <p>
+          Mise en service : <span>{infos.MES}</span>
+        </p>
+        <p>
+          Numéro de série : <span>{infos.serialNumber}</span>
+        </p>
+        <p>
+          Dernière vidange moteur : <span>{infos.prev_oil}</span>
+        </p>
+        <p>
+          Prochaine vidange dans : <span>{infos.next_oil}</span>
+        </p>
+        <p>
+          Concess prioritaire pour dépannage : <span>Ets Cloué</span>
+        </p>
+        <Link to="/update_mat" className="btn__submit__modify">
+          <p>Modification du materiel</p>
+        </Link>
       </div>
       {fiche.map((file, i) => (
         <div className="pdf__bymodele" key={i}>
