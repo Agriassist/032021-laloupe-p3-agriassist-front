@@ -35,7 +35,6 @@ export default function HautDePage() {
       });
   }, []);
 
-
   return (
     <div className="haut_de_page">
       <img
