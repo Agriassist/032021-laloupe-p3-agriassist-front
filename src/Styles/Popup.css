@@ -26,7 +26,6 @@
 }
 .container__popup {
   background: #fff;
-  height: 65%;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -102,7 +101,7 @@
 .bloc__retour__accueil {
   display: flex;
   justify-content: space-evenly;
-  margin: 1rem auto;
+  margin: 1rem auto auto auto;
   font-family: 'Montserrat';
   text-align: center;
   font-size: 14px;

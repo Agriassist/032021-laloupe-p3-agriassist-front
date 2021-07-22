@@ -45,7 +45,8 @@
 .bloc__logo3,
 .bloc__logo4,
 .bloc__logo5,
-.bloc__logo6 {
+.bloc__logo6,
+.bloc__logo7 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,22 +60,6 @@
   box-shadow: 5px 5px 5px black;
   font-size: 40px;
 }
-
-.bloc__logo5,
-.bloc__logo6 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  height: 65%;
-  margin: auto auto;
-  background-size: cover;
-  background-repeat: round;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px rgb(0, 0, 0);
-  font-size: 40px;
-}
-
 .bloc__logo2 {
   background-image: url(./src/images/fondprofil.jpg);
 }
@@ -89,6 +74,9 @@
 }
 .bloc__logo6 {
   background-image: url(./src/images/modifcompte.jpg);
+}
+.bloc__logo7 {
+  background-image: url(./src/images/fondcreamateriel.jpg);
 }
 .bloc p,
 .bloc__compte p {
@@ -151,13 +139,12 @@
   font-size: 60px;
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .bloc{
+  .bloc {
     height: 30vh;
     width: 42vw;
   }
   .bloc p,
   .bloc__compte p {
-   
     padding: 1rem;
   }
 }
@@ -169,7 +156,7 @@
     flex-direction: column;
     flex-wrap: unset;
   }
-  .bloc{
+  .bloc {
     height: 45vh;
     width: 40vw;
     margin-top: 4rem;

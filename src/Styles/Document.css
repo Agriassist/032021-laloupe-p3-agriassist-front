@@ -204,6 +204,9 @@
 .bloc__image__doc p {
   margin-bottom: 1rem;
 }
+.legende__icones {
+  font-size: 14px;
+  font-family: 'Montserrat';
 
 .btn__facture {
   padding: 5px 10px;

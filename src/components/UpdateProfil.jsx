@@ -6,6 +6,7 @@ import '../Styles/UpdateProfil.css';
 import camera from '../camera.png';
 import { useStateValue } from '../contexts/Context';
 import HautDePage from './HautDePage';
+import '../Styles/OneParcMateriel.css';
 
 export default function UpdateProfil() {
   const [fileSelected, setFileSelected] = useState(null);
@@ -113,6 +114,7 @@ export default function UpdateProfil() {
     <div className="container__menu">
       <div className="container__updateprofil">
         <HautDePage />
+        <p className="OPM_title">Modification d'un compte</p>
         <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
         <div className="container__imgprofil">
           <img src={imgphoto} alt="test" id="img__multer" />
@@ -143,7 +145,7 @@ export default function UpdateProfil() {
             <input type="text" name="" id="" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
           </div>
           <div className="btn__submit__update" onClick={SubmitUpdateProfil}>
-            <h3>Update Profil</h3>
+            <h3>Charger les modifications</h3>
           </div>
         </div>
       </div>
