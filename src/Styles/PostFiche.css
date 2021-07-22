@@ -3,18 +3,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--blueColor);
+  /* background: var(--blueColor); */
   height: 100vh;
 }
 
 #upload__fiche__tech {
   width: 100%;
   padding: 10px 10px;
-  background: grey;
+  background: white;
   border: 2px solid #000;
   border-radius: 50%;
   margin: 2rem 0px;
   cursor: pointer;
+  align-items: center;
 }
 
 .container__listpdf {
@@ -27,7 +28,7 @@
   display: flex;
   margin-bottom: 1rem;
 }
-.one__pdf:hover{
+.one__pdf:hover {
   cursor: pointer;
 }
 .one__pdf i {
@@ -46,14 +47,22 @@
   position: relative;
 }
 #btn__fiche {
-  margin: 2rem auto;
-  padding: 10px 10px;
-  background: #000;
-  color: #fff;
-  border: none;
-  border: 2px solid #fff;
-  border-radius: 15px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  font-family: 'Montserrat';
+  text-align: center;
+  font-size: 14px;
+  color: black;
+  background-color: rgb(231, 160, 6);
+  border-radius: 20px;
+  width: 20vh;
+  box-shadow: 5px 3px 3px black;
+  padding: 10px 0;
+  margin: 2rem auto 2rem auto;
+}
+.menuItemModele {
+  font-family: 'Montserrat';
 }
 .container__pdf {
   display: flex;
@@ -62,7 +71,7 @@
 }
 
 .container__pdf label {
-  width: 7%;
+  width: 15%;
 }
 
 @media screen and (min-width: 1024px) {
@@ -74,13 +83,14 @@
     justify-content: space-between;
     flex-wrap: wrap;
   }
-  .container__listpdf i{
+  .container__listpdf i {
     font-size: 35px;
-  }.container__listpdf p{
+  }
+  .container__listpdf p {
     font-size: 35px;
     font-style: italic;
   }
-  .one__pdf{
+  .one__pdf {
     margin: 1rem 1rem 1rem 0px;
   }
 }

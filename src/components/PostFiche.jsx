@@ -10,15 +10,22 @@ import '../Styles/PostFiche.css';
 import camera from '../camera.png';
 import HautDePage from '../components/HautDePage';
 import axios from 'axios';
+import '../Styles/OneParcMateriel.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '4rem',
+    fontFamily: 'Montserrat',
     '& .MuiOutlinedInput-notchedOutline': {
       borderColor: '#fff',
+      fontFamily: 'Montserrat',
     },
     '& .MuiFormLabel-root': {
       color: '#fff',
+      fontFamily: 'Montserrat',
+    },
+    '& .MuiMenuItem-root': {
+      fontFamily: 'Montserrat',
     },
   },
 
@@ -27,18 +34,26 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 150,
     color: '#fff',
     marginTop: '2rem',
+    fontFamily: 'Montserrat',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+    fontFamily: 'Montserrat',
     '&::before': {
       borderBottom: '1px solid #fff',
+      fontFamily: 'Montserrat',
+      color: '#fff',
     },
+  },
+  menuItem: {
+    fontFamily: 'Montserrat',
   },
   icon: {
     color: '#fff',
   },
   input: {
     color: '#fff',
+    fontFamily: 'Montserrat',
   },
 }));
 
@@ -123,52 +138,54 @@ export default function PostFiche() {
   return (
     <div className="container__postfiche">
       <HautDePage />
-
-      <div className="container__listpdf">
-        {ficheTech.map((fiche, index) => (
-          <div key={index} className="one__pdf">
-            <i className="fas fa-file-pdf"></i>
-            <p key={index}>{fiche.name}</p>
-          </div>
-        ))}
-      </div>
-
-      <input type="file" accept="image/*" id="upload__fiche__tech" onChange={onChangeFile} />
-
-      <FormControl required className={classes.formControl}>
-        <InputLabel id="demo-simple-select-required-label" style={{ color: '#fff', fontSize: 20 }}>
-          Modele
-        </InputLabel>
-        <Select
-          defaultValue={typeModele}
-          onChange={choiceModele}
-          className={classes.selectEmpty}
-          inputProps={{
-            classes: {
-              icon: classes.icon,
-            },
-          }}>
-          {modele.map((modeles, index) => (
-            <MenuItem id={modeles.id} key={index} value={modeles.name}>
-              {modeles.name}
-            </MenuItem>
+      <p className="OPM_title">Télécharger une fiche technique</p>
+      <div className="OPM_infos">
+        <div className="container__listpdf">
+          {ficheTech.map((fiche, index) => (
+            <div key={index} className="one__pdf">
+              <i className="fas fa-file-pdf"></i>
+              <p key={index}>{fiche.name}</p>
+            </div>
           ))}
-        </Select>
-        <FormHelperText style={{ color: '#fff', fontSize: 15 }}>Required</FormHelperText>
-      </FormControl>
+        </div>
 
-      <div className={classes.root}>
-        <TextField id="outlined-helperText" label="Name File..." value={name} onChange={(e) => setName(e.target.value)} variant="outlined" />
-      </div>
-      <div className="container__pdf">
-        <label htmlFor="upload__fiche__tech">
-          <img src={camera} alt="selection_image" id="upload__fiche__tech" />
-        </label>
-      </div>
+        <input type="file" accept="image/*" id="upload__fiche__tech" onChange={onChangeFile} />
 
-      <button id="btn__fiche" onClick={submitFiles}>
-        Post Fiche
-      </button>
+        <FormControl required className={classes.formControl}>
+          <InputLabel id="demo-simple-select-required-label" style={{ color: '#fff', fontSize: 20, fontFamily: 'Montserrat' }}>
+            Modèle
+          </InputLabel>
+          <Select
+            defaultValue={typeModele}
+            onChange={choiceModele}
+            className={classes.selectEmpty}
+            inputProps={{
+              classes: {
+                icon: classes.icon,
+              },
+            }}>
+            {modele.map((modeles, index) => (
+              <MenuItem className={classes.menuItem} id={modeles.id} key={index} value={modeles.name}>
+                {modeles.name}
+              </MenuItem>
+            ))}
+          </Select>
+          <FormHelperText style={{ color: '#fff', fontSize: 15, fontFamily: 'Montserrat' }}>Obligatoire</FormHelperText>
+        </FormControl>
+
+        <div className={classes.root}>
+          <TextField id="outlined-helperText" label="Nom du fichier..." value={name} onChange={(e) => setName(e.target.value)} variant="outlined" />
+        </div>
+        <div className="container__pdf">
+          <label htmlFor="upload__fiche__tech">
+            <img src={camera} alt="selection_image" id="upload__fiche__tech" />
+          </label>
+        </div>
+
+        <button id="btn__fiche" onClick={submitFiles}>
+          Charger la fiche
+        </button>
+      </div>
     </div>
   );
 }
