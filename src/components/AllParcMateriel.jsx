@@ -57,7 +57,6 @@ function AllParcMateriel(props) {
         });
     }, []);
   }
-
   return (
     <div className="container__menu">
       {console.log(infos)}
