@@ -4,6 +4,8 @@ export const initialState = {
   id: undefined,
   materielId: null,
   popup: null,
+  profil_picture: 'twitter.jpg',
+  name: null,
 };
 
 const reducer = (state, action) => {
@@ -35,6 +37,18 @@ const reducer = (state, action) => {
     }
     case 'SET_POPUP': {
       return { ...state, popup: action.popup };
+    }
+    case 'SET_PROFIL_PICTURE': {
+      return { ...state, profil_picture: action.profil_picture };
+    }
+    case 'RESET_PROFIL_PICTURE': {
+      return { ...state, profil_picture: 'twitter.jpg' };
+    }
+    case 'SET_NAME': {
+      return { ...state, name: action.name };
+    }
+    case 'RESET_NAME': {
+      return { ...state, name: null };
     }
     default: {
       return state;
