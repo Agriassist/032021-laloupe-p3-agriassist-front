@@ -140,21 +140,10 @@ export default function Document() {
           <input type="file" accept="image/*" id="upload__facture" onChange={onChangeFileFacture} />
           <label htmlFor="upload__facture">
             <i class="fas fa-file-invoice-dollar"></i>
-<<<<<<< HEAD
-            <p className="legende__icones">Facture</p>
-          </div>
-        </Link>
-        <Link to="/bon-de-travail">
-          <div className="bloc__image__doc">
-            <i class="fas fa-print"></i>
-            <p className="legende__icones">Bon de Travail</p>
-          </div>
-        </Link>
-=======
           </label>
-          <p>Facture</p>
+          <p className="legende__icones">Facture</p>
           <button className={fileFacture ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitFacture}>
-            Save
+            Sauvegarder
           </button>
         </div>
 
@@ -163,12 +152,11 @@ export default function Document() {
           <label htmlFor="upload__bontravail">
             <i class="fas fa-print"></i>
           </label>
-          <p>Bon de Travail</p>
+          <p className="legende__icones">Bon de Travail</p>
           <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onclick={submitBonTravil}>
-            Save
+            Sauvegarder
           </button>
         </div>
->>>>>>> dev
       </div>
     </div>
   );
