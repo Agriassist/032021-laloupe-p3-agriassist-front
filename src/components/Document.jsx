@@ -1,13 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Document.css';
-import agriculteur from '../images/agriculteur.png';
+import axios from 'axios';
+import { useStateValue } from '../contexts/Context';
 import Document_BonTravail from './Document_BonTravail';
 import Document_Facture from './Document_Facture';
 import HautDePage from './HautDePage';
 
 export default function Document() {
   const [onClickChoice, setOnClickChoice] = useState(1);
+  const [fileFacture, setFileFacture] = useState('');
+  const [fileBonTravail, setFileBonTravail] = useState('');
+  const [facture, setFacture] = useState([]);
+  const [bonTravail, setBonTravail] = useState([]);
+
+  const { id } = useStateValue();
 
   const focus = useRef(null);
 
@@ -15,9 +22,86 @@ export default function Document() {
     setOnClickChoice(params);
   }
 
+  const onChangeFileFacture = (event) => {
+    const { type } = event.target.files[0];
+    if (type !== 'image/png' || type !== 'image/jpeg') {
+      console.log(event.target.files[0], 'here');
+      setFileFacture(event.target.files);
+    } else {
+      alert("Veuillez selectionner un format d'image valide");
+    }
+  };
+
+  const onChangeFileBonTravail = (event) => {
+    const { type } = event.target.files[0];
+    if (type === 'image/png' || type === 'image/jpeg') {
+      console.log(event.target.files[0], 'here');
+      setFileBonTravail(event.target.files[0]);
+    } else {
+      alert("Veuillez selectionner un format d'image valide");
+    }
+  };
+
   useEffect(() => {
     focus.current.focus();
   }, []);
+
+  function submitFacture(_, facture) {
+    let data;
+    if (facture) {
+      data = new FormData();
+      data.append('file', facture);
+      axios({
+        method: 'POST',
+        url: `http://localhost:8000/api/facture/`,
+        data,
+      })
+        .then(() => {
+          setFileFacture('');
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else {
+      alert('no file are selected');
+    }
+  }
+
+  function submitBonTravil(_, bonTravail) {
+    let data;
+    if (bonTravail) {
+      data = new FormData();
+      data.append('file', bonTravail);
+      axios({
+        method: 'POST',
+        url: `http://localhost:8000/api/bon_travail/`,
+        data,
+      })
+        .then(() => {
+          setFileFacture('');
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else {
+      alert('no file are selected');
+    }
+  }
+
+  useEffect(function () {
+    axios(`http://localhost:8000/facture/${id}`)
+      .then((data) => data.data)
+      .then((data) => {
+        setFacture(data);
+      });
+  });
+  useEffect(function () {
+    axios(`http://localhost:8000/bon_travail/${id}`)
+      .then((data) => data.data)
+      .then((data) => {
+        setBonTravail(data);
+      });
+  });
 
   return (
     <div className="container__menu">
@@ -51,9 +135,12 @@ export default function Document() {
             <p className="legende__icones">Télécharger un PDF</p>
           </div>
         </Link>
-        <Link to="/facture">
-          <div className="bloc__image__doc">
+
+        <div className="bloc__image__doc">
+          <input type="file" accept="image/*" id="upload__facture" onChange={onChangeFileFacture} />
+          <label htmlFor="upload__facture">
             <i class="fas fa-file-invoice-dollar"></i>
+<<<<<<< HEAD
             <p className="legende__icones">Facture</p>
           </div>
         </Link>
@@ -63,6 +150,25 @@ export default function Document() {
             <p className="legende__icones">Bon de Travail</p>
           </div>
         </Link>
+=======
+          </label>
+          <p>Facture</p>
+          <button className={fileFacture ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitFacture}>
+            Save
+          </button>
+        </div>
+
+        <div className="bloc__image__doc">
+          <input type="file" accept="image/*" id="upload__bontravail" onChange={onChangeFileBonTravail} />
+          <label htmlFor="upload__bontravail">
+            <i class="fas fa-print"></i>
+          </label>
+          <p>Bon de Travail</p>
+          <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onclick={submitBonTravil}>
+            Save
+          </button>
+        </div>
+>>>>>>> dev
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ export default function PageConnection() {
   const refInputOne = useRef(null);
   const refInputTwo = useRef(null);
   const refAuthen = useRef(null);
+  const refBtn = useRef(null);
 
   let history = useHistory();
 
@@ -26,9 +27,10 @@ export default function PageConnection() {
     const TimelineLogin = gsap.timeline();
 
     TimelineLogin.from(refImg.current, { y: -50, duration: 0.7, delay: 4.625, opacity: 0, ease: 'power2.out' })
-      .from(refInputOne.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' })
-      .from(refInputTwo.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' })
-      .from(refAuthen.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' });
+      .from(refInputOne.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' }, '-=0.2s')
+      .from(refInputTwo.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' }, '-=0.2s')
+      .from(refBtn.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' }, '-=0.2s')
+      .from(refAuthen.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' }, '-=0.2s');
   }, []);
 
   useEffect(() => {
@@ -91,7 +93,7 @@ export default function PageConnection() {
           ref={refInputTwo}
         />
 
-        <button className="btn__login__account" to="/users" id="btn__login__account" onTouchStart={submitLogin} onClick={submitLogin}>
+        <button className="btn__login__account" to="/users" id="btn__login__account" onTouchStart={submitLogin} onClick={submitLogin} ref={refBtn}>
           Login
         </button>
         <div className="container__authen ">
