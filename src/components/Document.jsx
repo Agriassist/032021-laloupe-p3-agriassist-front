@@ -146,7 +146,6 @@ export default function Document() {
             Sauvegarder
           </button>
         </div>
-
         <div className="bloc__image__doc">
           <input type="file" accept="image/*" id="upload__bontravail" onChange={onChangeFileBonTravail} />
           <label htmlFor="upload__bontravail">
