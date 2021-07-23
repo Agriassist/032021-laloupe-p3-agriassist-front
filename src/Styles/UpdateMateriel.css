@@ -17,22 +17,22 @@
   text-align: center;
   margin: 1rem auto;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   border-color: #3d86c680;
 }
 
 .title__agri h3,
 .title__concess h3 {
-  margin-top: 3rem;
+  margin-top: 1rem;
   font-family: 'Montserrat';
   font-size: 20px;
-  color: white;
+  color: black;
 }
 .select__marque,
 .select__modele {
   font-family: 'Montserrat';
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 10px;
   text-align: center;
   background-color: white;
@@ -46,7 +46,26 @@
   margin: 1rem auto;
   font-family: 'Montserrat';
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   border-color: #3d86c680;
+}
+
+.titleUpdateMateriel {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  /* text-decoration: underline; */
+  /* margin-top: 2rem; */
+  font-family: 'Montserrat';
+  font-size: 20px;
+  color: black;
+}
+
+@media screen and (min-width: 1024px) {
+  .OPM_infos input,
+  .title__agri input,
+  .title__concess input {
+    font-size: 18px;
+  }
 }

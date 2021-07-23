@@ -129,8 +129,7 @@ function UpdateMateriel(props) {
       <div className="OPM_infos">
         {infos.materiel && park.length > 0 && (
           <>
-            <input type="number" defaultValue={infos.materiel.year} onChange={(e) => setYear(e.target.value)} />
-            <input type="text" defaultValue={infos.materiel.serial_number} onChange={(e) => setSerialNumber(e.target.value)} />
+            <h3 className="titleUpdateMateriel">Marque :</h3>
             <select
               className="select__marque"
               defaultValue="..."
@@ -147,6 +146,7 @@ function UpdateMateriel(props) {
                 </option>
               ))}
             </select>
+            <h3 className="titleUpdateMateriel">Modèle :</h3>
             <select
               className="select__modele"
               defaultValue="..."
@@ -163,29 +163,16 @@ function UpdateMateriel(props) {
                 </option>
               ))}
             </select>
+            <h3 className="titleUpdateMateriel">Année de mise en service :</h3>
+            <input type="number" defaultValue={infos.materiel.year} onChange={(e) => setYear(e.target.value)} />
+            <h3 className="titleUpdateMateriel">Numéro de série :</h3>
+            <input type="text" defaultValue={infos.materiel.serial_number} onChange={(e) => setSerialNumber(e.target.value)} />
+
+            <h3 className="titleUpdateMateriel">Dernière vidange moteur :</h3>
             <input type="text" defaultValue={infos.materiel.prev_oil_change} onChange={(e) => setPrevOil(e.target.value)} />
+            <h3 className="titleUpdateMateriel">Prochaine vidange moteur :</h3>
             <input type="text" defaultValue={infos.materiel.next_oil_change} onChange={(e) => setNextOil(e.target.value)} />
-            <div className="title__agri">
-              <h3>Agriculteur</h3>
-            </div>
-            <input type="text" defaultValue={test('agriculteur')} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
-            {tableau && agriculteurIdentifiant && (
-              <ul>
-                {tableau
-                  .filter((users) => users.nom.startsWith(agriculteurIdentifiant) && users.statue === 'agriculteur')
-                  .map((text, index) => (
-                    <button
-                      onClick={() => {
-                        setAgriculteurIdentifiant(text.nom);
-                        setAgriculteurId(text.id);
-                      }}
-                      key={index}
-                      style={{ fontSize: 20 }}>
-                      {text.nom}
-                    </button>
-                  ))}{' '}
-              </ul>
-            )}
+
             <div className="title__concess">
               <h3>Concessionnaire</h3>
             </div>
@@ -206,6 +193,27 @@ function UpdateMateriel(props) {
                     </button>
                   ))}
               </section>
+            )}
+            <div className="title__agri">
+              <h3>Agriculteur</h3>
+            </div>
+            <input type="text" defaultValue={test('agriculteur')} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+            {tableau && agriculteurIdentifiant && (
+              <ul>
+                {tableau
+                  .filter((users) => users.nom.startsWith(agriculteurIdentifiant) && users.statue === 'agriculteur')
+                  .map((text, index) => (
+                    <button
+                      onClick={() => {
+                        setAgriculteurIdentifiant(text.nom);
+                        setAgriculteurId(text.id);
+                      }}
+                      key={index}
+                      style={{ fontSize: 20 }}>
+                      {text.nom}
+                    </button>
+                  ))}{' '}
+              </ul>
             )}
           </>
         )}
