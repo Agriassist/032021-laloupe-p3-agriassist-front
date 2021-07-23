@@ -19,17 +19,29 @@ function AllParcMateriel(props) {
   }
   if (status === 'agriculteur' || status === 'concessionnaire') {
     useEffect(() => {
+      let tableauMat = [];
       axios({
         method: 'GET',
         url: `${process.env.REACT_APP_API_URL}/api/materiels/users/${props.id}`,
         headers: { authorization: 'Bearer ' + token },
       })
-        .then((data) => {
+        .then(async (data) => {
           console.log(data.data);
-          setInfos(data.data);
+          const reduc = await Promise.all(
+            data.data.map((text) =>
+              axios({
+                method: 'GET',
+                url: `${process.env.REACT_APP_API_URL}/api/materiels/${text.id}`,
+              }),
+            ),
+          );
+          tableauMat = reduc.map((mat) => mat.data);
+          console.log(tableauMat);
+          setInfos(tableauMat);
         })
         .catch((err) => {
-          alert(err.response.data);
+          console.log(err);
+          alert(err.response);
         });
     }, []);
   } else if (status === 'administrateur') {
