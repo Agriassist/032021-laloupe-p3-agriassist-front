@@ -47,7 +47,7 @@ function App() {
           (min = Math.floor((ms / 1000 / 60) << 0)),
             (sec = Math.floor((ms / 1000) << 0)),
             (ms = Math.floor(ms << 0)),
-            console.log('inside setTimeout refresh token:', min, sec, ms);
+            console.log('inside setTimeout refresh token:', min + 'min', sec + 'sec', ms + 'ms');
           refreshToken();
         }, 15 * 60 * 1000 - 5000);
 
@@ -105,6 +105,9 @@ function App() {
             <Route path="/update_profil">
               <UpdateProfil />
             </Route>
+            <Route path="/update_mat">
+              <UpdateMateriel materielId={materielId} />
+            </Route>
             {status === 'administrateur' && (
               <>
                 <Route path="/create_account">
@@ -112,9 +115,6 @@ function App() {
                 </Route>
                 <Route path="/create_materiel">
                   <CreateMateriel />
-                </Route>
-                <Route path="/update_mat">
-                  <UpdateMateriel materielId={materielId} />
                 </Route>
               </>
             )}

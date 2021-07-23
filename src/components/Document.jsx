@@ -14,7 +14,7 @@ export default function Document() {
   const [facture, setFacture] = useState([]);
   const [bonTravail, setBonTravail] = useState([]);
 
-  const { id } = useStateValue();
+  const [{ id }] = useStateValue();
 
   const focus = useRef(null);
 
@@ -88,20 +88,20 @@ export default function Document() {
     }
   }
 
-  useEffect(function () {
-    axios(`http://localhost:8000/facture/${id}`)
-      .then((data) => data.data)
-      .then((data) => {
-        setFacture(data);
-      });
-  });
-  useEffect(function () {
-    axios(`http://localhost:8000/bon_travail/${id}`)
-      .then((data) => data.data)
-      .then((data) => {
-        setBonTravail(data);
-      });
-  });
+  // useEffect(function () {
+  //   axios(`http://localhost:8000/facture/${id}`)
+  //     .then((data) => data.data)
+  //     .then((data) => {
+  //       setFacture(data);
+  //     });
+  // });
+  // useEffect(function () {
+  //   axios(`http://localhost:8000/bon_travail/${id}`)
+  //     .then((data) => data.data)
+  //     .then((data) => {
+  //       setBonTravail(data);
+  //     });
+  // });
 
   return (
     <div className="container__menu">

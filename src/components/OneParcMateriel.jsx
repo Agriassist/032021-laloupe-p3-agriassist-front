@@ -61,11 +61,10 @@ function OneParcMateriel() {
         <p>
           Concess prioritaire pour dépannage : <span>Ets Cloué</span>
         </p>
-        {status === 'administrateur' && (
-          <Link to="/update_mat" className="btn__submit__modify">
-            <p>Modification du materiel</p>
-          </Link>
-        )}
+
+        <Link to="/update_mat" className="btn__submit__modify">
+          <p>Modification du materiel</p>
+        </Link>
       </div>
       {fiche.map((file, i) => (
         <div className="pdf__bymodele" key={i}>
