@@ -47,7 +47,7 @@ function App() {
           (min = Math.floor((ms / 1000 / 60) << 0)),
             (sec = Math.floor((ms / 1000) << 0)),
             (ms = Math.floor(ms << 0)),
-            console.log('inside setTimeout refresh token:', min, sec, ms);
+            console.log('inside setTimeout refresh token:', min + 'min', sec + 'sec', ms + 'ms');
           refreshToken();
         }, 15 * 60 * 1000 - 5000);
 
