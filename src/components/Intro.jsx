@@ -4,7 +4,7 @@ import logoAgri from '../images/logoAgri.png';
 
 function Intro() {
   const phraseIntro = 'BIENVENUE ...'.split('');
-  const timer = 8;
+  const timer = 10;
 
   return (
     <div className="intro-contenair" style={{ animationDelay: phraseIntro.length / timer + 1 + 's' }}>
