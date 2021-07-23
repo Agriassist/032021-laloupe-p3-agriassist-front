@@ -10,6 +10,7 @@ import '../Styles/parcMateriel.css';
 
 function AllParcMateriel(props) {
   const [infos, setInfos] = useState([]);
+  const [urlStat, setUrlStat] = useState();
 
   // eslint-disable-next-line no-unused-vars
   const [{ token, status, setMaterielId }, dispatch] = useStateValue();
@@ -17,27 +18,23 @@ function AllParcMateriel(props) {
   function selectMateriel(id) {
     dispatch({ type: 'SET_MATERIEL_ID', materielId: id });
   }
-  if (status === 'agriculteur' || status === 'concessionnaire') {
-    useEffect(() => {
-      axios({
-        method: 'GET',
-        url: `${process.env.REACT_APP_API_URL}/api/materiels/users/${props.id}`,
-        headers: { authorization: 'Bearer ' + token },
-      })
-        .then((data) => {
-          console.log(data.data);
-          setInfos(data.data);
-        })
-        .catch((err) => {
-          alert(err.response.data);
-        });
-    }, []);
-  } else if (status === 'administrateur') {
-    useEffect(() => {
+
+  useEffect(() => {
+    if (status === 'agriculteur' || status === 'concessionnaire') {
+      setUrlStat(`${process.env.REACT_APP_API_URL}/api/materiels/users/${props.id}`);
+    } else if (status === 'administrateur') {
+      setUrlStat(`${process.env.REACT_APP_API_URL}/api/materiels`);
+      console.log(urlStat);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (urlStat) {
       let tableauMat = [];
       axios({
         method: 'GET',
-        url: `${process.env.REACT_APP_API_URL}/api/materiels`,
+        url: urlStat,
+        headers: { authorization: 'Bearer ' + token },
       })
         .then(async (data) => {
           console.log(data.data);
@@ -50,13 +47,16 @@ function AllParcMateriel(props) {
             ),
           );
           tableauMat = reduc.map((mat) => mat.data);
+          console.log(tableauMat);
           setInfos(tableauMat);
         })
         .catch((err) => {
-          alert(err.response.data);
+          console.log(err);
+          alert(err.response);
         });
-    }, []);
-  }
+    }
+  }, [urlStat]);
+
   return (
     <div className="container__menu">
       {console.log(infos)}
