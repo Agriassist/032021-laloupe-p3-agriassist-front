@@ -78,8 +78,8 @@ function UpdateMateriel(props) {
     e.preventDefault();
 
     axios({
-      method: 'POST',
-      url: `${process.env.REACT_APP_API_URL}/api/materiels`,
+      method: 'PUT',
+      url: `${process.env.REACT_APP_API_URL}/api/materiels/${props.materielId}`,
       data: {
         year: year,
         serial_number: serialNumber,
@@ -104,6 +104,7 @@ function UpdateMateriel(props) {
         setConcessionnaireIdentifiant('');
       })
       .catch((err) => {
+        console.log(err);
         alert('Lien creation fail');
       });
   }
