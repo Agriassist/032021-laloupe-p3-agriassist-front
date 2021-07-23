@@ -105,6 +105,9 @@ function App() {
             <Route path="/update_profil">
               <UpdateProfil />
             </Route>
+            <Route path="/update_mat">
+              <UpdateMateriel materielId={materielId} />
+            </Route>
             {status === 'administrateur' && (
               <>
                 <Route path="/create_account">
@@ -112,9 +115,6 @@ function App() {
                 </Route>
                 <Route path="/create_materiel">
                   <CreateMateriel />
-                </Route>
-                <Route path="/update_mat">
-                  <UpdateMateriel materielId={materielId} />
                 </Route>
               </>
             )}
