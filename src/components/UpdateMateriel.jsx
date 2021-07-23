@@ -21,11 +21,9 @@ function UpdateMateriel(props) {
   const [tableau, setTableau] = useState([]);
   const [tableauModele, setTableauModele] = useState([]);
   const [tableauMarque, setTableauMarque] = useState([]);
-  const [modeleById, setModeleById] = useState([]);
   const [marqueId, setMarqueId] = useState();
   const [modeleId, setModeleId] = useState();
   const [park, setPark] = useState([]);
-  const [count, setCount] = useState(null);
 
   const [{ status }] = useStateValue();
 
@@ -37,6 +35,7 @@ function UpdateMateriel(props) {
       .then((data) => {
         console.log(data.data);
         setInfos(data.data);
+        setPrevOil(data.data.materiel.prev_oil_change);
       })
       .catch((err) => {
         alert(err);
@@ -66,15 +65,6 @@ function UpdateMateriel(props) {
       .then((data) => data.data)
       .then((data) => {
         setTableauModele(data);
-        console.log(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios(`${process.env.REACT_APP_API_URL}/api/modele/${props.modeleId}`)
-      .then((data) => data.data)
-      .then((data) => {
-        setModeleById(data);
         console.log(data);
       });
   }, []);
@@ -135,6 +125,9 @@ function UpdateMateriel(props) {
     return result[0].nom;
   };
 
+  useEffect(() => {
+    setNextOil(parseInt(prevOil.split('h')[0], 10) + 600 + 'h');
+  }, [prevOil]);
   return (
     <div className="container_materiel_creation">
       <HautDePage />
@@ -142,7 +135,7 @@ function UpdateMateriel(props) {
       <div className="OPM_infos">
         {infos.materiel && park.length > 0 && (
           <>
-            {status === 'administratreur' && (
+            {status === 'administrateur' && (
               <>
                 <input type="number" defaultValue={infos.materiel.year} onChange={(e) => setYear(e.target.value)} />
                 <input type="text" defaultValue={infos.materiel.serial_number} onChange={(e) => setSerialNumber(e.target.value)} />
@@ -178,7 +171,17 @@ function UpdateMateriel(props) {
                     </option>
                   ))}
                 </select>
-                <input type="text" defaultValue={infos.materiel.prev_oil_change} onChange={(e) => setPrevOil(e.target.value)} />
+              </>
+            )}
+            <input type="text" defaultValue={infos.materiel.prev_oil_change} onChange={(e) => setPrevOil(e.target.value)} />
+            {console.log(infos.materiel.prev_oil_change)}
+            {status === 'agriculteur' && (
+              <>
+                <input type="text" defaultValue={infos.materiel.prev_oil_change} value={nextOil} readOnly={true} />
+              </>
+            )}
+            {status === 'administrateur' && (
+              <>
                 <input type="text" defaultValue={infos.materiel.next_oil_change} onChange={(e) => setNextOil(e.target.value)} />
                 <div className="title__agri">
                   <h3>Agriculteur</h3>
@@ -222,28 +225,6 @@ function UpdateMateriel(props) {
                       ))}
                   </section>
                 )}
-              </>
-            )}
-            {status === 'agriculteur' && (
-              <>
-                <input type="number" defaultValue={infos.materiel.year} readOnly="true" />
-                <input type="text" defaultValue={infos.materiel.serial_number} readOnly="true" />
-                <input type="text" defaultValue={infos.materiel.name} readOnly="true" />
-                <input type="text" defaultValue={modeleById.name} readOnly="true" />
-                <input type="text" defaultValue={infos.materiel.prev_oil_change + 'h'} onChange={(e) => setPrevOil(e.target.value)} />
-                <input
-                  type="text"
-                  defaultValue={count + 'h'}
-                  readOnly="true"
-                  onChange={() => {
-                    setCount(prevOil + 500);
-                  }}
-                />
-                <div className="title__agri">
-                  <h3>Agriculteur</h3>
-                </div>
-                <input type="text" defaultValue={agriculteurIdentifiant.name} readOnly="true" />
-                <input type="text" defaultValue={concessionnaireIdentifiant.name} readOnly="true" />
               </>
             )}
           </>
