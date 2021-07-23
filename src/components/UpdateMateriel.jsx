@@ -35,7 +35,13 @@ function UpdateMateriel(props) {
       .then((data) => {
         console.log(data.data);
         setInfos(data.data);
+        setYear(data.data.materiel.year);
+        setSerialNumber(data.data.materiel.serialNumber);
+        setType(data.data.materiel.type);
         setPrevOil(data.data.materiel.prev_oil_change);
+        setNextOil(data.data.materiel.next_oil_change);
+        setAgriculteurIdentifiant('');
+        setConcessionnaireIdentifiant('');
       })
       .catch((err) => {
         alert(err);
@@ -114,21 +120,46 @@ function UpdateMateriel(props) {
   }
 
   const test = (stat) => {
-    const result = tableau.filter((text) => {
-      const tri = park.filter((user) => {
-        if (user.users_id === text.id) {
-          return text.statue === stat;
-        }
-      });
-      return tri.length > 0 ? true : false;
-    });
-    console.log(result);
-    return result[0].nom;
+    // const result = tableau.filter((text) => {
+    //   const tri = park.filter((user) => {
+    //     if (user.users_id === text.id) {
+    //       return text.statue === stat;
+    //     }
+    //   });
+    //   return tri.length > 0 ? true : false;
+    // });
+    // // if (result[0].statue === 'agriculteur') {
+    // //   setAgriculteurId(result[0].id);
+    // // } else if (result[0].statue === 'concessionnaire') {
+    // //   setConcessionnaireId(result[0].id);
+    // // }
+    // console.log(result);
+    // return result[0].nom;
   };
 
   useEffect(() => {
     setNextOil(parseInt(prevOil.split('h')[0], 10) + 600 + 'h');
   }, [prevOil]);
+
+  useEffect(() => {
+    tableau.filter((text) => {
+      park.filter((user) => {
+        if (user.users_id === text.id) {
+          // console.log(user.users_id === text.id);
+          if (text.statue === 'agriculteur') {
+            console.log(text.nom);
+            setAgriculteurId(text.id);
+            setAgriculteurIdentifiant(text.nom);
+          } else if (text.statue === 'concessionnaire') {
+            console.log(text.nom);
+            setConcessionnaireId(text.id);
+            setConcessionnaireIdentifiant(text.nom);
+          }
+        }
+      });
+    });
+  }, [year]);
+
   return (
     <div className="container_materiel_creation">
       <HautDePage />
@@ -195,7 +226,7 @@ function UpdateMateriel(props) {
                 <div className="title__concess">
                   <h3>Concessionnaire</h3>
                 </div>
-                <input type="text" defaultValue={test('concessionnaire')} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
+                <input type="text" defaultValue={concessionnaireIdentifiant} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
                 {tableau && concessionnaireIdentifiant && (
                   <section>
                     {tableau
@@ -216,7 +247,7 @@ function UpdateMateriel(props) {
                 <div className="title__agri">
                   <h3>Agriculteur</h3>
                 </div>
-                <input type="text" defaultValue={test('agriculteur')} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+                <input type="text" defaultValue={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
                 {tableau && agriculteurIdentifiant && (
                   <ul>
                     {tableau
