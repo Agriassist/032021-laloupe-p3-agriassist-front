@@ -10,7 +10,7 @@
   animation-name: switch;
   animation-fill-mode: forwards;
   animation-timing-function: ease;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 .intro-logo {

@@ -26,7 +26,7 @@ export default function PageConnection() {
   useEffect(() => {
     const TimelineLogin = gsap.timeline();
 
-    TimelineLogin.from(refImg.current, { y: -50, duration: 0.7, delay: 4.625, opacity: 0, ease: 'power2.out' })
+    TimelineLogin.from(refImg.current, { y: -50, duration: 0.7, delay: 3.5, opacity: 0, ease: 'power2.out' })
       .from(refInputOne.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' }, '-=0.2s')
       .from(refInputTwo.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' }, '-=0.2s')
       .from(refBtn.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' }, '-=0.2s')
@@ -63,7 +63,9 @@ export default function PageConnection() {
           dispatch({ type: 'SET_STATUS', status: data.data.status });
           dispatch({ type: 'SET_ID', id: data.data.id });
           if (data.data.token !== undefined) {
-            history.push('/users');
+            setTimeout(() => {
+              history.push('/users');
+            }, 50);
           } else {
             alert('wrong password or email');
           }
