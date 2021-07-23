@@ -238,7 +238,6 @@ function UpdateMateriel(props) {
             )}
           </>
         )}
-        
         <button className="btn__create__materiel" onClick={submitMateriel}>
           Envoyer
         </button>
