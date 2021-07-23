@@ -19,7 +19,7 @@ export default function MenuPrincipalAgri() {
           <div className="bloc__logo1">
             <i className="fas fa-tractor"></i>
           </div>
-          <p>Mon Parc Materiel</p>
+          <p>Mon Parc Matériel</p>
         </Link>
         {status === 'agriculteur' && (
           <Link to="/profil" onClick={() => window.scroll(0, 0)} className="bloc">
@@ -33,7 +33,7 @@ export default function MenuPrincipalAgri() {
           <div className="bloc__logo3">
             <i className="fas fa-map-marked-alt"></i>
           </div>
-          <p>Geolocalisation</p>
+          <p>Géolocalisation</p>
         </div>
         <Link to="/document" onClick={() => window.scroll(0, 0)} className="bloc">
           <div className="bloc__logo4">
@@ -71,7 +71,7 @@ export default function MenuPrincipalAgri() {
               <div className="bloc__logo7">
                 <i className="fas fa-tractor"></i>
               </div>
-              <p>Création de materiel</p>
+              <p>Création de matériel</p>
             </Link>
           </>
         )}

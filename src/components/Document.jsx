@@ -141,9 +141,9 @@ export default function Document() {
           <label htmlFor="upload__facture">
             <i class="fas fa-file-invoice-dollar"></i>
           </label>
-          <p>Facture</p>
+          <p className="legende__icones">Facture</p>
           <button className={fileFacture ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitFacture}>
-            Save
+            Sauvegarder
           </button>
         </div>
 
@@ -152,9 +152,9 @@ export default function Document() {
           <label htmlFor="upload__bontravail">
             <i class="fas fa-print"></i>
           </label>
-          <p>Bon de Travail</p>
+          <p className="legende__icones">Bon de Travail</p>
           <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onclick={submitBonTravil}>
-            Save
+            Sauvegarder
           </button>
         </div>
       </div>

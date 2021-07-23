@@ -208,14 +208,19 @@
   font-size: 14px;
   font-family: 'Montserrat';
 }
-
 .btn__facture {
   padding: 5px 10px;
-  border: none;
-  border: 1px solid #000;
-  border-radius: 5px;
-  background: #fff;
   cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  font-family: 'Montserrat';
+  text-align: center;
+  font-size: 14px;
+  color: black;
+  background-color: rgb(231, 160, 6);
+  border-radius: 20px;
+  width: 15vh;
+  box-shadow: 5px 3px 3px black;
 }
 
 .btn__facture__nodispo {
