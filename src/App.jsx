@@ -92,11 +92,6 @@ function App() {
             <Route path="/update_mat">
               <UpdateMateriel materielId={materielId} />
             </Route>
-            {!token && (
-              <Route path="/">
-                <PageConnection />
-              </Route>
-            )}
             {status === 'administrateur' && (
               <>
                 <Route path="/create_account">
@@ -108,6 +103,11 @@ function App() {
               </>
             )}
           </>
+        )}
+        {!token && (
+          <Route path="/">
+            <PageConnection />
+          </Route>
         )}
       </Switch>
       <Popup />
