@@ -40,14 +40,7 @@ function App() {
 
         // setTimeout pour renouvler avant expiration l'access_token
         setTimeout(() => {
-          let ms = 15 * 60 * 1000 - 5000;
-          let min;
-          let sec;
-
-          (min = Math.floor((ms / 1000 / 60) << 0)),
-            (sec = Math.floor((ms / 1000) << 0)),
-            (ms = Math.floor(ms << 0)),
-            console.log('inside setTimeout refresh token:', min + 'min', sec + 'sec', ms + 'ms');
+          console.log('inside setTimeout refresh token:', 15 * 60 * 1000 - 5000);
           refreshToken();
         }, 15 * 60 * 1000 - 5000);
 
@@ -108,6 +101,11 @@ function App() {
             <Route path="/update_mat">
               <UpdateMateriel materielId={materielId} />
             </Route>
+            {!token && (
+              <Route path="/">
+                <PageConnection />
+              </Route>
+            )}
             {status === 'administrateur' && (
               <>
                 <Route path="/create_account">
@@ -120,9 +118,6 @@ function App() {
             )}
           </>
         )}
-        <Route path="/">
-          <PageConnection />
-        </Route>
       </Switch>
       <Popup />
     </main>

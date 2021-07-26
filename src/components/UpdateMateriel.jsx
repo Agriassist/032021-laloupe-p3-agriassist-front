@@ -34,6 +34,8 @@ function UpdateMateriel(props) {
       .then((data) => {
         console.log(data.data);
         setInfos(data.data);
+        setModeleId(data.data.modele.id);
+        setMarqueId(data.data.marque.id);
         setYear(data.data.materiel.year);
         setSerialNumber(data.data.materiel.serial_number);
         setType(data.data.materiel.type);
@@ -100,13 +102,7 @@ function UpdateMateriel(props) {
       .then((data) => data.data)
       .then((data) => {
         console.log(data);
-        setYear('');
-        setSerialNumber('');
-        setType('');
-        setPrevOil('');
-        setNextOil('');
-        setAgriculteurIdentifiant('');
-        setConcessionnaireIdentifiant('');
+        alert('modification effectuée');
       })
       .catch((err) => {
         console.log(err);

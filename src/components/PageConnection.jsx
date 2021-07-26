@@ -33,19 +33,6 @@ export default function PageConnection() {
       .from(refAuthen.current, { y: -50, duration: 0.7, opacity: 0, ease: 'power2.out' }, '-=0.2s');
   }, []);
 
-  useEffect(() => {
-    axios({
-      method: 'POST',
-      url: `${process.env.REACT_APP_API_URL}/api/login/recupCookie`,
-      withCredentials: true,
-    }).then((data) => {
-      console.log(data.data);
-      if (data.data) {
-        history.push('/users');
-      }
-    });
-  }, []);
-
   const submitLogin = (e) => {
     e.preventDefault();
     console.log(`${process.env.REACT_APP_API_URL}/api/login`);
@@ -80,7 +67,6 @@ export default function PageConnection() {
     <div className="container__menu">
       <div className="container__pageconnection">
         <Intro />
-
         <img id="img__logo1" src={logoAgri} alt="logo" ref={refImg} />
         <input id="input__one" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} ref={refInputOne} />
         <div className="container__input__password">
