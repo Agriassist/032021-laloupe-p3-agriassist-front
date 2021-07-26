@@ -9,6 +9,7 @@ function OneParcMateriel() {
   const [infos, setInfos] = useState({});
   const [{ status, materielId }] = useStateValue();
   const [fiche, setFiche] = useState([]);
+  const [ficheModeleId, setFicheModeleId] = useState(null);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/api/materiels/${materielId}`)
@@ -28,12 +29,29 @@ function OneParcMateriel() {
   }, []);
 
   useEffect(() => {
-    axios(`${process.env.REACT_APP_API_URL}/api/fiche_technique`)
+    axios(`${process.env.REACT_APP_API_URL}/api/fiche_technique/`)
       .then((data) => data.data)
       .then((data) => {
-        setFiche(data);
+        let ficheWait = [];
+
+        ficheWait = data.filter((x) => ficheModeleId === x.modele_id);
+
+        setFiche(ficheWait);
       });
-  }, []);
+  }, [ficheModeleId]);
+
+  useEffect(() => {
+    axios('http://localhost:8000/api/modele')
+      .then((data) => data.data)
+      .then((data) => {
+        data.map((x) => {
+          console.log(x.name, infos.modele);
+          if (x.name === infos.modele) {
+            setFicheModeleId(x.id);
+          }
+        });
+      });
+  }, [infos]);
 
   return (
     <div className="OPM_container">
@@ -42,6 +60,7 @@ function OneParcMateriel() {
       <div className="OPM_infos">
         <p>
           Marque : <span>{infos.marque}</span>
+          {console.log(infos)}
         </p>
         <p>
           Modèle : <span>{infos.modele}</span>
@@ -68,6 +87,7 @@ function OneParcMateriel() {
       </div>
       {fiche.map((file, i) => (
         <div className="pdf__bymodele" key={i}>
+          {console.log(fiche)}
           <i className="fas fa-file-pdf"></i>
           <p>{file.name}</p>
         </div>
