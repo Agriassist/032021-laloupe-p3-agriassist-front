@@ -84,6 +84,7 @@ export default function PostFiche() {
       console.log(fileSelected);
       const data = new FormData();
       data.append('file', fileSelected);
+      console.log(idModele);
 
       data.append(
         'info',
@@ -92,7 +93,6 @@ export default function PostFiche() {
           modele_id: idModele,
         }),
       );
-      console.log(typeModele.id);
       axios({
         method: 'POST',
         url: `${process.env.REACT_APP_API_URL}/api/fiche_technique`,
@@ -110,12 +110,6 @@ export default function PostFiche() {
         });
     }
   };
-
-  function choiceModele(event) {
-    console.log(event);
-    setTypeModele(event.target.value);
-    setIdModele(event.target.selectedOptions[0].id);
-  }
 
   useEffect(() => {
     axios('http://localhost:8000/api/modele')
@@ -149,7 +143,7 @@ export default function PostFiche() {
           ))}
         </div>
 
-        <input type="file" accept="image/*" id="upload__fiche__tech" onChange={onChangeFile} />
+        <input type="file" accept="/*" id="upload__fiche__tech" onChange={onChangeFile} />
 
         <FormControl required className={classes.formControl}>
           <InputLabel id="demo-simple-select-required-label" style={{ color: '#fff', fontSize: 20, fontFamily: 'Montserrat' }}>
@@ -163,7 +157,6 @@ export default function PostFiche() {
             }}>
             {modele.map((modeles, index) => (
               <option className={classes.menuItem} id={modeles.id} key={index} value={modeles.name}>
-                {console.log(modeles.id)}
                 {modeles.name}
               </option>
             ))}

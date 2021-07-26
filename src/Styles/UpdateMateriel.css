@@ -28,6 +28,7 @@
   font-family: 'Montserrat';
   font-size: 20px;
   color: black;
+  text-align: center;
 }
 .select__marque,
 .select__modele {
