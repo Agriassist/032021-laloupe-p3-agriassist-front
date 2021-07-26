@@ -35,9 +35,7 @@ export default function PageConnection() {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    console.log(`${process.env.REACT_APP_API_URL}/api/login`);
     if (email && password) {
-      console.log(email, password);
       axios({
         method: 'POST',
         url: `${process.env.REACT_APP_API_URL}/api/login`,
@@ -45,7 +43,6 @@ export default function PageConnection() {
         withCredentials: true,
       })
         .then((data) => {
-          console.log(data);
           dispatch({ type: 'SET_TOKEN', token: data.data.token });
           dispatch({ type: 'SET_STATUS', status: data.data.status });
           dispatch({ type: 'SET_ID', id: data.data.id });

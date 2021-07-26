@@ -72,7 +72,6 @@ export default function PostFiche() {
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
     if (type !== '/pdf') {
-      console.log(event.target.files[0]);
       setFileSelected(event.target.files[0]);
     } else {
       alert("Veuillez selectionner un format d'image valide");
@@ -81,10 +80,8 @@ export default function PostFiche() {
   const submitFiles = (e) => {
     e.preventDefault();
     if (fileSelected) {
-      console.log(fileSelected);
       const data = new FormData();
       data.append('file', fileSelected);
-      console.log(idModele);
 
       data.append(
         'info',
@@ -100,7 +97,6 @@ export default function PostFiche() {
       })
         .then((data) => data.data)
         .then((data) => {
-          console.log(data);
           setFile({
             filename: data.file,
           });
@@ -115,7 +111,6 @@ export default function PostFiche() {
     axios('http://localhost:8000/api/modele')
       .then((data) => data.data)
       .then((data) => {
-        console.log(data);
         setModele(data);
       });
   }, []);
@@ -124,7 +119,6 @@ export default function PostFiche() {
     axios('http://localhost:8000/api/fiche_technique')
       .then((data) => data.data)
       .then((data) => {
-        console.log(data);
         setFicheTech(data);
       });
   }, []);

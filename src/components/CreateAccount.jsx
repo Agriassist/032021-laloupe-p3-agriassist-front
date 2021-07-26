@@ -30,7 +30,6 @@ export default function CreateAccount() {
       })
         .then((data) => data.data)
         .then((data) => {
-          console.log(data);
           setPseudo('');
           setName('');
           setPrenom('');

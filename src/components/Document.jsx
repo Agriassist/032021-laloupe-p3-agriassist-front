@@ -25,7 +25,6 @@ export default function Document() {
   const onChangeFileFacture = (event) => {
     const { type } = event.target.files[0];
     if (type !== 'image/png' || type !== 'image/jpeg') {
-      console.log(event.target.files[0], 'here');
       setFileFacture(event.target.files);
     } else {
       alert("Veuillez selectionner un format d'image valide");
@@ -35,7 +34,6 @@ export default function Document() {
   const onChangeFileBonTravail = (event) => {
     const { type } = event.target.files[0];
     if (type === 'image/png' || type === 'image/jpeg') {
-      console.log(event.target.files[0], 'here');
       setFileBonTravail(event.target.files[0]);
     } else {
       alert("Veuillez selectionner un format d'image valide");

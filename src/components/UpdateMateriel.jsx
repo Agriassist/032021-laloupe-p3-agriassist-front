@@ -32,7 +32,6 @@ function UpdateMateriel(props) {
       url: `${process.env.REACT_APP_API_URL}/api/materiels/${props.materielId}`,
     })
       .then((data) => {
-        console.log(data.data);
         setInfos(data.data);
         setModeleId(data.data.modele.id);
         setMarqueId(data.data.marque.id);
@@ -54,23 +53,19 @@ function UpdateMateriel(props) {
       .then((data) => {
         dataTableau = data;
         // setTableau(data);
-        console.log(data, 'donnée all users');
         axios(`${process.env.REACT_APP_API_URL}/api/park/materiel/${props.materielId}`)
           .then((data) => data.data)
           .then((data) => {
             dataTableauPark = data;
             // setPark(data);
-            console.log(data, 'donnée users');
             axios(`${process.env.REACT_APP_API_URL}/api/modele`)
               .then((data) => data.data)
               .then((data) => {
                 dataTableauModele = data;
                 // setTableauModele(data);
-                console.log(data);
                 axios(`${process.env.REACT_APP_API_URL}/api/marque`)
                   .then((data) => data.data)
                   .then((data) => {
-                    console.log(data);
                     setTableauMarque(data);
                     setTableau(dataTableau);
                     setTableauModele(dataTableauModele);
@@ -100,12 +95,10 @@ function UpdateMateriel(props) {
       },
     })
       .then((data) => data.data)
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         alert('modification effectuée');
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         alert('Lien creation fail');
       });
   }
