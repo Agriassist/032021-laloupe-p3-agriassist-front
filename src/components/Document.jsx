@@ -129,7 +129,7 @@ export default function Document() {
       <div className="container__icone__document">
         <Link to="/fiche_technique">
           <div className="bloc__image__doc">
-            <i class="far fa-file-pdf"></i>
+            <i className="far fa-file-pdf"></i>
             <p className="legende__icones">Télécharger un PDF</p>
           </div>
         </Link>
@@ -137,7 +137,7 @@ export default function Document() {
         <div className="bloc__image__doc">
           <input type="file" accept="image/*" id="upload__facture" onChange={onChangeFileFacture} />
           <label htmlFor="upload__facture">
-            <i class="fas fa-file-invoice-dollar"></i>
+            <i className="fas fa-file-invoice-dollar"></i>
           </label>
           <p className="legende__icones">Facture</p>
           <button className={fileFacture ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitFacture}>
@@ -147,7 +147,7 @@ export default function Document() {
         <div className="bloc__image__doc">
           <input type="file" accept="image/*" id="upload__bontravail" onChange={onChangeFileBonTravail} />
           <label htmlFor="upload__bontravail">
-            <i class="fas fa-print"></i>
+            <i className="fas fa-print"></i>
           </label>
           <p className="legende__icones">Bon de Travail</p>
           <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onclick={submitBonTravil}>

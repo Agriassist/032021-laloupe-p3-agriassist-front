@@ -67,7 +67,7 @@ export default function PostFiche() {
   const [idModele, setIdModele] = useState(null);
   const [ficheTech, setFicheTech] = useState([]);
 
-  const classes = useStyles();
+  const classNamees = useStyles();
 
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
@@ -139,7 +139,7 @@ export default function PostFiche() {
 
         <input type="file" accept="/*" id="upload__fiche__tech" onChange={onChangeFile} />
 
-        <FormControl required className={classes.formControl}>
+        <FormControl required className={classNamees.formControl}>
           <InputLabel id="demo-simple-select-required-label" style={{ color: '#fff', fontSize: 20, fontFamily: 'Montserrat' }}>
             Modèle
           </InputLabel>
@@ -150,7 +150,7 @@ export default function PostFiche() {
               setIdModele(event.target.selectedOptions[0].id);
             }}>
             {modele.map((modeles, index) => (
-              <option className={classes.menuItem} id={modeles.id} key={index} value={modeles.name}>
+              <option className={classNamees.menuItem} id={modeles.id} key={index} value={modeles.name}>
                 {modeles.name}
               </option>
             ))}
@@ -158,7 +158,7 @@ export default function PostFiche() {
           <FormHelperText style={{ color: '#fff', fontSize: 15, fontFamily: 'Montserrat' }}>Obligatoire</FormHelperText>
         </FormControl>
 
-        <div className={classes.root}>
+        <div className={classNamees.root}>
           <TextField id="outlined-helperText" label="Nom du fichier..." value={name} onChange={(e) => setName(e.target.value)} variant="outlined" />
         </div>
         <div className="container__pdf">

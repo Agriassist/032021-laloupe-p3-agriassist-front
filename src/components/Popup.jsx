@@ -46,7 +46,7 @@ export default function Popup() {
         </Link>
         <Link to="/users" className="bloc__retour__accueil" onClick={popupVisible}>
           <p className="bloc__retour">Retour à l'accueil</p>
-          <i class="fas fa-house-user"></i>
+          <i className="fas fa-house-user"></i>
         </Link>
         <div className="bloc__deconnection" onClick={logout}>
           <p>Deconnection</p>
