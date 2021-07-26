@@ -45,7 +45,6 @@ function OneParcMateriel() {
       .then((data) => data.data)
       .then((data) => {
         data.map((x) => {
-          console.log(x.name, infos.modele);
           if (x.name === infos.modele) {
             setFicheModeleId(x.id);
           }
@@ -60,7 +59,6 @@ function OneParcMateriel() {
       <div className="OPM_infos">
         <p>
           Marque : <span>{infos.marque}</span>
-          {console.log(infos)}
         </p>
         <p>
           Modèle : <span>{infos.modele}</span>
@@ -87,7 +85,6 @@ function OneParcMateriel() {
       </div>
       {fiche.map((file, i) => (
         <div className="pdf__bymodele" key={i}>
-          {console.log(fiche)}
           <i className="fas fa-file-pdf"></i>
           <p>{file.name}</p>
         </div>

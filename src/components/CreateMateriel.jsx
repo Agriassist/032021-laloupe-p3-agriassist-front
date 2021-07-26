@@ -30,7 +30,6 @@ export default function CreateMateriel() {
       .then((data) => data.data)
       .then((data) => {
         setTableau(data);
-        console.log(data);
       });
   }, []);
 
@@ -39,7 +38,6 @@ export default function CreateMateriel() {
       .then((data) => data.data)
       .then((data) => {
         setTableauModele(data);
-        console.log(data);
       });
   }, []);
 
@@ -48,7 +46,6 @@ export default function CreateMateriel() {
       .then((data) => data.data)
       .then((data) => {
         setTableauMarque(data);
-        console.log(data);
       });
   }, []);
 
@@ -72,7 +69,6 @@ export default function CreateMateriel() {
     })
       .then((data) => data.data)
       .then((data) => {
-        console.log(data);
         setYear('');
         setSerialNumber('');
         setType('');
@@ -113,7 +109,6 @@ export default function CreateMateriel() {
           className="select__modele"
           defaultValue="..."
           onChange={(e) => {
-            console.log(e);
             setType(e.target.value);
             setModeleId(e.target.selectedOptions[0].id);
           }}>

@@ -67,12 +67,11 @@ export default function PostFiche() {
   const [idModele, setIdModele] = useState(null);
   const [ficheTech, setFicheTech] = useState([]);
 
-  const classes = useStyles();
+  const classNamees = useStyles();
 
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
     if (type !== '/pdf') {
-      console.log(event.target.files[0]);
       setFileSelected(event.target.files[0]);
     } else {
       alert("Veuillez selectionner un format d'image valide");
@@ -81,10 +80,8 @@ export default function PostFiche() {
   const submitFiles = (e) => {
     e.preventDefault();
     if (fileSelected) {
-      console.log(fileSelected);
       const data = new FormData();
       data.append('file', fileSelected);
-      console.log(idModele);
 
       data.append(
         'info',
@@ -100,7 +97,6 @@ export default function PostFiche() {
       })
         .then((data) => data.data)
         .then((data) => {
-          console.log(data);
           setFile({
             filename: data.file,
           });
@@ -115,7 +111,6 @@ export default function PostFiche() {
     axios('http://localhost:8000/api/modele')
       .then((data) => data.data)
       .then((data) => {
-        console.log(data);
         setModele(data);
       });
   }, []);
@@ -124,7 +119,6 @@ export default function PostFiche() {
     axios('http://localhost:8000/api/fiche_technique')
       .then((data) => data.data)
       .then((data) => {
-        console.log(data);
         setFicheTech(data);
       });
   }, []);
@@ -145,7 +139,7 @@ export default function PostFiche() {
 
         <input type="file" accept="/*" id="upload__fiche__tech" onChange={onChangeFile} />
 
-        <FormControl required className={classes.formControl}>
+        <FormControl required className={classNamees.formControl}>
           <InputLabel id="demo-simple-select-required-label" style={{ color: '#fff', fontSize: 20, fontFamily: 'Montserrat' }}>
             Modèle
           </InputLabel>
@@ -156,7 +150,7 @@ export default function PostFiche() {
               setIdModele(event.target.selectedOptions[0].id);
             }}>
             {modele.map((modeles, index) => (
-              <option className={classes.menuItem} id={modeles.id} key={index} value={modeles.name}>
+              <option className={classNamees.menuItem} id={modeles.id} key={index} value={modeles.name}>
                 {modeles.name}
               </option>
             ))}
@@ -164,7 +158,7 @@ export default function PostFiche() {
           <FormHelperText style={{ color: '#fff', fontSize: 15, fontFamily: 'Montserrat' }}>Obligatoire</FormHelperText>
         </FormControl>
 
-        <div className={classes.root}>
+        <div className={classNamees.root}>
           <TextField id="outlined-helperText" label="Nom du fichier..." value={name} onChange={(e) => setName(e.target.value)} variant="outlined" />
         </div>
         <div className="container__pdf">
