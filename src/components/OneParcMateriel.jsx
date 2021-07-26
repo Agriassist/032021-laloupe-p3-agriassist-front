@@ -32,9 +32,8 @@ function OneParcMateriel() {
     axios(`${process.env.REACT_APP_API_URL}/api/fiche_technique/`)
       .then((data) => data.data)
       .then((data) => {
-        console.log(data);
         let ficheWait = [];
-        console.log(ficheModeleId, data);
+
         ficheWait = data.filter((x) => ficheModeleId === x.modele_id);
 
         setFiche(ficheWait);
@@ -45,7 +44,6 @@ function OneParcMateriel() {
     axios('http://localhost:8000/api/modele')
       .then((data) => data.data)
       .then((data) => {
-        console.log(data);
         data.map((x) => {
           console.log(x.name, infos.modele);
           if (x.name === infos.modele) {
