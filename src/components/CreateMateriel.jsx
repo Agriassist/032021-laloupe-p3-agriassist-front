@@ -113,6 +113,7 @@ export default function CreateMateriel() {
           className="select__modele"
           defaultValue="..."
           onChange={(e) => {
+            console.log(e);
             setType(e.target.value);
             setModeleId(e.target.selectedOptions[0].id);
           }}>

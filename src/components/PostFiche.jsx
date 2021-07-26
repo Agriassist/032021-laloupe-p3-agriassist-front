@@ -5,7 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
 import '../Styles/PostFiche.css';
 import camera from '../camera.png';
 import HautDePage from '../components/HautDePage';
@@ -112,9 +112,9 @@ export default function PostFiche() {
   };
 
   function choiceModele(event) {
+    console.log(event);
     setTypeModele(event.target.value);
     setIdModele(event.target.selectedOptions[0].id);
-    console.log(event.target.selectedOptions[0].id);
   }
 
   useEffect(() => {
@@ -155,21 +155,19 @@ export default function PostFiche() {
           <InputLabel id="demo-simple-select-required-label" style={{ color: '#fff', fontSize: 20, fontFamily: 'Montserrat' }}>
             Modèle
           </InputLabel>
-          <Select
+          <NativeSelect
             defaultValue={typeModele}
-            onChange={choiceModele}
-            className={classes.selectEmpty}
-            inputProps={{
-              classes: {
-                icon: classes.icon,
-              },
+            onChange={(event) => {
+              setTypeModele(event.target.value);
+              setIdModele(event.target.selectedOptions[0].id);
             }}>
             {modele.map((modeles, index) => (
-              <MenuItem className={classes.menuItem} id={modeles.id} key={index} value={modeles.name}>
+              <option className={classes.menuItem} id={modeles.id} key={index} value={modeles.name}>
+                {console.log(modeles.id)}
                 {modeles.name}
-              </MenuItem>
+              </option>
             ))}
-          </Select>
+          </NativeSelect>
           <FormHelperText style={{ color: '#fff', fontSize: 15, fontFamily: 'Montserrat' }}>Obligatoire</FormHelperText>
         </FormControl>
 

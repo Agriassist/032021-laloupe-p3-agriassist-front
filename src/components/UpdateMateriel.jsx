@@ -11,7 +11,6 @@ function UpdateMateriel(props) {
   const [year, setYear] = useState('');
   const [serialNumber, setSerialNumber] = useState('');
   const [type, setType] = useState('');
-  const [typeMa, setTypeMa] = useState('');
   const [prevOil, setPrevOil] = useState('');
   const [nextOil, setNextOil] = useState('');
   const [agriculteurIdentifiant, setAgriculteurIdentifiant] = useState('');
@@ -35,7 +34,11 @@ function UpdateMateriel(props) {
       .then((data) => {
         console.log(data.data);
         setInfos(data.data);
+        setYear(data.data.materiel.year);
+        setSerialNumber(data.data.materiel.serial_number);
+        setType(data.data.materiel.type);
         setPrevOil(data.data.materiel.prev_oil_change);
+        setNextOil(data.data.materiel.next_oil_change);
       })
       .catch((err) => {
         alert(err);
@@ -43,40 +46,38 @@ function UpdateMateriel(props) {
   }, []);
 
   useEffect(() => {
+    let dataTableau, dataTableauPark, dataTableauModele;
     axios('http://localhost:8000/api/users')
       .then((data) => data.data)
       .then((data) => {
-        setTableau(data);
+        dataTableau = data;
+        // setTableau(data);
         console.log(data, 'donnée all users');
+        axios(`${process.env.REACT_APP_API_URL}/api/park/materiel/${props.materielId}`)
+          .then((data) => data.data)
+          .then((data) => {
+            dataTableauPark = data;
+            // setPark(data);
+            console.log(data, 'donnée users');
+            axios(`${process.env.REACT_APP_API_URL}/api/modele`)
+              .then((data) => data.data)
+              .then((data) => {
+                dataTableauModele = data;
+                // setTableauModele(data);
+                console.log(data);
+                axios(`${process.env.REACT_APP_API_URL}/api/marque`)
+                  .then((data) => data.data)
+                  .then((data) => {
+                    console.log(data);
+                    setTableauMarque(data);
+                    setTableau(dataTableau);
+                    setTableauModele(dataTableauModele);
+                    setPark(dataTableauPark);
+                  });
+              });
+          });
       });
-  }, []);
-
-  useEffect(() => {
-    axios(`${process.env.REACT_APP_API_URL}/api/park/materiel/${props.materielId}`)
-      .then((data) => data.data)
-      .then((data) => {
-        setPark(data);
-        console.log(data, 'donnée users');
-      });
-  }, []);
-
-  useEffect(() => {
-    axios(`${process.env.REACT_APP_API_URL}/api/modele`)
-      .then((data) => data.data)
-      .then((data) => {
-        setTableauModele(data);
-        console.log(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios(`${process.env.REACT_APP_API_URL}/api/marque`)
-      .then((data) => data.data)
-      .then((data) => {
-        setTableauMarque(data);
-        console.log(data);
-      });
-  }, []);
+  }, [infos]);
 
   function submitMateriel(e) {
     e.preventDefault();
@@ -113,22 +114,28 @@ function UpdateMateriel(props) {
       });
   }
 
-  const test = (stat) => {
-    const result = tableau.filter((text) => {
-      const tri = park.filter((user) => {
-        if (user.users_id === text.id) {
-          return text.statue === stat;
-        }
-      });
-      return tri.length > 0 ? true : false;
-    });
-    console.log(result);
-    return result[0].nom;
-  };
-
   useEffect(() => {
     setNextOil(parseInt(prevOil.split('h')[0], 10) + 600 + 'h');
   }, [prevOil]);
+
+  useEffect(() => {
+    if (tableau.length > 0 && park.length > 0) {
+      tableau.filter((text) => {
+        park.filter((user) => {
+          if (user.users_id === text.id) {
+            if (text.statue === 'agriculteur') {
+              setAgriculteurId(text.id);
+              setAgriculteurIdentifiant(text.nom);
+            } else if (text.statue === 'concessionnaire') {
+              setConcessionnaireId(text.id);
+              setConcessionnaireIdentifiant(text.nom);
+            }
+          }
+        });
+      });
+    }
+  }, [park, tableau]);
+
   return (
     <div className="container_materiel_creation">
       <HautDePage />
@@ -143,7 +150,6 @@ function UpdateMateriel(props) {
                   className="select__marque"
                   defaultValue="..."
                   onChange={(e) => {
-                    setTypeMa(e.target.value);
                     setMarqueId(e.target.selectedOptions[0].id);
                   }}>
                   <option key="0" id="0">
@@ -160,7 +166,6 @@ function UpdateMateriel(props) {
                   className="select__modele"
                   defaultValue="..."
                   onChange={(e) => {
-                    setType(e.target.value);
                     setModeleId(e.target.selectedOptions[0].id);
                   }}>
                   <option key="0" id="0">
@@ -195,7 +200,7 @@ function UpdateMateriel(props) {
                 <div className="title__concess">
                   <h3>Concessionnaire</h3>
                 </div>
-                <input type="text" defaultValue={test('concessionnaire')} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
+                <input type="text" defaultValue={concessionnaireIdentifiant} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
                 {tableau && concessionnaireIdentifiant && (
                   <section>
                     {tableau
@@ -216,7 +221,7 @@ function UpdateMateriel(props) {
                 <div className="title__agri">
                   <h3>Agriculteur</h3>
                 </div>
-                <input type="text" defaultValue={test('agriculteur')} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+                <input type="text" defaultValue={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
                 {tableau && agriculteurIdentifiant && (
                   <ul>
                     {tableau
