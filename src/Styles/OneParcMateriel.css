@@ -1,5 +1,6 @@
 .OPM_container {
   position: relative;
+  min-height: 97vh;
 }
 
 .OPM_blue_trait {
