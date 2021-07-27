@@ -1,11 +1,15 @@
 import '../Styles/OneParcMateriel.css';
-import agriculteur from '../images/agriculteur.png';
+import HautDePage from './HautDePage';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useStateValue } from '../contexts/Context';
+import axios from 'axios';
 
 function OneParcMateriel() {
   const [infos, setInfos] = useState({});
-  const [{ materielId }] = useStateValue();
+  const [{ status, materielId }] = useStateValue();
+  const [fiche, setFiche] = useState([]);
+  const [ficheModeleId, setFicheModeleId] = useState(null);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/api/materiels/${materielId}`)
@@ -23,21 +27,68 @@ function OneParcMateriel() {
         setInfos(infos);
       });
   }, []);
-  console.log(infos);
+
+  useEffect(() => {
+    axios(`${process.env.REACT_APP_API_URL}/api/fiche_technique/`)
+      .then((data) => data.data)
+      .then((data) => {
+        let ficheWait = [];
+
+        ficheWait = data.filter((x) => ficheModeleId === x.modele_id);
+
+        setFiche(ficheWait);
+      });
+  }, [ficheModeleId]);
+
+  useEffect(() => {
+    axios('http://localhost:8000/api/modele')
+      .then((data) => data.data)
+      .then((data) => {
+        data.map((x) => {
+          if (x.name === infos.modele) {
+            setFicheModeleId(x.id);
+          }
+        });
+      });
+  }, [infos]);
+
   return (
     <div className="OPM_container">
-      <div className="OPM_blue_trait"></div>
-      <img className="OPM_image_profil" src={agriculteur} alt="profil_pictures"></img>
+      <HautDePage />
       <p className="OPM_title">Mon Parc</p>
       <div className="OPM_infos">
-        <p>Marque: {infos.marque}</p>
-        <p> Modèle : {infos.modele}</p>
-        <p>Mise en service: {infos.MES}</p>
-        <p> Numéro de série: {infos.serialNumber}</p>
-        <p> Dernière vidange moteur: {infos.prev_oil}</p>
-        <p> Prochaine vidange dans: {infos.next_oil}</p>
-        <p> Concess prioritaire pour dépannage: Ets Cloué</p>
+        <p>
+          Marque : <span>{infos.marque}</span>
+        </p>
+        <p>
+          Modèle : <span>{infos.modele}</span>
+        </p>
+        <p>
+          Mise en service : <span>{infos.MES}</span>
+        </p>
+        <p>
+          Numéro de série : <span>{infos.serialNumber}</span>
+        </p>
+        <p>
+          Dernière vidange moteur : <span>{infos.prev_oil}</span>
+        </p>
+        <p>
+          Prochaine vidange dans : <span>{infos.next_oil}</span>
+        </p>
+        <p>
+          Concess prioritaire pour dépannage : <span>Ets Cloué</span>
+        </p>
+
+        <Link to="/update_mat" className="btn__submit__modify">
+          <p>Modification du materiel</p>
+        </Link>
       </div>
+      {fiche.map((file, i) => (
+        <div className="pdf__bymodele" key={i}>
+          <i className="fas fa-file-pdf"></i>
+          <p>{file.name}</p>
+        </div>
+      ))}
     </div>
   );
 }

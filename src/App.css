@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
-:root{
-    --blueColor:#3d85c6;
-  }
-  
-*{
-    margin: 0;
-    padding: 0;
+:root {
+  --blueColor: #3d85c6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.container__site {
+  background: linear-gradient(#ffffff, #3d86c62f);
 }

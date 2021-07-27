@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useStateValue } from '../contexts/Context';
 
 import AllParcMateriel from './AllParcMateriel';
-import OneParcMateriel from './OneParcMateriel';
 import HautDePage from './HautDePage';
 
 function ParcMateriel() {
