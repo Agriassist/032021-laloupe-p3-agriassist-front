@@ -1,15 +1,17 @@
 import '../Styles/OneParcMateriel.css';
 import HautDePage from './HautDePage';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../contexts/Context';
 import axios from 'axios';
 
 function OneParcMateriel() {
   const [infos, setInfos] = useState({});
-  const [{ status, materielId }] = useStateValue();
+  const [{ materielId }] = useStateValue();
   const [fiche, setFiche] = useState([]);
   const [ficheModeleId, setFicheModeleId] = useState(null);
+
+  const history = useHistory();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/api/materiels/${materielId}`)
@@ -52,6 +54,19 @@ function OneParcMateriel() {
       });
   }, [infos]);
 
+  function deleteMat() {
+    if (window.confirm('Etes-vous sûr de vouloir supprimer ce matériel ?')) {
+      axios(`${process.env.REACT_APP_API_URL}/api/materiels/${materielId}`, {
+        method: 'DELETE',
+      })
+        .then((data) => data.data)
+        .then((data) => {
+          history.push('/materiel');
+          console.log(data);
+        });
+    }
+  }
+
   return (
     <div className="OPM_container">
       <HautDePage />
@@ -82,6 +97,10 @@ function OneParcMateriel() {
         <Link to="/update_mat" className="btn__submit__modify">
           <p>Modification du materiel</p>
         </Link>
+
+        <button className="sup__modif" onClick={deleteMat}>
+          <p>Supression du matériel</p>
+        </button>
       </div>
       {fiche.map((file, i) => (
         <div className="pdf__bymodele" key={i}>

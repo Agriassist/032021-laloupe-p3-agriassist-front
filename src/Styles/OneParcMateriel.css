@@ -75,7 +75,25 @@
   width: 30vh;
   box-shadow: 5px 3px 3px black;
   padding: 10px 0;
-  margin: 2rem auto 2rem auto;
+  margin: 1rem auto 1rem auto;
+}
+
+.sup__modif {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: 'Montserrat';
+  text-align: center;
+  font-size: 14px;
+  background-color: rgb(170, 9, 9);
+  border-radius: 20px;
+  width: 30vh;
+  box-shadow: 5px 3px 3px black;
+  padding: 10px 0;
+  margin: auto;
+}
+
+.sup__modif p {
+  color: white;
 }
 
 @media screen and (min-width: 1024px) {
@@ -87,6 +105,9 @@
     font-size: 20px;
   }
   .btn__submit__modify {
+    font-size: 18px;
+  }
+  .sup__modif {
     font-size: 18px;
   }
 }

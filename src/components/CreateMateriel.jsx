@@ -130,7 +130,11 @@ export default function CreateMateriel() {
         {tableau && agriculteurIdentifiant && (
           <ul>
             {tableau
-              .filter((users) => users.nom.startsWith(agriculteurIdentifiant) && users.statue === 'agriculteur')
+              .filter(
+                (users) =>
+                  users.statue === 'agriculteur' &&
+                  (users.nom.startsWith(agriculteurIdentifiant.toUpperCase()) || users.nom.startsWith(agriculteurIdentifiant.toLowerCase())),
+              )
               .map((text, index) => (
                 <button
                   onClick={() => {
@@ -156,7 +160,11 @@ export default function CreateMateriel() {
         {tableau && concessionnaireIdentifiant && (
           <section>
             {tableau
-              .filter((users) => users.nom.startsWith(concessionnaireIdentifiant) && users.statue === 'concessionnaire')
+              .filter(
+                (users) =>
+                  users.statue === 'concessionnaire' &&
+                  (users.nom.startsWith(concessionnaireIdentifiant.toUpperCase()) || users.nom.startsWith(concessionnaireIdentifiant.toLowerCase())),
+              )
               .map((text, index) => (
                 <button
                   onClick={() => {
