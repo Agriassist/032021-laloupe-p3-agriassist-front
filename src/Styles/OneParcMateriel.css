@@ -19,12 +19,16 @@
   left: 160px;
 }
 
-.OPM_title {
+.OPM_title, .OPM_title_marque, .OPM_title_modele {
   text-align: center;
   margin-top: 3rem;
   font-size: 22px;
   color: #3d86c6;
   font-family: 'Montserrat';
+}
+
+.OPM_title_marque, .OPM_title_modele {
+  margin-top: 1rem;
 }
 
 .OPM_infos {

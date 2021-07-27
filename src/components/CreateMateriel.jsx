@@ -5,6 +5,7 @@ import HautDepage from './HautDePage';
 import '../Styles/CreateMateriel.css';
 import '../Styles/OneParcMateriel.css';
 import '../Styles/UpdateMateriel.css';
+import CreateMarque from './CreateMarque';
 // import { data } from 'autoprefixer';
 
 export default function CreateMateriel() {
@@ -34,12 +35,15 @@ export default function CreateMateriel() {
   }, []);
 
   useEffect(() => {
-    axios('http://localhost:8000/api/modele')
-      .then((data) => data.data)
-      .then((data) => {
-        setTableauModele(data);
-      });
-  }, []);
+    if (marqueId) {
+      axios(`http://localhost:8000/api/modele/marque/${marqueId}`)
+        .then((data) => data.data)
+        .then((data) => {
+          console.log('coucou');
+          setTableauModele(data);
+        });
+    }
+  }, [marqueId]);
 
   useEffect(() => {
     axios('http://localhost:8000/api/marque')
@@ -105,22 +109,24 @@ export default function CreateMateriel() {
             </option>
           ))}
         </select>
-        <select
-          className="select__modele"
-          defaultValue="..."
-          onChange={(e) => {
-            setType(e.target.value);
-            setModeleId(e.target.selectedOptions[0].id);
-          }}>
-          <option key="0" id="0">
-            ...
-          </option>
-          {tableauModele.map((text) => (
-            <option key={text.id} id={text.id}>
-              {text.name}
+        {marqueId && (
+          <select
+            className="select__modele"
+            defaultValue="..."
+            onChange={(e) => {
+              setType(e.target.value);
+              setModeleId(e.target.selectedOptions[0].id);
+            }}>
+            <option key="0" id="0">
+              ...
             </option>
-          ))}
-        </select>
+            {tableauModele.map((text) => (
+              <option key={text.id} id={text.id}>
+                {text.name}
+              </option>
+            ))}
+          </select>
+        )}
         <input type="text" placeholder="Derniere vidange..." value={prevOil} onChange={(e) => setPrevOil(e.target.value)} />
         <input type="text" placeholder="Prochaine vidange..." value={nextOil} onChange={(e) => setNextOil(e.target.value)} />
         <div className="title__agri">
@@ -183,6 +189,12 @@ export default function CreateMateriel() {
           Envoyer
         </button>
       </div>
+      <p className="OPM_title_marque">Création d'une marque</p>
+      <div className="OPM_infos">
+        <CreateMarque />
+      </div>
+      <p className="OPM_title_modele">Création d'un modele</p>
+      <div className="OPM_infos">{/* <CreateModele /> */}</div>
     </div>
   );
 }

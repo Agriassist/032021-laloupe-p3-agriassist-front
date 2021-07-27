@@ -12,6 +12,22 @@
   box-shadow: 5px 3px 3px black;
   padding: 10px 0;
 }
+
+.btn__create__marque {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: 'Montserrat';
+  text-align: center;
+  font-size: 18px;
+  margin: auto;
+  color: black;
+  background-color: rgb(231, 160, 6);
+  border-radius: 20px;
+  width: 30vh;
+  box-shadow: 5px 3px 3px black;
+  padding: 10px 0;
+}
+
 .OPM_infos input {
   font-family: 'Montserrat';
   text-align: center;
@@ -37,6 +53,7 @@
   border-radius: 10px;
   text-align: center;
   background-color: white;
+  width: 100%;
   margin: 1rem auto;
 }
 
