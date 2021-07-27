@@ -1,5 +1,4 @@
 import '../Styles/Profil.css';
-import agriculteur from '../images/agriculteur.png';
 import HautDePage from './HautDePage';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
