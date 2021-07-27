@@ -17,7 +17,6 @@ export default function UpdateProfil() {
   const [email, setEmail] = useState('');
   const [telephone, setTelephone] = useState('');
   const [imgphoto, setImgphoto] = useState('');
-  console.log(file);
 
   const [{ token, id, profil_picture }, dispatch] = useStateValue();
 
@@ -29,23 +28,16 @@ export default function UpdateProfil() {
     })
       .then((data) => data.data)
       .then((data) => {
-        console.log(data);
         setPseudo(data.identifiant);
         setName(data.nom);
         setPrenom(data.prenom);
         setEmail(data.email);
         setTelephone(data.phone);
         setFile(data.photo_profil);
-        console.log(data.photo_profil);
-      })
-      .catch((err) => {
-        console.log(err);
       });
     if (file === 'twitter.jpg') {
-      console.log('1');
       setImgphoto('http://localhost:8000/api/images_profil/twitter.jpg');
     } else {
-      console.log('2');
       setImgphoto(`http://localhost:8000/api/images_profil/${file}`);
     }
   }, [file]);
@@ -53,7 +45,6 @@ export default function UpdateProfil() {
   const onChangeFile = (event) => {
     const { type } = event.target.files[0];
     if (type !== 'image/png' || type !== 'image/jpeg') {
-      console.log(event.target.files[0], 'here');
       setFileSelected(event.target.files[0]);
       SubmitUpdateProfil(null, event.target.files[0]);
     } else {
@@ -62,13 +53,10 @@ export default function UpdateProfil() {
   };
 
   const SubmitUpdateProfil = (_, fichier) => {
-    console.log(fichier);
     let data;
-    console.log(fileSelected);
     if (fichier) {
       data = new FormData();
       data.append('file', fichier);
-      console.log(pseudo, prenom, telephone);
       data.append(
         'user',
         JSON.stringify({

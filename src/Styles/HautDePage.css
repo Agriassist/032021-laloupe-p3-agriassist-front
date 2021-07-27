@@ -15,7 +15,6 @@
   height: 12vh;
   justify-content: space-evenly;
   margin-bottom: 4vh;
-  margin-top: 3vh;
 }
 
 .adresse_mail_img_profil {
@@ -42,9 +41,6 @@
   }
   .adresse_mail_img_profil {
     font-size: 9px;
-  }
-  .haut_de_page {
-    margin-top: 2vh;
   }
   .logo__home__page {
     height: 5vh;

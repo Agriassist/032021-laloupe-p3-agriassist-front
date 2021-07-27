@@ -27,7 +27,6 @@ function App() {
   const [{ token, status, id, materielId }, dispatch] = useStateValue();
 
   const refreshToken = () => {
-    console.log('ok');
     axios({
       method: 'POST',
       url: `${API_BASE_URL}/api/login/refresh_token`,
@@ -35,29 +34,17 @@ function App() {
     })
       .then(({ data }) => {
         const { id, status, token } = data;
-        console.log(id, status, token);
-        console.log('before refresh token: ', 15 * 60 * 1000 - 5000);
 
         // setTimeout pour renouvler avant expiration l'access_token
         setTimeout(() => {
-          let ms = 15 * 60 * 1000 - 5000;
-          let min;
-          let sec;
-
-          (min = Math.floor((ms / 1000 / 60) << 0)),
-            (sec = Math.floor((ms / 1000) << 0)),
-            (ms = Math.floor(ms << 0)),
-            console.log('inside setTimeout refresh token:', min + 'min', sec + 'sec', ms + 'ms');
           refreshToken();
         }, 15 * 60 * 1000 - 5000);
 
         dispatch({ type: 'SET_ID', id });
         dispatch({ type: 'SET_TOKEN', token });
         dispatch({ type: 'SET_STATUS', status });
-        console.log('good');
       })
       .catch((err) => {
-        // console.log('error refresh: ', err.response.data);
         dispatch({ type: 'RESET_USER' });
         dispatch({ type: 'RESET_JWT' });
       });
@@ -67,9 +54,6 @@ function App() {
     refreshToken();
   }, []);
 
-  console.log(`%c${token}`, 'color:red');
-  console.log(`%c${status}`, 'color:green');
-  console.log(`%c${id}`, 'color:brown');
   return (
     <main className="container__site">
       <Switch>
@@ -120,9 +104,11 @@ function App() {
             )}
           </>
         )}
-        <Route path="/">
-          <PageConnection />
-        </Route>
+        {!token && (
+          <Route path="/">
+            <PageConnection />
+          </Route>
+        )}
       </Switch>
       <Popup />
     </main>

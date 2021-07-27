@@ -15,13 +15,11 @@ export default function Profil() {
   //     url: `${process.env.REACT_APP_API_URL}/api/materiels/users/${id}`,
   //   })
   //     .then((data) => {
-  //       console.log(data.data);
   //       for (let i = 0; i < data.data.length; i++) {
   //         axios({
   //           method: 'GET',
   //           url: `${process.env.REACT_APP_API_URL}/api/users/materiel/${data.data[i].id}`,
   //         }).then((data) => {
-  //           console.log(data.data);
   //           for (let y = 0; y < data.data.length; y++) {
   //             const itemIndex = preTableau.findIndex((user) => {
   //               return user.id === data.data[y].id;
@@ -31,7 +29,6 @@ export default function Profil() {
   //                 preTableau.push(data.data[y]);
   //               }
   //             }
-  //             console.log(preTableau);
   //           }
   //         });
   //       }

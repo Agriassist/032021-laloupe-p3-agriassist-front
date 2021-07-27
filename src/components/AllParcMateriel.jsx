@@ -24,7 +24,6 @@ function AllParcMateriel(props) {
       setUrlStat(`${process.env.REACT_APP_API_URL}/api/materiels/users/${props.id}`);
     } else if (status === 'administrateur') {
       setUrlStat(`${process.env.REACT_APP_API_URL}/api/materiels`);
-      console.log(urlStat);
     }
   }, []);
 
@@ -37,7 +36,6 @@ function AllParcMateriel(props) {
         headers: { authorization: 'Bearer ' + token },
       })
         .then(async (data) => {
-          console.log(data.data);
           const reduc = await Promise.all(
             data.data.map((text) =>
               axios({
@@ -47,11 +45,9 @@ function AllParcMateriel(props) {
             ),
           );
           tableauMat = reduc.map((mat) => mat.data);
-          console.log(tableauMat);
           setInfos(tableauMat);
         })
         .catch((err) => {
-          console.log(err);
           alert(err.response);
         });
     }
@@ -59,7 +55,6 @@ function AllParcMateriel(props) {
 
   return (
     <div className="container__menu">
-      {console.log(infos)}
       <header className="parc-header">
         <div className="blocMonMateriel">
           <div className="blocMonMateriel__logo">
