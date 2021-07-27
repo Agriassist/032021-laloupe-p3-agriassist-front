@@ -15,6 +15,7 @@
   height: 100%;
   border-radius: 50%;
   border: 2px solid rgb(255, 255, 255);
+  object-fit: cover;
 }
 
 .container__imgprofil {
@@ -116,6 +117,7 @@ input[type='file'] {
   width: 30vh;
   box-shadow: 5px 3px 3px black;
   padding: 10px 0;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
