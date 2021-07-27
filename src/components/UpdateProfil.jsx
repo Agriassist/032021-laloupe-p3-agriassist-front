@@ -126,11 +126,11 @@ export default function UpdateProfil() {
           </div>
           <div className="email__update">
             <h3>Email:</h3>
-            <input type="email" name="" id="" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="phone__update">
             <h3>Téléphone:</h3>
-            <input type="text" name="" id="" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+            <input type="text" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
           </div>
           <div className="btn__submit__update" onClick={SubmitUpdateProfil}>
             <h3>Charger les modifications</h3>
