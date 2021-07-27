@@ -21,6 +21,7 @@ import FicheTech from './components/FicheTech';
 import CreateMateriel from './components/CreateMateriel';
 import UpdateMateriel from './components/UpdateMateriel';
 import CreateMarque from './components/CreateMarque';
+import CreateModele from './components/CreateModele';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
@@ -62,6 +63,9 @@ function App() {
           <>
             <Route path="/fiche_technique">
               <PostFiche />
+            </Route>
+            <Route path="/create_modele">
+              <CreateModele />
             </Route>
             <Route path="/users">
               <MenuPrincipalAgri />
