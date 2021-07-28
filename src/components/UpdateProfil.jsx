@@ -38,9 +38,9 @@ export default function UpdateProfil() {
         setFile(data.photo_profil);
       });
     if (file === 'twitter.jpg') {
-      setImgphoto(`${API_BASE_URL}/api/images_profil/twitter.jpg`);
+      setImgphoto(`${API_BASE_URL}/images_profil/twitter.jpg`);
     } else {
-      setImgphoto(`${API_BASE_URL}/api/images_profil/${file}`);
+      setImgphoto(`${API_BASE_URL}/images_profil/${file}`);
     }
   }, [file]);
 
