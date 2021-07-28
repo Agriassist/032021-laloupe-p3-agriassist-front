@@ -14,12 +14,13 @@ import Document_BonTravail from './components/Document_BonTravail';
 import Document_Facture from './components/Document_Facture';
 import AllParcMateriel from './components/AllParcMateriel';
 import CreateAccount from './components/CreateAccount';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import PostFiche from './components/PostFiche';
 import UpdateProfil from './components/UpdateProfil';
 import FicheTech from './components/FicheTech';
 import CreateMateriel from './components/CreateMateriel';
 import UpdateMateriel from './components/UpdateMateriel';
+import CreateMarque from './components/CreateMarque';
 import CreateModele from './components/CreateModele';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL;
@@ -46,8 +47,9 @@ function App() {
         dispatch({ type: 'SET_STATUS', status });
       })
       .catch((err) => {
-        dispatch({ type: 'RESET_USER' });
-        dispatch({ type: 'RESET_JWT' });
+        dispatch({ type: 'RESET_STATUS' });
+        dispatch({ type: 'RESET_TOKEN' });
+        dispatch({ type: 'RESET_ID' });
       });
   };
 
@@ -104,15 +106,18 @@ function App() {
                 <Route path="/create_materiel">
                   <CreateMateriel />
                 </Route>
+                <Route path="/create_Marque">
+                  <CreateMarque />
+                </Route>
               </>
             )}
           </>
         )}
-        {!token && (
+        {!token ? (
           <Route path="/">
             <PageConnection />
           </Route>
-        )}
+        ) : null}
       </Switch>
       <Popup />
     </main>

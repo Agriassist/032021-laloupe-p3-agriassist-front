@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { useStateValue } from '../contexts/Context';
 import '../Styles/parcMateriel.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 function AllParcMateriel(props) {
   const [infos, setInfos] = useState([]);
   const [urlStat, setUrlStat] = useState();
@@ -21,9 +23,9 @@ function AllParcMateriel(props) {
 
   useEffect(() => {
     if (status === 'agriculteur' || status === 'concessionnaire') {
-      setUrlStat(`${process.env.REACT_APP_API_URL}/api/materiels/users/${props.id}`);
+      setUrlStat(`${API_BASE_URL}/api/materiels/users/${props.id}`);
     } else if (status === 'administrateur') {
-      setUrlStat(`${process.env.REACT_APP_API_URL}/api/materiels`);
+      setUrlStat(`${API_BASE_URL}/api/materiels`);
     }
   }, []);
 
@@ -40,7 +42,7 @@ function AllParcMateriel(props) {
             data.data.map((text) =>
               axios({
                 method: 'GET',
-                url: `${process.env.REACT_APP_API_URL}/api/materiels/${text.id}`,
+                url: `${API_BASE_URL}/api/materiels/${text.id}`,
               }),
             ),
           );
@@ -66,7 +68,7 @@ function AllParcMateriel(props) {
       <div className="parc-image">
         {infos.map((text, index) => (
           <Link className="cadre-trackteur" key={index} onClick={() => selectMateriel(text.materiel.id)} to="/OneParcMateriel" role="link">
-            <img className="image-trackteur" alt={index} src="./src/images/tracteurimagemateriel.jpg" />
+            <img className="image-trackteur" alt={text.modele.picture} src={`${API_BASE_URL}/images_modele/${text.modele.picture}`} />
             <section className="materielName">
               <p className="describe-name"> {text.marque.name}&nbsp; </p>
               <p className="describe-number-serial">

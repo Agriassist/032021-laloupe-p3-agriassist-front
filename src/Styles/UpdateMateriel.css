@@ -4,7 +4,7 @@
   font-family: 'Montserrat';
   text-align: center;
   font-size: 18px;
-  margin: 2rem auto 2rem auto;
+  margin: 1rem auto;
   color: black;
   background-color: rgb(231, 160, 6);
   border-radius: 20px;
@@ -12,6 +12,22 @@
   box-shadow: 5px 3px 3px black;
   padding: 10px 0;
 }
+
+.btn__create__marque {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: 'Montserrat';
+  text-align: center;
+  font-size: 18px;
+  margin: 1rem 0;
+  color: black;
+  background-color: rgb(231, 160, 6);
+  border-radius: 20px;
+  width: 30vh;
+  box-shadow: 5px 3px 3px black;
+  padding: 10px 0;
+}
+
 .OPM_infos input {
   font-family: 'Montserrat';
   text-align: center;
@@ -24,7 +40,6 @@
 
 .title__agri h3,
 .title__concess h3 {
-  margin-top: 1rem;
   font-family: 'Montserrat';
   font-size: 20px;
   color: black;
@@ -37,6 +52,7 @@
   border-radius: 10px;
   text-align: center;
   background-color: white;
+  width: 100%;
   margin: 1rem auto;
 }
 

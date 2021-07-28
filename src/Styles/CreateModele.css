@@ -1,5 +1,5 @@
 .container__modeles {
-  height: 100vh;
+  height: 100%;
 }
 
 .container__choice__modele {
@@ -14,7 +14,8 @@
   border-radius: 10px;
   text-align: center;
   background-color: white;
-  margin: 3rem auto;
+  margin: 1rem auto;
+  width: 80%;
 }
 
 #input__name__modele {
@@ -31,12 +32,3 @@
   font-style: italic;
 }
 
-.container__choice__modele button {
-  margin-top: 2rem;
-  padding: 10px;
-  border: none;
-  border: 2px solid #fff;
-  border-radius: 10px;
-  background: rgb(223, 156, 13);
-  color: #fff;
-}
