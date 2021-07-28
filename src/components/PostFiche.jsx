@@ -96,7 +96,7 @@ export default function PostFiche() {
   };
 
   useEffect(() => {
-    axios('http://localhost:8000/api/modele')
+    axios('REACT_APP_API_URL/api/modele')
       .then((data) => data.data)
       .then((data) => {
         setModele(data);
@@ -104,7 +104,7 @@ export default function PostFiche() {
   }, []);
 
   useEffect(() => {
-    axios('http://localhost:8000/api/fiche_technique')
+    axios('REACT_APP_API_URL/api/fiche_technique')
       .then((data) => data.data)
       .then((data) => {
         setFicheTech(data);

@@ -13,7 +13,7 @@ export default function CreateModele() {
   const [fileSelected, setFileSelected] = useState(null);
 
   useEffect(() => {
-    axios('http://localhost:8000/api/marque')
+    axios('REACT_APP_API_URL/api/marque')
       .then((data) => data.data)
       .then((data) => {
         setTableauMarque(data);
@@ -43,7 +43,7 @@ export default function CreateModele() {
       );
       axios({
         method: 'POST',
-        url: 'http://localhost:8000/api/modele',
+        url: 'REACT_APP_API_URL/api/modele',
         data,
       })
         .then((data) => data.data)

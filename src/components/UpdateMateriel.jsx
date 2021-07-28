@@ -48,7 +48,7 @@ function UpdateMateriel(props) {
 
   useEffect(() => {
     let dataTableau, dataTableauPark, dataTableauModele;
-    axios('http://localhost:8000/api/users')
+    axios('REACT_APP_API_URL/api/users')
       .then((data) => data.data)
       .then((data) => {
         dataTableau = data;
@@ -71,7 +71,7 @@ function UpdateMateriel(props) {
 
   useEffect(() => {
     if (marqueId) {
-      axios(`http://localhost:8000/api/modele/marque/${marqueId}`)
+      axios(`REACT_APP_API_URL/api/modele/marque/${marqueId}`)
         .then((data) => data.data)
         .then((data) => {
           console.log('coucou');

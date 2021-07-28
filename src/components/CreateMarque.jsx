@@ -7,7 +7,7 @@ function CreateMarque() {
   function create_marque() {
     axios({
       method: 'POST',
-      url: `http://localhost:8000/api/marque`,
+      url: `REACT_APP_API_URL/api/marque`,
       data: { name: newMarque },
     }).then(() => {
       setNewMarque('');

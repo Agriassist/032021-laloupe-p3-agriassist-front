@@ -25,7 +25,7 @@ export default function CreateAccount() {
     } else {
       axios({
         method: 'POST',
-        url: 'http://localhost:8000/api/users',
+        url: 'REACT_APP_API_URL/api/users',
         data: { identifiant: pseudo, prenom: prenom, nom: name, email: email, phone: telephone, statue: status, hassPassword: password },
       })
         .then((data) => data.data)

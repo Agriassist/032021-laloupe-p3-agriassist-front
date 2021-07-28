@@ -27,7 +27,7 @@ export default function CreateMateriel() {
   const [modeleId, setModeleId] = useState();
 
   useEffect(() => {
-    axios('http://localhost:8000/api/users')
+    axios('REACT_APP_API_URL/api/users')
       .then((data) => data.data)
       .then((data) => {
         setTableau(data);
@@ -36,7 +36,7 @@ export default function CreateMateriel() {
 
   useEffect(() => {
     if (marqueId) {
-      axios(`http://localhost:8000/api/modele/marque/${marqueId}`)
+      axios(`REACT_APP_API_URL/api/modele/marque/${marqueId}`)
         .then((data) => data.data)
         .then((data) => {
           console.log('coucou');
@@ -46,7 +46,7 @@ export default function CreateMateriel() {
   }, [marqueId]);
 
   useEffect(() => {
-    axios('http://localhost:8000/api/marque')
+    axios('REACT_APP_API_URL/api/marque')
       .then((data) => data.data)
       .then((data) => {
         setTableauMarque(data);
@@ -58,7 +58,7 @@ export default function CreateMateriel() {
 
     axios({
       method: 'POST',
-      url: `http://localhost:8000/api/materiels`,
+      url: `REACT_APP_API_URL/api/materiels`,
       data: {
         year: year,
         serial_number: serialNumber,

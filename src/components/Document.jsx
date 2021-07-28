@@ -52,7 +52,7 @@ export default function Document() {
       data.append('file', facture);
       axios({
         method: 'POST',
-        url: `http://localhost:8000/api/facture/`,
+        url: `REACT_APP_API_URL/api/facture/`,
         data,
       })
         .then(() => {
@@ -73,7 +73,7 @@ export default function Document() {
       data.append('file', bonTravail);
       axios({
         method: 'POST',
-        url: `http://localhost:8000/api/bon_travail/`,
+        url: `REACT_APP_API_URL/api/bon_travail/`,
         data,
       })
         .then(() => {
@@ -88,14 +88,14 @@ export default function Document() {
   }
 
   // useEffect(function () {
-  //   axios(`http://localhost:8000/facture/${id}`)
+  //   axios(`REACT_APP_API_URL/facture/${id}`)
   //     .then((data) => data.data)
   //     .then((data) => {
   //       setFacture(data);
   //     });
   // });
   // useEffect(function () {
-  //   axios(`http://localhost:8000/bon_travail/${id}`)
+  //   axios(`REACT_APP_API_URL/bon_travail/${id}`)
   //     .then((data) => data.data)
   //     .then((data) => {
   //       setBonTravail(data);
