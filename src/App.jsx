@@ -14,7 +14,7 @@ import Document_BonTravail from './components/Document_BonTravail';
 import Document_Facture from './components/Document_Facture';
 import AllParcMateriel from './components/AllParcMateriel';
 import CreateAccount from './components/CreateAccount';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import PostFiche from './components/PostFiche';
 import UpdateProfil from './components/UpdateProfil';
 import FicheTech from './components/FicheTech';
@@ -112,10 +112,12 @@ function App() {
             )}
           </>
         )}
-        {!token && (
+        {!token ? (
           <Route path="/">
             <PageConnection />
           </Route>
+        ) : (
+          <Redirect to="/users" />
         )}
       </Switch>
       <Popup />
