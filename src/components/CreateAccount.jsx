@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/CreateAccount.css';
-import logoAgri from '../images/logoAgri.png';
 import axios from 'axios';
 import HautDePage from './HautDePage';
 import '../Styles/OneParcMateriel.css';
+
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export default function CreateAccount() {
   const [pseudo, setPseudo] = useState('');
@@ -25,7 +26,7 @@ export default function CreateAccount() {
     } else {
       axios({
         method: 'POST',
-        url: 'http://localhost:8000/api/users',
+        url: `${API_BASE_URL}/api/users`,
         data: { identifiant: pseudo, prenom: prenom, nom: name, email: email, phone: telephone, statue: status, hassPassword: password },
       })
         .then((data) => data.data)

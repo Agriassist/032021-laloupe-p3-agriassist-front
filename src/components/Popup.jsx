@@ -32,7 +32,7 @@ export default function Popup() {
   return (
     <div className={popup ? 'container' : 'container__none'}>
       <div className="container__popup">
-        <img src={`http://localhost:8000/api/images_profil/${profil_picture}`} alt="agriculteur" />
+        <img src={`${API_BASE_URL}/images_profil/${profil_picture}`} alt="agriculteur" />
         <i className="far fa-times-circle" onClick={popupVisible}></i>
         <p id="popup__user">{name}</p>
         <Link to="/update_profil" className="boutton__text__popup" onClick={popupVisible}>
