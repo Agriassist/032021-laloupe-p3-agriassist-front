@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -139,7 +140,7 @@ export default function PostFiche() {
 
         <input type="file" accept="/*" id="upload__fiche__tech" onChange={onChangeFile} />
 
-        <FormControl required className={classNamees.formControl}>
+        {/* <FormControl required className={classNamees.formControl}>
           <InputLabel id="demo-simple-select-required-label" style={{ color: '#fff', fontSize: 20, fontFamily: 'Montserrat' }}>
             Modèle
           </InputLabel>
@@ -156,7 +157,22 @@ export default function PostFiche() {
             ))}
           </NativeSelect>
           <FormHelperText style={{ color: '#fff', fontSize: 15, fontFamily: 'Montserrat' }}>Obligatoire</FormHelperText>
-        </FormControl>
+        </FormControl> */}
+        <select
+          name=""
+          id=""
+          defaultValue={typeModele}
+          onChange={(event) => {
+            setTypeModele(event.target.value);
+            setIdModele(event.target.selectedOptions[0].id);
+          }}>
+          {modele.map((modeles, index) => (
+            <option className={classNamees.menuItem} id={modeles.id} key={index} value={modeles.name}>
+              {modeles.name}
+            </option>
+          ))}
+          Modèle
+        </select>
 
         <div className={classNamees.root}>
           <TextField id="outlined-helperText" label="Nom du fichier..." value={name} onChange={(e) => setName(e.target.value)} variant="outlined" />
