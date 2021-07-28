@@ -44,7 +44,7 @@ export default function HautDePage() {
         alt="logo Agriassist"
       />
       <div className="espace_identification_profil">
-        <img className="img_profil" src={`${API_BASE_URL}/api/images_profil/${profil_picture}`} onClick={menuNav} alt="agriculteur" />
+        <img className="img_profil" src={`${API_BASE_URL}/images_profil/${profil_picture}`} onClick={menuNav} alt="agriculteur" />
         <figcaption className="adresse_mail_img_profil">{mail}</figcaption>
       </div>
     </div>
