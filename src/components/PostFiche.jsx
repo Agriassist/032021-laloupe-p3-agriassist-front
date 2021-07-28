@@ -11,6 +11,8 @@ import HautDePage from '../components/HautDePage';
 import axios from 'axios';
 import '../Styles/OneParcMateriel.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '4rem',
@@ -89,14 +91,14 @@ export default function PostFiche() {
       );
       axios({
         method: 'POST',
-        url: `${process.env.REACT_APP_API_URL}/api/fiche_technique`,
+        url: `${API_BASE_URL}/api/fiche_technique`,
         data,
       }).then((data) => data.data);
     }
   };
 
   useEffect(() => {
-    axios('REACT_APP_API_URL/api/modele')
+    axios(`${API_BASE_URL}/api/modele`)
       .then((data) => data.data)
       .then((data) => {
         setModele(data);
@@ -104,7 +106,7 @@ export default function PostFiche() {
   }, []);
 
   useEffect(() => {
-    axios('REACT_APP_API_URL/api/fiche_technique')
+    axios(`${API_BASE_URL}/api/fiche_technique`)
       .then((data) => data.data)
       .then((data) => {
         setFicheTech(data);

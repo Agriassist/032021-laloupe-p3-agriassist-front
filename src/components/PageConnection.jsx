@@ -8,6 +8,8 @@ import '../Styles/PageConnection.css';
 import logoAgri from '../images/logoAgri.png';
 import Intro from './Intro';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 export default function PageConnection() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -38,7 +40,7 @@ export default function PageConnection() {
     if (email && password) {
       axios({
         method: 'POST',
-        url: `${process.env.REACT_APP_API_URL}/api/login`,
+        url: `${API_BASE_URL}/api/login`,
         data: { email, password },
         withCredentials: true,
       })

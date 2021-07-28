@@ -6,6 +6,8 @@ import axios from 'axios';
 import camera from '../camera.png';
 import tracteur from '../images/maxresdefault.jpg';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 export default function CreateModele() {
   const [tableauMarque, setTableauMarque] = useState([]);
   const [marqueId, setMarqueId] = useState();
@@ -13,7 +15,7 @@ export default function CreateModele() {
   const [fileSelected, setFileSelected] = useState(null);
 
   useEffect(() => {
-    axios('REACT_APP_API_URL/api/marque')
+    axios(`${API_BASE_URL}/api/marque`)
       .then((data) => data.data)
       .then((data) => {
         setTableauMarque(data);
@@ -43,11 +45,10 @@ export default function CreateModele() {
       );
       axios({
         method: 'POST',
-        url: 'REACT_APP_API_URL/api/modele',
+        url: `${API_BASE_URL}/api/modele`,
         data,
       })
-        .then((data) => data.data)
-        .then((data) => {
+        .then(() => {
           setFileSelected('');
           setModele('');
           setMarqueId('');

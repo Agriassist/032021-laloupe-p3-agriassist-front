@@ -7,7 +7,8 @@ import '../Styles/OneParcMateriel.css';
 import '../Styles/UpdateMateriel.css';
 import CreateMarque from './CreateMarque';
 import CreateModele from './CreateModele';
-// import { data } from 'autoprefixer';
+
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export default function CreateMateriel() {
   const [year, setYear] = useState('');
@@ -27,7 +28,7 @@ export default function CreateMateriel() {
   const [modeleId, setModeleId] = useState();
 
   useEffect(() => {
-    axios('REACT_APP_API_URL/api/users')
+    axios(`${API_BASE_URL}/api/users`)
       .then((data) => data.data)
       .then((data) => {
         setTableau(data);
@@ -36,7 +37,7 @@ export default function CreateMateriel() {
 
   useEffect(() => {
     if (marqueId) {
-      axios(`REACT_APP_API_URL/api/modele/marque/${marqueId}`)
+      axios(`${API_BASE_URL}/api/modele/marque/${marqueId}`)
         .then((data) => data.data)
         .then((data) => {
           console.log('coucou');
@@ -46,7 +47,7 @@ export default function CreateMateriel() {
   }, [marqueId]);
 
   useEffect(() => {
-    axios('REACT_APP_API_URL/api/marque')
+    axios(`${API_BASE_URL}/api/marque`)
       .then((data) => data.data)
       .then((data) => {
         setTableauMarque(data);
@@ -58,7 +59,7 @@ export default function CreateMateriel() {
 
     axios({
       method: 'POST',
-      url: `REACT_APP_API_URL/api/materiels`,
+      url: `${API_BASE_URL}/api/materiels`,
       data: {
         year: year,
         serial_number: serialNumber,

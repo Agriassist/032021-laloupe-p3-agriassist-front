@@ -1,13 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 function CreateMarque() {
   const [newMarque, setNewMarque] = React.useState('');
 
   function create_marque() {
     axios({
       method: 'POST',
-      url: `REACT_APP_API_URL/api/marque`,
+      url: `${API_BASE_URL}/api/marque`,
       data: { name: newMarque },
     }).then(() => {
       setNewMarque('');
