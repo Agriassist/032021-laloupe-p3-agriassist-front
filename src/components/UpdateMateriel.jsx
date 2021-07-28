@@ -49,7 +49,7 @@ function UpdateMateriel(props) {
   }, []);
 
   useEffect(() => {
-    let dataTableau, dataTableauPark, dataTableauModele;
+    let dataTableau, dataTableauPark;
     axios(`${API_BASE_URL}/api/users`)
       .then((data) => data.data)
       .then((data) => {
@@ -183,7 +183,7 @@ function UpdateMateriel(props) {
             <h3 className="titleUpdateMateriel">Dernière vidange moteur :</h3>
             <input type="text" defaultValue={infos.materiel.prev_oil_change} onChange={(e) => setPrevOil(e.target.value)} />
 
-            {status === 'agriculteur' && (
+            {(status === 'agriculteur' || status === 'concessionnaire') && (
               <>
                 <h3 className="titleUpdateMateriel">Prochaine vidange moteur :</h3>
                 <input type="text" defaultValue={infos.materiel.prev_oil_change} value={nextOil} readOnly={true} />
