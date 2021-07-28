@@ -151,7 +151,7 @@ export default function Document() {
             <i className="fas fa-print"></i>
           </label>
           <p className="legende__icones">Bon de Travail</p>
-          <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onclick={submitBonTravil}>
+          <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitBonTravil}>
             Sauvegarder
           </button>
         </div>

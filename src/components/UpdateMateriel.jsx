@@ -58,23 +58,27 @@ function UpdateMateriel(props) {
           .then((data) => {
             dataTableauPark = data;
             // setPark(data);
-            axios(`${process.env.REACT_APP_API_URL}/api/modele`)
+            axios(`${process.env.REACT_APP_API_URL}/api/marque`)
               .then((data) => data.data)
               .then((data) => {
-                dataTableauModele = data;
-                // setTableauModele(data);
-                axios(`${process.env.REACT_APP_API_URL}/api/marque`)
-                  .then((data) => data.data)
-                  .then((data) => {
-                    setTableauMarque(data);
-                    setTableau(dataTableau);
-                    setTableauModele(dataTableauModele);
-                    setPark(dataTableauPark);
-                  });
+                setTableauMarque(data);
+                setTableau(dataTableau);
+                setPark(dataTableauPark);
               });
           });
       });
   }, [infos]);
+
+  useEffect(() => {
+    if (marqueId) {
+      axios(`http://localhost:8000/api/modele/marque/${marqueId}`)
+        .then((data) => data.data)
+        .then((data) => {
+          console.log('coucou');
+          setTableauModele(data);
+        });
+    }
+  }, [marqueId]);
 
   function submitMateriel(e) {
     e.preventDefault();
@@ -137,7 +141,7 @@ function UpdateMateriel(props) {
                 <h3 className="titleUpdateMateriel">Marque :</h3>
                 <select
                   className="select__marque"
-                  defaultValue="..."
+                  defaultValue={infos.marque.name}
                   onChange={(e) => {
                     setMarqueId(e.target.selectedOptions[0].id);
                   }}>
@@ -151,21 +155,23 @@ function UpdateMateriel(props) {
                   ))}
                 </select>
                 <h3 className="titleUpdateMateriel">Modèle :</h3>
-                <select
-                  className="select__modele"
-                  defaultValue="..."
-                  onChange={(e) => {
-                    setModeleId(e.target.selectedOptions[0].id);
-                  }}>
-                  <option key="0" id="0">
-                    ...
-                  </option>
-                  {tableauModele.map((text) => (
-                    <option key={text.id} id={text.id}>
-                      {text.name}
+                {marqueId && (
+                  <select
+                    className="select__modele"
+                    defaultValue={infos.modele.name}
+                    onChange={(e) => {
+                      setModeleId(e.target.selectedOptions[0].id);
+                    }}>
+                    <option key="0" id="0">
+                      ...
                     </option>
-                  ))}
-                </select>
+                    {tableauModele.map((text) => (
+                      <option key={text.id} id={text.id}>
+                        {text.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
                 <h3 className="titleUpdateMateriel">Année de mise en service :</h3>
                 <input type="number" defaultValue={infos.materiel.year} onChange={(e) => setYear(e.target.value)} />
                 <h3 className="titleUpdateMateriel">Numéro de série :</h3>

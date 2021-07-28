@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function OneParcMateriel() {
   const [infos, setInfos] = useState({});
-  const [{ materielId }] = useStateValue();
+  const [{ status, materielId }] = useStateValue();
   const [fiche, setFiche] = useState([]);
   const [ficheModeleId, setFicheModeleId] = useState(null);
 
@@ -97,10 +97,11 @@ function OneParcMateriel() {
         <Link to="/update_mat" className="btn__submit__modify">
           <p>Modification du materiel</p>
         </Link>
-
-        <button className="sup__modif" onClick={deleteMat}>
-          <p>Supression du matériel</p>
-        </button>
+        {status === 'administrateur' && (
+          <button className="sup__modif" onClick={deleteMat}>
+            <p>Supression du matériel</p>
+          </button>
+        )}
       </div>
       {fiche.map((file, i) => (
         <div className="pdf__bymodele" key={i}>

@@ -51,7 +51,7 @@ export default function CreateModele() {
           setFileSelected('');
           setModele('');
           setMarqueId('');
-          alert('Modele ajouté')
+          alert('Modele ajouté');
           //   dispatch({ type: 'SET_PROFIL_PICTURE', profil_picture: data.photo_profil });
         })
         .catch((err) => {
@@ -63,8 +63,7 @@ export default function CreateModele() {
   }
   return (
     <div className="container__modeles">
-      <HautDePage />
-
+      <h3>image du modele</h3>
       <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
       <div className="container__imgprofil">
         <img src={tracteur} alt="test" id="img__multer" />
@@ -75,6 +74,7 @@ export default function CreateModele() {
       </div>
 
       <div className="container__choice__modele">
+        <h3>marques</h3>
         <select
           className="select__marque__modele"
           defaultValue="..."
@@ -90,9 +90,11 @@ export default function CreateModele() {
             </option>
           ))}
         </select>
-
+        <h3>nom du modele</h3>
         <input type="text" id="input__name__modele" placeholder="Name..." value={modele} onChange={(e) => setModele(e.target.value)} />
-        <button onClick={saveModele}>Save Modele</button>
+        <button className="btn__create__marque" onClick={saveModele}>
+          Save Modele
+        </button>
       </div>
     </div>
   );
