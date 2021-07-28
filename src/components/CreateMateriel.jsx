@@ -208,7 +208,7 @@ export default function CreateMateriel() {
           </div>
         </div>
         <div>
-          <p className="OPM_title_modele">Création d'un modele</p>
+          <p className="OPM_title_modele">Création d'un modèle</p>
           <div className="OPM_infos">
             <CreateModele />
           </div>
