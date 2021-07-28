@@ -7,6 +7,8 @@ import Document_BonTravail from './Document_BonTravail';
 import Document_Facture from './Document_Facture';
 import HautDePage from './HautDePage';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 export default function Document() {
   const [onClickChoice, setOnClickChoice] = useState(1);
   const [fileFacture, setFileFacture] = useState('');
@@ -24,7 +26,8 @@ export default function Document() {
 
   const onChangeFileFacture = (event) => {
     const { type } = event.target.files[0];
-    if (type !== 'image/png' || type !== 'image/jpeg') {
+    if (type !== 'image/png' || type !== 'image/jpeg' || type !== '/pdf') {
+      console.log(event.target.files[0], 'here');
       setFileFacture(event.target.files);
     } else {
       alert("Veuillez selectionner un format d'image valide");
@@ -51,7 +54,7 @@ export default function Document() {
       data.append('file', facture);
       axios({
         method: 'POST',
-        url: `http://localhost:8000/api/facture/`,
+        url: `${API_BASE_URL}/api/facture/`,
         data,
       })
         .then(() => {
@@ -72,7 +75,7 @@ export default function Document() {
       data.append('file', bonTravail);
       axios({
         method: 'POST',
-        url: `http://localhost:8000/api/bon_travail/`,
+        url: `${API_BASE_URL}/api/bon_travail/`,
         data,
       })
         .then(() => {
@@ -85,21 +88,6 @@ export default function Document() {
       alert('no file are selected');
     }
   }
-
-  // useEffect(function () {
-  //   axios(`http://localhost:8000/facture/${id}`)
-  //     .then((data) => data.data)
-  //     .then((data) => {
-  //       setFacture(data);
-  //     });
-  // });
-  // useEffect(function () {
-  //   axios(`http://localhost:8000/bon_travail/${id}`)
-  //     .then((data) => data.data)
-  //     .then((data) => {
-  //       setBonTravail(data);
-  //     });
-  // });
 
   return (
     <div className="container__menu">
@@ -150,7 +138,7 @@ export default function Document() {
             <i className="fas fa-print"></i>
           </label>
           <p className="legende__icones">Bon de Travail</p>
-          <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onclick={submitBonTravil}>
+          <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitBonTravil}>
             Sauvegarder
           </button>
         </div>

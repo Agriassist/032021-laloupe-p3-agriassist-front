@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
@@ -11,6 +10,8 @@ import camera from '../camera.png';
 import HautDePage from '../components/HautDePage';
 import axios from 'axios';
 import '../Styles/OneParcMateriel.css';
+
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,10 +60,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PostFiche() {
   const [fileSelected, setFileSelected] = useState(null);
-  const [file, setFile] = useState(null);
   const [name, setName] = useState('');
   const [modele, setModele] = useState([]);
-  const [type, setType] = useState('');
   const [typeModele, setTypeModele] = useState('');
   const [idModele, setIdModele] = useState(null);
   const [ficheTech, setFicheTech] = useState([]);
@@ -92,23 +91,14 @@ export default function PostFiche() {
       );
       axios({
         method: 'POST',
-        url: `${process.env.REACT_APP_API_URL}/api/fiche_technique`,
+        url: `${API_BASE_URL}/api/fiche_technique`,
         data,
-      })
-        .then((data) => data.data)
-        .then((data) => {
-          setFile({
-            filename: data.file,
-          });
-        })
-        .catch((err) => {
-          alert(err.response.status);
-        });
+      }).then((data) => data.data);
     }
   };
 
   useEffect(() => {
-    axios('http://localhost:8000/api/modele')
+    axios(`${API_BASE_URL}/api/modele`)
       .then((data) => data.data)
       .then((data) => {
         setModele(data);
@@ -116,7 +106,7 @@ export default function PostFiche() {
   }, []);
 
   useEffect(() => {
-    axios('http://localhost:8000/api/fiche_technique')
+    axios(`${API_BASE_URL}/api/fiche_technique`)
       .then((data) => data.data)
       .then((data) => {
         setFicheTech(data);

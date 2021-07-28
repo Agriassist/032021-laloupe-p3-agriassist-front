@@ -20,10 +20,12 @@ export default function UpdateProfil() {
 
   const [{ token, id, profil_picture }, dispatch] = useStateValue();
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_API_URL}/api/users/${id}`,
+      url: `${API_BASE_URL}/api/users/${id}`,
       headers: { authorization: 'Bearer ' + token },
     })
       .then((data) => data.data)
@@ -36,9 +38,9 @@ export default function UpdateProfil() {
         setFile(data.photo_profil);
       });
     if (file === 'twitter.jpg') {
-      setImgphoto('http://localhost:8000/api/images_profil/twitter.jpg');
+      setImgphoto(`${API_BASE_URL}/api/images_profil/twitter.jpg`);
     } else {
-      setImgphoto(`http://localhost:8000/api/images_profil/${file}`);
+      setImgphoto(`${API_BASE_URL}/api/images_profil/${file}`);
     }
   }, [file]);
 
@@ -80,7 +82,7 @@ export default function UpdateProfil() {
     }
     axios({
       method: 'PUT',
-      url: `http://localhost:8000/api/users/${id}`,
+      url: `${API_BASE_URL}/api/users/${id}`,
       data: data,
     })
       .then((data) => data.data)
@@ -126,11 +128,11 @@ export default function UpdateProfil() {
           </div>
           <div className="email__update">
             <h3>Email:</h3>
-            <input type="email" name="" id="" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="phone__update">
             <h3>Téléphone:</h3>
-            <input type="text" name="" id="" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+            <input type="text" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
           </div>
           <div className="btn__submit__update" onClick={SubmitUpdateProfil}>
             <h3>Charger les modifications</h3>

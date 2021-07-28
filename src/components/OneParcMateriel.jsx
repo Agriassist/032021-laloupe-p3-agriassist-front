@@ -1,9 +1,11 @@
 import '../Styles/OneParcMateriel.css';
 import HautDePage from './HautDePage';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../contexts/Context';
 import axios from 'axios';
+
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 function OneParcMateriel() {
   const [infos, setInfos] = useState({});
@@ -11,8 +13,10 @@ function OneParcMateriel() {
   const [fiche, setFiche] = useState([]);
   const [ficheModeleId, setFicheModeleId] = useState(null);
 
+  const history = useHistory();
+
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/materiels/${materielId}`)
+    fetch(`${API_BASE_URL}/api/materiels/${materielId}`)
       .then((resp) => resp.json())
       .then((data) => {
         const [marque, modele, MES, serialNumber, prev_oil, next_oil] = [
@@ -29,7 +33,7 @@ function OneParcMateriel() {
   }, []);
 
   useEffect(() => {
-    axios(`${process.env.REACT_APP_API_URL}/api/fiche_technique/`)
+    axios(`${API_BASE_URL}/api/fiche_technique/`)
       .then((data) => data.data)
       .then((data) => {
         let ficheWait = [];
@@ -41,7 +45,7 @@ function OneParcMateriel() {
   }, [ficheModeleId]);
 
   useEffect(() => {
-    axios('http://localhost:8000/api/modele')
+    axios(`${API_BASE_URL}/api/modele`)
       .then((data) => data.data)
       .then((data) => {
         data.map((x) => {
@@ -51,6 +55,19 @@ function OneParcMateriel() {
         });
       });
   }, [infos]);
+
+  function deleteMat() {
+    if (window.confirm('Etes-vous sûr de vouloir supprimer ce matériel ?')) {
+      axios(`${API_BASE_URL}/api/materiels/${materielId}`, {
+        method: 'DELETE',
+      })
+        .then((data) => data.data)
+        .then((data) => {
+          history.push('/materiel');
+          console.log(data);
+        });
+    }
+  }
 
   return (
     <div className="OPM_container">
@@ -82,6 +99,11 @@ function OneParcMateriel() {
         <Link to="/update_mat" className="btn__submit__modify">
           <p>Modification du materiel</p>
         </Link>
+        {status === 'administrateur' && (
+          <button className="sup__modif" onClick={deleteMat}>
+            <p>Supression du matériel</p>
+          </button>
+        )}
       </div>
       {fiche.map((file, i) => (
         <div className="pdf__bymodele" key={i}>
