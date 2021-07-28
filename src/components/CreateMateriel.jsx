@@ -97,7 +97,7 @@ export default function CreateMateriel() {
             setMarqueId(e.target.selectedOptions[0].id);
           }}>
           <option key="0" id="0">
-            ...
+            Marque
           </option>
           {tableauMarque.map((text) => (
             <option key={text.id} id={text.id}>
@@ -113,7 +113,7 @@ export default function CreateMateriel() {
             setModeleId(e.target.selectedOptions[0].id);
           }}>
           <option key="0" id="0">
-            ...
+            Modèle
           </option>
           {tableauModele.map((text) => (
             <option key={text.id} id={text.id}>
