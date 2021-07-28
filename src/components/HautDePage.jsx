@@ -37,7 +37,7 @@ export default function HautDePage() {
     <div className="haut_de_page">
       <img
         className="logo_agriassist"
-        src="./src/images/logoAgri.png"
+        src="./assets/src/images/logoAgri.png"
         onClick={() => {
           history.push('/users');
         }}
