@@ -47,8 +47,9 @@ function App() {
         dispatch({ type: 'SET_STATUS', status });
       })
       .catch((err) => {
-        dispatch({ type: 'RESET_USER' });
-        dispatch({ type: 'RESET_JWT' });
+        dispatch({ type: 'RESET_STATUS' });
+        dispatch({ type: 'RESET_TOKEN' });
+        dispatch({ type: 'RESET_ID' });
       });
   };
 
@@ -116,9 +117,7 @@ function App() {
           <Route path="/">
             <PageConnection />
           </Route>
-        ) : (
-          <Redirect to="/users" />
-        )}
+        ) : null}
       </Switch>
       <Popup />
     </main>
