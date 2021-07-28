@@ -66,7 +66,7 @@ function AllParcMateriel(props) {
       <div className="parc-image">
         {infos.map((text, index) => (
           <Link className="cadre-trackteur" key={index} onClick={() => selectMateriel(text.materiel.id)} to="/OneParcMateriel" role="link">
-            <img className="image-trackteur" alt={index} src="./src/images/tracteurimagemateriel.jpg" />
+            <img className="image-trackteur" alt={text.modele.picture} src={`http://localhost:8000/api/images_modele/${text.modele.picture}`} />
             <section className="materielName">
               <p className="describe-name"> {text.marque.name}&nbsp; </p>
               <p className="describe-number-serial">
