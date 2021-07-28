@@ -26,10 +26,12 @@ function UpdateMateriel(props) {
 
   const [{ status }] = useStateValue();
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_API_URL}/api/materiels/${props.materielId}`,
+      url: `${API_BASE_URL}/api/materiels/${props.materielId}`,
     })
       .then((data) => {
         setInfos(data.data);
@@ -48,17 +50,17 @@ function UpdateMateriel(props) {
 
   useEffect(() => {
     let dataTableau, dataTableauPark, dataTableauModele;
-    axios('http://localhost:8000/api/users')
+    axios(`${API_BASE_URL}/api/users`)
       .then((data) => data.data)
       .then((data) => {
         dataTableau = data;
         // setTableau(data);
-        axios(`${process.env.REACT_APP_API_URL}/api/park/materiel/${props.materielId}`)
+        axios(`${API_BASE_URL}/api/park/materiel/${props.materielId}`)
           .then((data) => data.data)
           .then((data) => {
             dataTableauPark = data;
             // setPark(data);
-            axios(`${process.env.REACT_APP_API_URL}/api/marque`)
+            axios(`${API_BASE_URL}/api/marque`)
               .then((data) => data.data)
               .then((data) => {
                 setTableauMarque(data);
@@ -71,7 +73,7 @@ function UpdateMateriel(props) {
 
   useEffect(() => {
     if (marqueId) {
-      axios(`http://localhost:8000/api/modele/marque/${marqueId}`)
+      axios(`${API_BASE_URL}/api/modele/marque/${marqueId}`)
         .then((data) => data.data)
         .then((data) => {
           console.log('coucou');
@@ -85,7 +87,7 @@ function UpdateMateriel(props) {
 
     axios({
       method: 'PUT',
-      url: `${process.env.REACT_APP_API_URL}/api/materiels/${props.materielId}`,
+      url: `${API_BASE_URL}/api/materiels/${props.materielId}`,
       data: {
         year: year,
         serial_number: serialNumber,

@@ -6,6 +6,8 @@ import '../Styles/HautDePage.css';
 import { useStateValue } from '../contexts/Context';
 import { useHistory } from 'react-router-dom';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 export default function HautDePage() {
   const [{ popup, id, token, profil_picture }, dispatch] = useStateValue();
 
@@ -20,7 +22,7 @@ export default function HautDePage() {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_API_URL}/api/users/${id}`,
+      url: `${API_BASE_URL}/api/users/${id}`,
       headers: { authorization: 'Bearer ' + token },
     })
       .then((data) => data.data)
@@ -42,7 +44,7 @@ export default function HautDePage() {
         alt="logo Agriassist"
       />
       <div className="espace_identification_profil">
-        <img className="img_profil" src={`http://localhost:8000/api/images_profil/${profil_picture}`} onClick={menuNav} alt="agriculteur" />
+        <img className="img_profil" src={`${API_BASE_URL}/api/images_profil/${profil_picture}`} onClick={menuNav} alt="agriculteur" />
         <figcaption className="adresse_mail_img_profil">{mail}</figcaption>
       </div>
     </div>
