@@ -4,7 +4,7 @@
   font-family: 'Montserrat';
   text-align: center;
   font-size: 18px;
-  margin: 2rem auto 2rem auto;
+  margin: 1rem 0;
   color: black;
   background-color: rgb(231, 160, 6);
   border-radius: 20px;
@@ -19,7 +19,7 @@
   font-family: 'Montserrat';
   text-align: center;
   font-size: 18px;
-  margin: auto;
+  margin: 1rem 0;
   color: black;
   background-color: rgb(231, 160, 6);
   border-radius: 20px;
@@ -40,7 +40,6 @@
 
 .title__agri h3,
 .title__concess h3 {
-  margin-top: 1rem;
   font-family: 'Montserrat';
   font-size: 20px;
   color: black;

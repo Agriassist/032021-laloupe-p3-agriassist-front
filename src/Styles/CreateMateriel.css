@@ -2,51 +2,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
 }
 
-
-/* 
-.container_materiel_creation input{
-    margin-top: 2rem;
-    width: 70%;
-    padding: 5px;
-    border-radius: 10px;
-    border: none;
-}
-.container_materiel_creation input::placeholder{
-  font-style: italic;
-  opacity: .6;
+.big-containeur {
+  display: flex;
+  flex-flow: column;
 }
 
-.container_materiel_creation h2{
-    margin-top: 2rem;
-    font-style: italic;
-    font-weight: bold;
-}
-.container_materiel_creation select{
-    margin-top: 1rem;
+.container__modeles {
+  text-align: center;
 }
 
-.btn__materiel{
-    margin-top: 2rem;
-    cursor: pointer;
-    padding: 10px 25px ;
-    border: none;
-    border-radius: 10px;
-    background: rgb(255, 115, 0);
-    color: #fff;
-}
-@media screen and (min-width: 768px) and (max-width: 1024px){
-    .container_materiel_creation input{
-       padding: 15px;
-     
-    } 
+.center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media screen and (min-width: 1024px){
-    .container_materiel_creation input{
-        padding: 15px;
-        width: 50%;
-      
-     } 
-} */
+@media screen and (min-width: 1024px) {
+  .big-containeur {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 100%;
+  }
+}

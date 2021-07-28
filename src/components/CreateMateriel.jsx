@@ -6,6 +6,7 @@ import '../Styles/CreateMateriel.css';
 import '../Styles/OneParcMateriel.css';
 import '../Styles/UpdateMateriel.css';
 import CreateMarque from './CreateMarque';
+import CreateModele from './CreateModele';
 // import { data } from 'autoprefixer';
 
 export default function CreateMateriel() {
@@ -22,7 +23,6 @@ export default function CreateMateriel() {
   const [tableau, setTableau] = useState([]);
   const [tableauModele, setTableauModele] = useState([]);
   const [tableauMarque, setTableauMarque] = useState([]);
-  const [tableauMate, setTableauMate] = useState([]);
   const [marqueId, setMarqueId] = useState();
   const [modeleId, setModeleId] = useState();
 
@@ -89,112 +89,130 @@ export default function CreateMateriel() {
   return (
     <div className="container_materiel_creation">
       <HautDepage />
-      <p className="OPM_title">Création d'un matériel</p>
-      <div className="OPM_infos">
-        <input type="text" placeholder="Date de mise en service..." value={year} onChange={(e) => setYear(e.target.value)} maxLength="4" />
-        <input type="text" placeholder="Numero de série..." value={serialNumber} onChange={(e) => setSerialNumber(e.target.value)} />
-        <select
-          className="select__marque"
-          defaultValue="..."
-          onChange={(e) => {
-            setTypeMa(e.target.value);
-            setMarqueId(e.target.selectedOptions[0].id);
-          }}>
-          <option key="0" id="0">
-            ...
-          </option>
-          {tableauMarque.map((text) => (
-            <option key={text.id} id={text.id}>
-              {text.name}
-            </option>
-          ))}
-        </select>
-        {marqueId && (
-          <select
-            className="select__modele"
-            defaultValue="..."
-            onChange={(e) => {
-              setType(e.target.value);
-              setModeleId(e.target.selectedOptions[0].id);
-            }}>
-            <option key="0" id="0">
-              ...
-            </option>
-            {tableauModele.map((text) => (
-              <option key={text.id} id={text.id}>
-                {text.name}
+      <div className="big-containeur">
+        <div>
+          <p className="OPM_title">Création d'un matériel</p>
+          <div className="OPM_infos">
+            <input type="text" placeholder="Date de mise en service..." value={year} onChange={(e) => setYear(e.target.value)} maxLength="4" />
+            <input type="text" placeholder="Numero de série..." value={serialNumber} onChange={(e) => setSerialNumber(e.target.value)} />
+            <div className="title__agri">
+              <h3>Marques</h3>
+            </div>
+            <select
+              className="select__marque"
+              defaultValue="..."
+              onChange={(e) => {
+                setTypeMa(e.target.value);
+                setMarqueId(e.target.selectedOptions[0].id);
+              }}>
+              <option key="0" id="0">
+                ...
               </option>
-            ))}
-          </select>
-        )}
-        <input type="text" placeholder="Derniere vidange..." value={prevOil} onChange={(e) => setPrevOil(e.target.value)} />
-        <input type="text" placeholder="Prochaine vidange..." value={nextOil} onChange={(e) => setNextOil(e.target.value)} />
-        <div className="title__agri">
-          <h3>Agriculteur</h3>
-        </div>
-        <input type="text" placeholder="Agriculteur..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
-        {tableau && agriculteurIdentifiant && (
-          <ul>
-            {tableau
-              .filter(
-                (users) =>
-                  users.statue === 'agriculteur' &&
-                  (users.nom.startsWith(agriculteurIdentifiant.toUpperCase()) || users.nom.startsWith(agriculteurIdentifiant.toLowerCase())),
-              )
-              .map((text, index) => (
-                <button
-                  onClick={() => {
-                    setAgriculteurIdentifiant(text.nom);
-                    setAgriculteurId(text.id);
-                  }}
-                  key={index}
-                  style={{ fontSize: 20 }}>
-                  {text.nom}
-                </button>
-              ))}{' '}
-          </ul>
-        )}
-        <div className="title__concess">
-          <h3>Concessionnaire</h3>
-        </div>
-        <input
-          type="text"
-          placeholder="Concessionaire..."
-          value={concessionnaireIdentifiant}
-          onChange={(e) => setConcessionnaireIdentifiant(e.target.value)}
-        />
-        {tableau && concessionnaireIdentifiant && (
-          <section>
-            {tableau
-              .filter(
-                (users) =>
-                  users.statue === 'concessionnaire' &&
-                  (users.nom.startsWith(concessionnaireIdentifiant.toUpperCase()) || users.nom.startsWith(concessionnaireIdentifiant.toLowerCase())),
-              )
-              .map((text, index) => (
-                <button
-                  onClick={() => {
-                    setConcessionnaireIdentifiant(text.nom);
-                    setConcessionnaireId(text.id);
-                  }}
-                  key={index}
-                  style={{ fontSize: 20 }}>
-                  {text.nom}
-                </button>
+              {tableauMarque.map((text) => (
+                <option key={text.id} id={text.id}>
+                  {text.name}
+                </option>
               ))}
-          </section>
-        )}
+            </select>
+            {marqueId && (
+              <>
+                <div className="title__agri">
+                  <h3>Modeles</h3>
+                </div>
+                <select
+                  className="select__modele"
+                  defaultValue="..."
+                  onChange={(e) => {
+                    setType(e.target.value);
+                    setModeleId(e.target.selectedOptions[0].id);
+                  }}>
+                  <option key="0" id="0">
+                    ...
+                  </option>
+                  {tableauModele.map((text) => (
+                    <option key={text.id} id={text.id}>
+                      {text.name}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
+            <input type="text" placeholder="Derniere vidange..." value={prevOil} onChange={(e) => setPrevOil(e.target.value)} />
+            <input type="text" placeholder="Prochaine vidange..." value={nextOil} onChange={(e) => setNextOil(e.target.value)} />
+            <div className="title__agri">
+              <h3>Agriculteur</h3>
+            </div>
+            <input type="text" placeholder="Agriculteur..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+            {tableau && agriculteurIdentifiant && (
+              <ul>
+                {tableau
+                  .filter(
+                    (users) =>
+                      users.statue === 'agriculteur' &&
+                      (users.nom.startsWith(agriculteurIdentifiant.toUpperCase()) || users.nom.startsWith(agriculteurIdentifiant.toLowerCase())),
+                  )
+                  .map((text, index) => (
+                    <button
+                      onClick={() => {
+                        setAgriculteurIdentifiant(text.nom);
+                        setAgriculteurId(text.id);
+                      }}
+                      key={index}
+                      style={{ fontSize: 20 }}>
+                      {text.nom}
+                    </button>
+                  ))}{' '}
+              </ul>
+            )}
+            <div className="title__concess">
+              <h3>Concessionnaire</h3>
+            </div>
+            <input
+              type="text"
+              placeholder="Concessionaire..."
+              value={concessionnaireIdentifiant}
+              onChange={(e) => setConcessionnaireIdentifiant(e.target.value)}
+            />
+            {tableau && concessionnaireIdentifiant && (
+              <section>
+                {tableau
+                  .filter(
+                    (users) =>
+                      users.statue === 'concessionnaire' &&
+                      (users.nom.startsWith(concessionnaireIdentifiant.toUpperCase()) || users.nom.startsWith(concessionnaireIdentifiant.toLowerCase())),
+                  )
+                  .map((text, index) => (
+                    <button
+                      onClick={() => {
+                        setConcessionnaireIdentifiant(text.nom);
+                        setConcessionnaireId(text.id);
+                      }}
+                      key={index}
+                      style={{ fontSize: 20 }}>
+                      {text.nom}
+                    </button>
+                  ))}
+              </section>
+            )}
 
-        <button className="btn__create__materiel" onClick={submitMateriel}>
-          Envoyer
-        </button>
+            <button className="btn__create__materiel" onClick={submitMateriel}>
+              Envoyer
+            </button>
+          </div>
+        </div>
+        <div>
+          <p className="OPM_title_marque">Création d'une marque</p>
+          <div className="OPM_infos">
+            <CreateMarque />
+          </div>
+        </div>
+        <div>
+          <p className="OPM_title_modele">Création d'un modele</p>
+          <div className="OPM_infos">
+            <CreateModele />
+          </div>
+        </div>
       </div>
-      <p className="OPM_title_marque">Création d'une marque</p>
-      <div className="OPM_infos">
-        <CreateMarque />
-      </div>
-      <p className="OPM_title_modele">Création d'un modele</p>
-      <div className="OPM_infos">{/* <CreateModele /> */}</div>
     </div>
   );
 }

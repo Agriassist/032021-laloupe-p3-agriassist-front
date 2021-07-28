@@ -15,7 +15,7 @@ function CreateMarque() {
     });
   }
   return (
-    <div>
+    <div className="center">
       <div className="title__concess">
         <h3>marque</h3>
         <input type="text" onChange={(e) => setNewMarque(e.target.value)} />
