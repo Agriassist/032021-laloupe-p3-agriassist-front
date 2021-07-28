@@ -14,7 +14,7 @@ import Document_BonTravail from './components/Document_BonTravail';
 import Document_Facture from './components/Document_Facture';
 import AllParcMateriel from './components/AllParcMateriel';
 import CreateAccount from './components/CreateAccount';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import PostFiche from './components/PostFiche';
 import UpdateProfil from './components/UpdateProfil';
 import FicheTech from './components/FicheTech';
@@ -47,8 +47,9 @@ function App() {
         dispatch({ type: 'SET_STATUS', status });
       })
       .catch((err) => {
-        dispatch({ type: 'RESET_USER' });
-        dispatch({ type: 'RESET_JWT' });
+        dispatch({ type: 'RESET_STATUS' });
+        dispatch({ type: 'RESET_TOKEN' });
+        dispatch({ type: 'RESET_ID' });
       });
   };
 
@@ -112,11 +113,11 @@ function App() {
             )}
           </>
         )}
-        {!token && (
+        {!token ? (
           <Route path="/">
             <PageConnection />
           </Route>
-        )}
+        ) : null}
       </Switch>
       <Popup />
     </main>

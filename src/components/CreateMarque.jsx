@@ -19,11 +19,11 @@ function CreateMarque() {
   return (
     <div className="center">
       <div className="title__concess">
-        <h3>marque</h3>
+        <h3>Marque</h3>
         <input type="text" onChange={(e) => setNewMarque(e.target.value)} />
       </div>
       <button className="btn__create__marque" onClick={create_marque}>
-        créée
+        Créer
       </button>
     </div>
   );
