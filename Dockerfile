@@ -7,7 +7,8 @@ ENV REACT_APP_API_URL=${REACT_APP_API_URL}
 COPY . /usr/src/app
 RUN npm install
 RUN npm run build
-RUN cp -r /usr/src/app/src/images /usr/src/app/dist/assets/src/
+RUN mkdir -p /usr/src/app/dist/assets/src
+RUN cp -r /usr/src/app/src/images /usr/src/app/dist/assets/src/images
 
 # production environment
 FROM nginx:1.13.9-alpine
