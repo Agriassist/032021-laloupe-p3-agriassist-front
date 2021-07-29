@@ -17,11 +17,32 @@
   cursor: pointer;
   align-items: center;
 }
+.modeles__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--blueColor);
+  width: 85%;
+  margin: 2rem auto 0px auto;
+  border-radius: 10px;
+  border: 2px solid #000;
+  box-shadow: 5px 5px 5px #000;
+}
+#select__modele {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border: 2px solid #000;
+  box-shadow: 5px 0px 5px #000;
+  margin-top: 1rem;
+}
 
 .container__listpdf {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
+  overflow-y: scroll;
+  max-height: 95px;
 }
 
 .one__pdf {
@@ -72,16 +93,19 @@
 
 .container__pdf label {
   width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (min-width: 1024px) {
   .container__listpdf {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 45%;
     margin: 2rem auto 0px auto;
     justify-content: space-between;
-    flex-wrap: wrap;
+    max-height: 200px;
   }
   .container__listpdf i {
     font-size: 35px;
@@ -92,5 +116,16 @@
   }
   .one__pdf {
     margin: 1rem 1rem 1rem 0px;
+  }
+  #select__modele {
+    width: 20%;
+    margin-top: 2rem;
+  }
+ 
+  .container__pdf label {
+    width: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

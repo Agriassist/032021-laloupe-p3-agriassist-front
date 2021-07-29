@@ -36,7 +36,7 @@ export default function CreateModele() {
 
   useEffect(() => {
     if (marqueIdSup) {
-      window.scroll(0, 100);
+      window.scroll(0, 100000);
     }
   }, [marqueIdSup]);
 
@@ -92,7 +92,7 @@ export default function CreateModele() {
   return (
     <div>
       <div className="container__modeles">
-        <h3>Création d'un modele : </h3>
+        <h3 className="supression-text">Création d'un modele : </h3>
         <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
         <div className="container__imgprofil">
           <img src={tracteur} alt="test" id="img__multer" />
