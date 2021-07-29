@@ -116,7 +116,7 @@ export default function CreateMateriel() {
             {marqueId && (
               <>
                 <div className="title__agri">
-                  <h3>Modeles</h3>
+                  <h3>Modèles</h3>
                 </div>
                 <select
                   className="select__modele"
@@ -229,7 +229,7 @@ export default function CreateMateriel() {
           </div>
         </div>
         <div>
-          <p className="OPM_title_modele">Modele</p>
+          <p className="OPM_title_modele">Modèle</p>
           <div className="OPM_infos">
             <CreateModele />
           </div>

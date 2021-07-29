@@ -51,7 +51,7 @@ function CreateMarque() {
           <input type="text" value={newMarque} onChange={(e) => setNewMarque(e.target.value)} />
         </div>
         <button className="btn__create__marque" onClick={create_marque}>
-          créée
+          Créer
         </button>
       </div>
       <div className="center">
@@ -70,7 +70,7 @@ function CreateMarque() {
           </select>
         </div>
         <button className="btn__create__marque" onClick={delete_marque}>
-          suprimée
+          Supprimer
         </button>
       </div>
     </div>
