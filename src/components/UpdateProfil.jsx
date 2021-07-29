@@ -17,6 +17,8 @@ export default function UpdateProfil() {
   const [email, setEmail] = useState('');
   const [telephone, setTelephone] = useState('');
   const [imgphoto, setImgphoto] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
 
   const [{ token, id, profil_picture }, dispatch] = useStateValue();
 
@@ -55,49 +57,59 @@ export default function UpdateProfil() {
   };
 
   const SubmitUpdateProfil = (_, fichier) => {
-    let data;
-    if (fichier) {
-      data = new FormData();
-      data.append('file', fichier);
-      data.append(
-        'user',
-        JSON.stringify({
+    if (password === password2) {
+      let data;
+      if (fichier) {
+        data = new FormData();
+        data.append('file', fichier);
+        data.append(
+          'user',
+          JSON.stringify({
+            identifiant: pseudo,
+            prenom: prenom,
+            nom: name,
+            email: email,
+            phone: telephone,
+            hassPassword: password,
+            profil_picture,
+          }),
+        );
+      } else {
+        data = {
           identifiant: pseudo,
           prenom: prenom,
           nom: name,
           email: email,
           phone: telephone,
-          profil_picture,
-        }),
-      );
-    } else {
-      data = {
-        identifiant: pseudo,
-        prenom: prenom,
-        nom: name,
-        email: email,
-        phone: telephone,
-        photo_profil: file,
-      };
-    }
-    axios({
-      method: 'PUT',
-      url: `${API_BASE_URL}/api/users/${id}`,
-      data: data,
-    })
-      .then((data) => data.data)
-      .then((data) => {
-        setFile(data.photo_profil);
-        setPseudo(data.identifiant);
-        setName(data.nom);
-        setPrenom(data.prenom);
-        setEmail(data.email);
-        setTelephone(data.phone);
-        dispatch({ type: 'SET_PROFIL_PICTURE', profil_picture: data.photo_profil });
+          hassPassword: password,
+          photo_profil: file,
+        };
+      }
+      axios({
+        method: 'PUT',
+        url: `${API_BASE_URL}/api/users/${id}`,
+        data: data,
       })
-      .catch((err) => {
-        alert('Lien creation fail');
-      });
+        .then((data) => data.data)
+        .then((data) => {
+          setFile(data.photo_profil);
+          setPseudo(data.identifiant);
+          setName(data.nom);
+          setPrenom(data.prenom);
+          setEmail(data.email);
+          setTelephone(data.phone);
+          dispatch({ type: 'SET_PROFIL_PICTURE', profil_picture: data.photo_profil });
+          alert('Votre profil a été mis à jour');
+          window.location.reload();
+        })
+        .catch(() => {
+          alert('Une erreur est survenue');
+        });
+    } else {
+      alert('Les mots de passe ne sont pas identiques');
+      setPassword('');
+      setPassword2('');
+    }
   };
 
   return (
@@ -129,6 +141,14 @@ export default function UpdateProfil() {
           <div className="email__update">
             <h3>Email:</h3>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="email__update">
+            <h3>Nouveau mot de passe:</h3>
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <div className="email__update">
+            <h3>Confirmer le nouveau mot de passe:</h3>
+            <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} />
           </div>
           <div className="phone__update">
             <h3>Téléphone:</h3>
