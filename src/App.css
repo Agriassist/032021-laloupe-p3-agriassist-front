@@ -17,4 +17,5 @@ a {
 
 .container__site {
   background: linear-gradient(#ffffff, #3d86c62f);
+  min-height: 100vh;
 }
