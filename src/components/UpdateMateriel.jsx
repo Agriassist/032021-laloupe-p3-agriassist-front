@@ -6,7 +6,7 @@ import '../Styles/UpdateMateriel.css';
 import '../Styles/OneParcMateriel.css';
 import { useStateValue } from '../contexts/Context';
 
-function UpdateMateriel(props) {
+function UpdateMateriel() {
   const [infos, setInfos] = useState({});
   const [year, setYear] = useState('');
   const [serialNumber, setSerialNumber] = useState('');
@@ -24,14 +24,14 @@ function UpdateMateriel(props) {
   const [modeleId, setModeleId] = useState();
   const [park, setPark] = useState([]);
 
-  const [{ status }] = useStateValue();
+  const [{ status, materielId }] = useStateValue();
 
   const API_BASE_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `${API_BASE_URL}/api/materiels/${props.materielId}`,
+      url: `${API_BASE_URL}/api/materiels/${materielId}`,
     })
       .then((data) => {
         setInfos(data.data);
@@ -55,7 +55,7 @@ function UpdateMateriel(props) {
       .then((data) => {
         dataTableau = data;
         // setTableau(data);
-        axios(`${API_BASE_URL}/api/park/materiel/${props.materielId}`)
+        axios(`${API_BASE_URL}/api/park/materiel/${materielId}`)
           .then((data) => data.data)
           .then((data) => {
             dataTableauPark = data;
@@ -76,7 +76,6 @@ function UpdateMateriel(props) {
       axios(`${API_BASE_URL}/api/modele/marque/${marqueId}`)
         .then((data) => data.data)
         .then((data) => {
-          console.log('coucou');
           setTableauModele(data);
         });
     }
@@ -87,7 +86,7 @@ function UpdateMateriel(props) {
 
     axios({
       method: 'PUT',
-      url: `${API_BASE_URL}/api/materiels/${props.materielId}`,
+      url: `${API_BASE_URL}/api/materiels/${materielId}`,
       data: {
         year: year,
         serial_number: serialNumber,

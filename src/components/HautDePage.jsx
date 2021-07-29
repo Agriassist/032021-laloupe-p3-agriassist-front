@@ -28,7 +28,7 @@ export default function HautDePage() {
       .then((data) => data.data)
       .then((data) => {
         dispatch({ type: 'SET_PROFIL_PICTURE', profil_picture: data.photo_profil });
-        dispatch({ type: 'SET_NAME', name: data.nom });
+        dispatch({ type: 'SET_NAME', name: data.prenom });
         setMail(data.email);
       });
   }, []);

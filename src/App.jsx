@@ -26,7 +26,7 @@ import CreateModele from './components/CreateModele';
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 function App() {
-  const [{ token, status, id, materielId }, dispatch] = useStateValue();
+  const [{ token, status, id }, dispatch] = useStateValue();
 
   const refreshToken = () => {
     axios({
@@ -96,7 +96,7 @@ function App() {
               <UpdateProfil />
             </Route>
             <Route path="/update_mat">
-              <UpdateMateriel materielId={materielId} />
+              <UpdateMateriel />
             </Route>
             {status === 'administrateur' && (
               <>
