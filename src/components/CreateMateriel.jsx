@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -143,9 +145,14 @@ export default function CreateMateriel() {
             <div className="title__agri">
               <h3>Agriculteur</h3>
             </div>
-            <input type="text" placeholder="Agriculteur..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+            <input
+              type="text"
+              placeholder="Agriculteur..."
+              value={agriculteurIdentifiant}
+              onChange={(e) => setAgriculteurIdentifiant(e.target.value)}
+            />
             {tableau && agriculteurIdentifiant && (
-              <ul>
+              <div className="container__card__choice">
                 {tableau
                   .filter(
                     (users) =>
@@ -153,17 +160,23 @@ export default function CreateMateriel() {
                       (users.nom.startsWith(agriculteurIdentifiant.toUpperCase()) || users.nom.startsWith(agriculteurIdentifiant.toLowerCase())),
                   )
                   .map((text, index) => (
-                    <button
+                    <div
+                      className="card__choice"
                       onClick={() => {
                         setAgriculteurIdentifiant(text.nom);
                         setAgriculteurId(text.id);
                       }}
-                      key={index}
-                      style={{ fontSize: 20 }}>
-                      {text.nom}
-                    </button>
+                      key={index}>
+                      <div className="containainer__card__img">
+                        <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
+                      </div>
+                      <div>
+                        <p style={{ fontSize: '15px' }}>{text.nom}</p>
+                        <p style={{ marginTop: '5px', fontSize: '15px', paddingBottom: '5px' }}>{text.prenom}</p>
+                      </div>
+                    </div>
                   ))}{' '}
-              </ul>
+              </div>
             )}
             <div className="title__concess">
               <h3>Concessionnaire</h3>
@@ -175,25 +188,32 @@ export default function CreateMateriel() {
               onChange={(e) => setConcessionnaireIdentifiant(e.target.value)}
             />
             {tableau && concessionnaireIdentifiant && (
-              <section>
+              <div className="container__card__choice">
                 {tableau
                   .filter(
                     (users) =>
                       users.statue === 'concessionnaire' &&
-                      (users.nom.startsWith(concessionnaireIdentifiant.toUpperCase()) || users.nom.startsWith(concessionnaireIdentifiant.toLowerCase())),
+                      (users.nom.startsWith(concessionnaireIdentifiant.toUpperCase()) ||
+                        users.nom.startsWith(concessionnaireIdentifiant.toLowerCase())),
                   )
                   .map((text, index) => (
-                    <button
+                    <div
+                      className="card__choice"
                       onClick={() => {
                         setConcessionnaireIdentifiant(text.nom);
                         setConcessionnaireId(text.id);
                       }}
-                      key={index}
-                      style={{ fontSize: 20 }}>
-                      {text.nom}
-                    </button>
+                      key={index}>
+                      <div className="containainer__card__img">
+                        <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
+                      </div>
+                      <div>
+                        <p style={{ fontSize: '15px' }}>{text.nom}</p>
+                        <p style={{ marginTop: '5px', fontSize: '15px' }}>{text.prenom}</p>
+                      </div>
+                    </div>
                   ))}
-              </section>
+              </div>
             )}
 
             <button className="btn__create__materiel" onClick={submitMateriel}>

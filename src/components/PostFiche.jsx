@@ -118,7 +118,7 @@ export default function PostFiche() {
     <div className="container__postfiche">
       <HautDePage />
       <p className="OPM_title">Télécharger une fiche technique</p>
-      <div className="OPM_infos">
+      <div className="modeles__info">
         <div className="container__listpdf">
           {ficheTech.map((fiche, index) => (
             <div key={index} className="one__pdf">
@@ -130,27 +130,9 @@ export default function PostFiche() {
 
         <input type="file" accept="/*" id="upload__fiche__tech" onChange={onChangeFile} />
 
-        {/* <FormControl required className={classNamees.formControl}>
-          <InputLabel id="demo-simple-select-required-label" style={{ color: '#fff', fontSize: 20, fontFamily: 'Montserrat' }}>
-            Modèle
-          </InputLabel>
-          <NativeSelect
-            defaultValue={typeModele}
-            onChange={(event) => {
-              setTypeModele(event.target.value);
-              setIdModele(event.target.selectedOptions[0].id);
-            }}>
-            {modele.map((modeles, index) => (
-              <option className={classNamees.menuItem} id={modeles.id} key={index} value={modeles.name}>
-                {modeles.name}
-              </option>
-            ))}
-          </NativeSelect>
-          <FormHelperText style={{ color: '#fff', fontSize: 15, fontFamily: 'Montserrat' }}>Obligatoire</FormHelperText>
-        </FormControl> */}
         <select
           name=""
-          id=""
+          id="select__modele"
           defaultValue={typeModele}
           onChange={(event) => {
             setTypeModele(event.target.value);
