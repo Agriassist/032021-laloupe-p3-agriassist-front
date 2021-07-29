@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-onchange */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -119,10 +121,10 @@ function UpdateMateriel() {
           if (user.users_id === text.id) {
             if (text.statue === 'agriculteur') {
               setAgriculteurId(text.id);
-              setAgriculteurIdentifiant(text.nom);
+              setAgriculteurIdentifiant(text.prenom);
             } else if (text.statue === 'concessionnaire') {
               setConcessionnaireId(text.id);
-              setConcessionnaireIdentifiant(text.nom);
+              setConcessionnaireIdentifiant(text.prenom);
             }
           }
         });
@@ -197,44 +199,64 @@ function UpdateMateriel() {
                   <h3>Concessionnaire</h3>
                 </div>
                 <input type="text" defaultValue={concessionnaireIdentifiant} onChange={(e) => setConcessionnaireIdentifiant(e.target.value)} />
-                {tableau && concessionnaireIdentifiant && (
-                  <section>
-                    {tableau
-                      .filter((users) => users.nom.startsWith(concessionnaireIdentifiant) && users.statue === 'concessionnaire')
-                      .map((text, index) => (
-                        <button
-                          onClick={() => {
-                            setConcessionnaireIdentifiant(text.nom);
-                            setConcessionnaireId(text.id);
-                          }}
-                          key={index}
-                          style={{ fontSize: 20 }}>
-                          {text.nom}
-                        </button>
-                      ))}
-                  </section>
-                )}
+                {tableau.filter((users) => {
+                  const prenom = users.prenom.toLowerCase();
+                  return users.statue === 'concessionnaire' && prenom.startsWith(concessionnaireIdentifiant.toLowerCase());
+                }).length > 0 &&
+                  concessionnaireIdentifiant && (
+                    <div className="container__card__choice">
+                      {tableau
+                        .filter((users) => users.prenom.startsWith(concessionnaireIdentifiant) && users.statue === 'concessionnaire')
+                        .map((text, index) => (
+                          <div
+                            className="card__choice"
+                            onClick={() => {
+                              setAgriculteurIdentifiant(text.prenom);
+                              setAgriculteurId(text.id);
+                            }}
+                            key={index}>
+                            <div className="containainer__card__img">
+                              <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
+                            </div>
+                            <div>
+                              <p style={{ marginTop: '5px', fontSize: '15px', paddingBottom: '5px' }}>{text.prenom}</p>
+                              <p style={{ fontSize: '15px' }}>{text.nom}</p>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  )}
                 <div className="title__agri">
                   <h3>Agriculteur</h3>
                 </div>
                 <input type="text" defaultValue={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
-                {tableau && agriculteurIdentifiant && (
-                  <ul>
-                    {tableau
-                      .filter((users) => users.nom.startsWith(agriculteurIdentifiant) && users.statue === 'agriculteur')
-                      .map((text, index) => (
-                        <button
-                          onClick={() => {
-                            setAgriculteurIdentifiant(text.nom);
-                            setAgriculteurId(text.id);
-                          }}
-                          key={index}
-                          style={{ fontSize: 20 }}>
-                          {text.nom}
-                        </button>
-                      ))}{' '}
-                  </ul>
-                )}
+                {tableau.filter((users) => {
+                  const prenom = users.prenom.toLowerCase();
+                  return users.statue === 'agriculteur' && prenom.startsWith(agriculteurIdentifiant.toLowerCase());
+                }).length > 0 &&
+                  agriculteurIdentifiant && (
+                    <div className="container__card__choice">
+                      {tableau
+                        .filter((users) => users.prenom.startsWith(agriculteurIdentifiant) && users.statue === 'agriculteur')
+                        .map((text, index) => (
+                          <div
+                            className="card__choice"
+                            onClick={() => {
+                              setAgriculteurIdentifiant(text.prenom);
+                              setAgriculteurId(text.id);
+                            }}
+                            key={index}>
+                            <div className="containainer__card__img">
+                              <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
+                            </div>
+                            <div>
+                              <p style={{ marginTop: '5px', fontSize: '15px', paddingBottom: '5px' }}>{text.prenom}</p>
+                              <p style={{ fontSize: '15px' }}>{text.nom}</p>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  )}
               </>
             )}
           </>
