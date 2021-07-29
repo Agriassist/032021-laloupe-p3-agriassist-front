@@ -39,7 +39,6 @@ function CreateMarque() {
       url: `${API_BASE_URL}/api/marque`,
     }).then((res) => {
       setAllMarques(res.data);
-      console.log(res.data);
       // alert('marque créée');
     });
   }, []);
