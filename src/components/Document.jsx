@@ -13,8 +13,6 @@ export default function Document() {
   const [onClickChoice, setOnClickChoice] = useState(1);
   const [fileFacture, setFileFacture] = useState('');
   const [fileBonTravail, setFileBonTravail] = useState('');
-  const [facture, setFacture] = useState([]);
-  const [bonTravail, setBonTravail] = useState([]);
 
   const [{ id }] = useStateValue();
 
@@ -27,7 +25,6 @@ export default function Document() {
   const onChangeFileFacture = (event) => {
     const { type } = event.target.files[0];
     if (type !== 'image/png' || type !== 'image/jpeg' || type !== '/pdf') {
-      console.log(event.target.files[0], 'here');
       setFileFacture(event.target.files);
     } else {
       alert("Veuillez selectionner un format d'image valide");

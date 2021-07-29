@@ -32,3 +32,9 @@
   font-style: italic;
 }
 
+.supression-text {
+  text-align: center;
+  margin: 1rem auto;
+  font-size: 20px;
+}
+
