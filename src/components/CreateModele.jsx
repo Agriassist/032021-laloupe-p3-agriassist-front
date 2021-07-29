@@ -92,7 +92,7 @@ export default function CreateModele() {
   return (
     <div>
       <div className="container__modeles">
-        <h3 className="supression-text">Création d'un modele : </h3>
+        <h3 className="supression-text">Création d'un modèle : </h3>
         <input type="file" accept="image/*" id="multer" onChange={onChangeFile} />
         <div className="container__imgprofil">
           <img src={tracteur} alt="test" id="img__multer" />
@@ -103,7 +103,7 @@ export default function CreateModele() {
         </div>
 
         <div className="container__choice__modele">
-          <h3>marques</h3>
+          <h3>Marques</h3>
           <select
             className="select__marque__modele"
             defaultValue="..."
@@ -119,16 +119,16 @@ export default function CreateModele() {
               </option>
             ))}
           </select>
-          <h3>nom du modele</h3>
+          <h3>Nom du modèle</h3>
           <input type="text" id="input__name__modele" placeholder="Name..." value={modele} onChange={(e) => setModele(e.target.value)} />
           <button className="btn__create__marque" onClick={saveModele}>
-            créée
+            Créer
           </button>
         </div>
       </div>
       <div className="container__choice__modele">
-        <h3 className="supression-text">Supression d'un modele : </h3>
-        <h3>marques</h3>
+        <h3 className="supression-text">Supression d'un modèle : </h3>
+        <h3>Marques</h3>
         <select
           className="select__marque__modele"
           defaultValue="..."
@@ -147,7 +147,7 @@ export default function CreateModele() {
         {marqueIdSup && (
           <>
             <div className="title__agri">
-              <h3>Modeles</h3>
+              <h3>Modèles</h3>
             </div>
             <select
               className="select__marque__modele"
@@ -167,7 +167,7 @@ export default function CreateModele() {
           </>
         )}
         <button className="btn__create__marque" onClick={delete_modele}>
-          suprimée
+          Supprimer
         </button>
       </div>
     </div>
