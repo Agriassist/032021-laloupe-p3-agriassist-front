@@ -19,6 +19,7 @@ export default function Popup() {
     dispatch({ type: 'RESET_STATUS' });
     dispatch({ type: 'RESET_MATERIEL_ID' });
     dispatch({ type: 'RESET_PROFIL_PICTURE' });
+    dispatch({ type: 'RESET_NAME' });
 
     axios({
       method: 'GET',
