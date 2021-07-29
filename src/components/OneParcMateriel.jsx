@@ -60,12 +60,9 @@ function OneParcMateriel() {
     if (window.confirm('Etes-vous sûr de vouloir supprimer ce matériel ?')) {
       axios(`${API_BASE_URL}/api/materiels/${materielId}`, {
         method: 'DELETE',
-      })
-        .then((data) => data.data)
-        .then((data) => {
-          history.push('/materiel');
-          console.log(data);
-        });
+      }).then(() => {
+        history.push('/materiel');
+      });
     }
   }
 

@@ -76,7 +76,6 @@ function UpdateMateriel() {
       axios(`${API_BASE_URL}/api/modele/marque/${marqueId}`)
         .then((data) => data.data)
         .then((data) => {
-          console.log('coucou');
           setTableauModele(data);
         });
     }
@@ -217,7 +216,6 @@ function UpdateMateriel() {
                 )}
                 <div className="title__agri">
                   <h3>Agriculteur</h3>
-                  {console.log(tableau)}
                 </div>
                 <input type="text" defaultValue={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
                 {tableau && agriculteurIdentifiant && (

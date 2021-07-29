@@ -39,7 +39,6 @@ export default function CreateMateriel() {
       axios(`${API_BASE_URL}/api/modele/marque/${marqueId}`)
         .then((data) => data.data)
         .then((data) => {
-          console.log('coucou');
           setTableauModele(data);
         });
     }
@@ -140,7 +139,12 @@ export default function CreateMateriel() {
             <div className="title__agri">
               <h3>Agriculteur</h3>
             </div>
-            <input type="text" placeholder="Agriculteur..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
+            <input
+              type="text"
+              placeholder="Agriculteur..."
+              value={agriculteurIdentifiant}
+              onChange={(e) => setAgriculteurIdentifiant(e.target.value)}
+            />
             {tableau && agriculteurIdentifiant && (
               <ul>
                 {tableau
@@ -177,7 +181,8 @@ export default function CreateMateriel() {
                   .filter(
                     (users) =>
                       users.statue === 'concessionnaire' &&
-                      (users.nom.startsWith(concessionnaireIdentifiant.toUpperCase()) || users.nom.startsWith(concessionnaireIdentifiant.toLowerCase())),
+                      (users.nom.startsWith(concessionnaireIdentifiant.toUpperCase()) ||
+                        users.nom.startsWith(concessionnaireIdentifiant.toLowerCase())),
                   )
                   .map((text, index) => (
                     <button
@@ -199,13 +204,13 @@ export default function CreateMateriel() {
           </div>
         </div>
         <div>
-          <p className="OPM_title_marque">Création d'une marque</p>
+          <p className="OPM_title_marque">Marque</p>
           <div className="OPM_infos">
             <CreateMarque />
           </div>
         </div>
         <div>
-          <p className="OPM_title_modele">Création d'un modele</p>
+          <p className="OPM_title_modele">Modele</p>
           <div className="OPM_infos">
             <CreateModele />
           </div>
