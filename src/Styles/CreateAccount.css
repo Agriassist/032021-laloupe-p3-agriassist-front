@@ -12,6 +12,9 @@
   width: 80%;
   border-radius: 10px;
 }
+.style__error{
+color: red;
+}
 
 .container__create__account input {
   width: 75%;
@@ -25,11 +28,21 @@
   font-style: italic;
   opacity: .6;
 }
+.container__creation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container__creation label{
+  font-size: 20px;
+  color: var(--blueColor);
+  font-family: Montserrat;
+  margin-top: 1rem;
+}
 
 
-
-#input__one__account {
-  margin-top: 2rem;
+#input__one__account, #input__two__account, #input__three__account, #input__four__account, #input__five__account, #input__six__account {
+  margin-top:6px;
   padding: 5px;
   opacity: 1;
   font-size: 18px;
@@ -38,55 +51,7 @@
   border-color: #3d86c680;
 }
 
-#input__two__account {
-  margin-top: 2rem;
-  padding: 5px;
-  opacity: 1;
-  font-size: 18px;
-  font-family: 'Montserrat';
-  text-align: center;
-  border-color: #3d86c680;
-}
 
-#input__three__account {
-  margin-top: 2rem;
-  padding: 5px;
-  opacity: 1;
-  font-size: 18px;
-  font-family: 'Montserrat';
-  text-align: center;
-  border-color: #3d86c680;
-}
-
-#input__four__account {
-    margin-top: 2rem;
-    padding: 5px;
-    opacity: 1;
-    font-size: 18px;
-    font-family: 'Montserrat';
-    text-align: center;
-    border-color: #3d86c680;
-  }
-
-  #input__five__account {
-    margin-top: 2rem;
-    padding: 5px;
-    opacity: 1;
-    font-size: 18px;
-    font-family: 'Montserrat';
-    text-align: center;
-    border-color: #3d86c680;
-  }
-  
-  #input__six__account {
-    margin-top: 2rem;
-    padding: 5px;
-    opacity: 1;
-    font-size: 18px;
-    font-family: 'Montserrat';
-    text-align: center;
-    border-color: #3d86c680;
-  }
 
 .container__btn {
   width: 100%;
