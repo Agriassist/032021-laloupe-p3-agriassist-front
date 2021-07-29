@@ -14,7 +14,7 @@ export default function Document() {
   const [fileFacture, setFileFacture] = useState('');
   const [fileBonTravail, setFileBonTravail] = useState('');
 
-  const [{ id }] = useStateValue();
+  const [{ status }] = useStateValue();
 
   const focus = useRef(null);
 
@@ -42,6 +42,7 @@ export default function Document() {
 
   useEffect(() => {
     focus.current.focus();
+    window.scrollTo(0, 0);
   }, []);
 
   function submitFacture(_, facture) {
@@ -111,35 +112,37 @@ export default function Document() {
           {onClickChoice === 2 ? <Document_BonTravail /> : ''}
         </div>
       </div>
-      <div className="container__icone__document">
-        <Link to="/fiche_technique">
-          <div className="bloc__image__doc">
-            <i className="far fa-file-pdf"></i>
-            <p className="legende__icones">Télécharger un PDF</p>
-          </div>
-        </Link>
+      {(status === 'administrateur' || status === 'concessionnaire') && (
+        <div className="container__icone__document">
+          <Link to="/fiche_technique">
+            <div className="bloc__image__doc">
+              <i className="far fa-file-pdf"></i>
+              <p className="legende__icones">Télécharger un PDF</p>
+            </div>
+          </Link>
 
-        <div className="bloc__image__doc">
-          <input type="file" accept="image/*" id="upload__facture" onChange={onChangeFileFacture} />
-          <label htmlFor="upload__facture">
-            <i className="fas fa-file-invoice-dollar"></i>
-          </label>
-          <p className="legende__icones">Facture</p>
-          <button className={fileFacture ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitFacture}>
-            Sauvegarder
-          </button>
+          <div className="bloc__image__doc">
+            <input type="file" accept="image/*" id="upload__facture" onChange={onChangeFileFacture} />
+            <label htmlFor="upload__facture">
+              <i className="fas fa-file-invoice-dollar"></i>
+            </label>
+            <p className="legende__icones">Facture</p>
+            <button className={fileFacture ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitFacture}>
+              Sauvegarder
+            </button>
+          </div>
+          <div className="bloc__image__doc">
+            <input type="file" accept="image/*" id="upload__bontravail" onChange={onChangeFileBonTravail} />
+            <label htmlFor="upload__bontravail">
+              <i className="fas fa-print"></i>
+            </label>
+            <p className="legende__icones">Bon de Travail</p>
+            <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitBonTravil}>
+              Sauvegarder
+            </button>
+          </div>
         </div>
-        <div className="bloc__image__doc">
-          <input type="file" accept="image/*" id="upload__bontravail" onChange={onChangeFileBonTravail} />
-          <label htmlFor="upload__bontravail">
-            <i className="fas fa-print"></i>
-          </label>
-          <p className="legende__icones">Bon de Travail</p>
-          <button className={fileBonTravail ? 'btn__facture' : 'btn__facture__nodispo'} onClick={submitBonTravil}>
-            Sauvegarder
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
