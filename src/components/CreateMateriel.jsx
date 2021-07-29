@@ -147,29 +147,25 @@ export default function CreateMateriel() {
               value={agriculteurIdentifiant}
               onChange={(e) => setAgriculteurIdentifiant(e.target.value)}
             />
-            {tableau.filter(
-              (users) =>
-                users.statue === 'agriculteur' &&
-                (users.prenom.startsWith(agriculteurIdentifiant.toUpperCase()) || users.prenom.startsWith(agriculteurIdentifiant.toLowerCase())),
-            ).length > 0 &&
+            {tableau.filter((users) => {
+              const prenom = users.prenom.toLowerCase();
+              return users.statue === 'agriculteur' && prenom.startsWith(agriculteurIdentifiant.toLowerCase());
+            }).length > 0 &&
               agriculteurIdentifiant && (
                 <div className="container__card__choice">
                   {tableau
-                    .filter(
-                      (users) =>
-                        users.statue === 'agriculteur' &&
-                        (users.prenom.startsWith(agriculteurIdentifiant.toUpperCase()) ||
-                          users.prenom.startsWith(agriculteurIdentifiant.toLowerCase())),
-                    )
+                    .filter((users) => {
+                      const prenom = users.prenom.toLowerCase();
+                      return users.statue === 'agriculteur' && prenom.startsWith(agriculteurIdentifiant.toLowerCase());
+                    })
                     .map((text, index) => (
                       <div
                         className="card__choice"
                         onClick={() => {
-                          setAgriculteurIdentifiant(text.nom);
+                          setAgriculteurIdentifiant(text.prenom);
                           setAgriculteurId(text.id);
                         }}
                         key={index}>
-                        {console.log(text)}
                         <div className="containainer__card__img">
                           <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
                         </div>
@@ -190,34 +186,36 @@ export default function CreateMateriel() {
               value={concessionnaireIdentifiant}
               onChange={(e) => setConcessionnaireIdentifiant(e.target.value)}
             />
-            {tableau && concessionnaireIdentifiant && (
-              <div className="container__card__choice">
-                {tableau
-                  .filter(
-                    (users) =>
-                      users.statue === 'concessionnaire' &&
-                      (users.prenom.startsWith(concessionnaireIdentifiant.toUpperCase()) ||
-                        users.prenom.startsWith(concessionnaireIdentifiant.toLowerCase())),
-                  )
-                  .map((text, index) => (
-                    <div
-                      className="card__choice"
-                      onClick={() => {
-                        setConcessionnaireIdentifiant(text.nom);
-                        setConcessionnaireId(text.id);
-                      }}
-                      key={index}>
-                      <div className="containainer__card__img">
-                        <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
+            {tableau.filter((users) => {
+              const prenom = users.prenom.toLowerCase();
+              return users.statue === 'concessionnaire' && prenom.startsWith(concessionnaireIdentifiant.toLowerCase());
+            }).length > 0 &&
+              concessionnaireIdentifiant && (
+                <div className="container__card__choice">
+                  {tableau
+                    .filter((users) => {
+                      const prenom = users.prenom.toLowerCase();
+                      return users.statue === 'concessionnaire' && prenom.startsWith(concessionnaireIdentifiant.toLowerCase());
+                    })
+                    .map((text, index) => (
+                      <div
+                        className="card__choice"
+                        onClick={() => {
+                          setConcessionnaireIdentifiant(text.prenom);
+                          setConcessionnaireId(text.id);
+                        }}
+                        key={index}>
+                        <div className="containainer__card__img">
+                          <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
+                        </div>
+                        <div>
+                          <p style={{ marginTop: '5px', fontSize: '15px' }}>{text.prenom}</p>
+                          <p style={{ fontSize: '15px' }}>{text.nom}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p style={{ marginTop: '5px', fontSize: '15px' }}>{text.prenom}</p>
-                        <p style={{ fontSize: '15px' }}>{text.nom}</p>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            )}
+                    ))}
+                </div>
+              )}
 
             <button className="btn__create__materiel" onClick={submitMateriel}>
               Envoyer
