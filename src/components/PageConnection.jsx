@@ -51,7 +51,7 @@ export default function PageConnection() {
           if (data.data.token !== undefined) {
             setTimeout(() => {
               history.push('/users');
-            }, 50);
+            }, 300);
           } else {
             alert('wrong password or email');
           }
