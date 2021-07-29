@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -14,7 +16,6 @@ export default function CreateMateriel() {
   const [year, setYear] = useState('');
   const [serialNumber, setSerialNumber] = useState('');
   const [type, setType] = useState('');
-  const [typeMa, setTypeMa] = useState('');
   const [prevOil, setPrevOil] = useState('');
   const [nextOil, setNextOil] = useState('');
   const [agriculteurIdentifiant, setAgriculteurIdentifiant] = useState('');
@@ -40,7 +41,6 @@ export default function CreateMateriel() {
       axios(`${API_BASE_URL}/api/modele/marque/${marqueId}`)
         .then((data) => data.data)
         .then((data) => {
-          console.log('coucou');
           setTableauModele(data);
         });
     }
@@ -72,8 +72,7 @@ export default function CreateMateriel() {
         agriculteurId: agriculteurId,
       },
     })
-      .then((data) => data.data)
-      .then((data) => {
+      .then(() => {
         setYear('');
         setSerialNumber('');
         setType('');
@@ -82,7 +81,7 @@ export default function CreateMateriel() {
         setAgriculteurIdentifiant('');
         setConcessionnaireIdentifiant('');
       })
-      .catch((err) => {
+      .catch(() => {
         alert('Lien creation fail');
       });
   }
@@ -103,7 +102,6 @@ export default function CreateMateriel() {
               className="select__marque"
               defaultValue="..."
               onChange={(e) => {
-                setTypeMa(e.target.value);
                 setMarqueId(e.target.selectedOptions[0].id);
               }}>
               <option key="0" id="0">
@@ -118,7 +116,7 @@ export default function CreateMateriel() {
             {marqueId && (
               <>
                 <div className="title__agri">
-                  <h3>Modeles</h3>
+                  <h3>Modèles</h3>
                 </div>
                 <select
                   className="select__modele"
@@ -143,28 +141,42 @@ export default function CreateMateriel() {
             <div className="title__agri">
               <h3>Agriculteur</h3>
             </div>
-            <input type="text" placeholder="Agriculteur..." value={agriculteurIdentifiant} onChange={(e) => setAgriculteurIdentifiant(e.target.value)} />
-            {tableau && agriculteurIdentifiant && (
-              <ul>
-                {tableau
-                  .filter(
-                    (users) =>
-                      users.statue === 'agriculteur' &&
-                      (users.nom.startsWith(agriculteurIdentifiant.toUpperCase()) || users.nom.startsWith(agriculteurIdentifiant.toLowerCase())),
-                  )
-                  .map((text, index) => (
-                    <button
-                      onClick={() => {
-                        setAgriculteurIdentifiant(text.nom);
-                        setAgriculteurId(text.id);
-                      }}
-                      key={index}
-                      style={{ fontSize: 20 }}>
-                      {text.nom}
-                    </button>
-                  ))}{' '}
-              </ul>
-            )}
+            <input
+              type="text"
+              placeholder="Agriculteur..."
+              value={agriculteurIdentifiant}
+              onChange={(e) => setAgriculteurIdentifiant(e.target.value)}
+            />
+            {tableau.filter((users) => {
+              const prenom = users.prenom.toLowerCase();
+              return users.statue === 'agriculteur' && prenom.startsWith(agriculteurIdentifiant.toLowerCase());
+            }).length > 0 &&
+              agriculteurIdentifiant && (
+                <div className="container__card__choice">
+                  {tableau
+                    .filter((users) => {
+                      const prenom = users.prenom.toLowerCase();
+                      return users.statue === 'agriculteur' && prenom.startsWith(agriculteurIdentifiant.toLowerCase());
+                    })
+                    .map((text, index) => (
+                      <div
+                        className="card__choice"
+                        onClick={() => {
+                          setAgriculteurIdentifiant(text.prenom);
+                          setAgriculteurId(text.id);
+                        }}
+                        key={index}>
+                        <div className="containainer__card__img">
+                          <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
+                        </div>
+                        <div>
+                          <p style={{ marginTop: '5px', fontSize: '15px', paddingBottom: '5px' }}>{text.prenom}</p>
+                          <p style={{ fontSize: '15px' }}>{text.nom}</p>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              )}
             <div className="title__concess">
               <h3>Concessionnaire</h3>
             </div>
@@ -174,27 +186,36 @@ export default function CreateMateriel() {
               value={concessionnaireIdentifiant}
               onChange={(e) => setConcessionnaireIdentifiant(e.target.value)}
             />
-            {tableau && concessionnaireIdentifiant && (
-              <section>
-                {tableau
-                  .filter(
-                    (users) =>
-                      users.statue === 'concessionnaire' &&
-                      (users.nom.startsWith(concessionnaireIdentifiant.toUpperCase()) || users.nom.startsWith(concessionnaireIdentifiant.toLowerCase())),
-                  )
-                  .map((text, index) => (
-                    <button
-                      onClick={() => {
-                        setConcessionnaireIdentifiant(text.nom);
-                        setConcessionnaireId(text.id);
-                      }}
-                      key={index}
-                      style={{ fontSize: 20 }}>
-                      {text.nom}
-                    </button>
-                  ))}
-              </section>
-            )}
+            {tableau.filter((users) => {
+              const prenom = users.prenom.toLowerCase();
+              return users.statue === 'concessionnaire' && prenom.startsWith(concessionnaireIdentifiant.toLowerCase());
+            }).length > 0 &&
+              concessionnaireIdentifiant && (
+                <div className="container__card__choice">
+                  {tableau
+                    .filter((users) => {
+                      const prenom = users.prenom.toLowerCase();
+                      return users.statue === 'concessionnaire' && prenom.startsWith(concessionnaireIdentifiant.toLowerCase());
+                    })
+                    .map((text, index) => (
+                      <div
+                        className="card__choice"
+                        onClick={() => {
+                          setConcessionnaireIdentifiant(text.prenom);
+                          setConcessionnaireId(text.id);
+                        }}
+                        key={index}>
+                        <div className="containainer__card__img">
+                          <img src={`${API_BASE_URL}/images_profil/${text.photo_profil}`} alt="test" />
+                        </div>
+                        <div>
+                          <p style={{ marginTop: '5px', fontSize: '15px' }}>{text.prenom}</p>
+                          <p style={{ fontSize: '15px' }}>{text.nom}</p>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              )}
 
             <button className="btn__create__materiel" onClick={submitMateriel}>
               Envoyer
@@ -202,13 +223,13 @@ export default function CreateMateriel() {
           </div>
         </div>
         <div>
-          <p className="OPM_title_marque">Création d'une marque</p>
+          <p className="OPM_title_marque">Marque</p>
           <div className="OPM_infos">
             <CreateMarque />
           </div>
         </div>
         <div>
-          <p className="OPM_title_modele">Création d'un modèle</p>
+          <p className="OPM_title_modele">Modèle</p>
           <div className="OPM_infos">
             <CreateModele />
           </div>
