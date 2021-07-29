@@ -14,7 +14,6 @@ export default function CreateMateriel() {
   const [year, setYear] = useState('');
   const [serialNumber, setSerialNumber] = useState('');
   const [type, setType] = useState('');
-  const [typeMa, setTypeMa] = useState('');
   const [prevOil, setPrevOil] = useState('');
   const [nextOil, setNextOil] = useState('');
   const [agriculteurIdentifiant, setAgriculteurIdentifiant] = useState('');
@@ -72,8 +71,7 @@ export default function CreateMateriel() {
         agriculteurId: agriculteurId,
       },
     })
-      .then((data) => data.data)
-      .then((data) => {
+      .then(() => {
         setYear('');
         setSerialNumber('');
         setType('');
@@ -82,7 +80,7 @@ export default function CreateMateriel() {
         setAgriculteurIdentifiant('');
         setConcessionnaireIdentifiant('');
       })
-      .catch((err) => {
+      .catch(() => {
         alert('Lien creation fail');
       });
   }
@@ -103,7 +101,6 @@ export default function CreateMateriel() {
               className="select__marque"
               defaultValue="..."
               onChange={(e) => {
-                setTypeMa(e.target.value);
                 setMarqueId(e.target.selectedOptions[0].id);
               }}>
               <option key="0" id="0">
